@@ -1,0 +1,368 @@
+---
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Oh... hello."
+  outputs:
+    0: NodeText131
+  position:
+    x: 520
+    y: 40
+
+NodeText152:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "..."
+  outputs:
+    0: NodeText173
+  position:
+    x: 1320
+    y: 0
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeText152
+  position:
+    x: 1100
+    y: 160
+
+NodeText131:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "The moon is bright tonight, isn't it?"
+  outputs:
+    0: NodeWait
+  position:
+    x: 820
+    y: 20
+
+NodeText173:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Do you know what this is?"
+  outputs:
+    0: NodeCameraFade
+  position:
+    x: 1580
+    y: -40
+
+NodeText226:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "My friend gave this to me for my birthday."
+  outputs:
+    0: NodeText242
+  position:
+    x: 2400
+    y: 40
+
+NodeText242:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It was a long time ago."
+  outputs:
+    0: NodeText265
+  position:
+    x: 2720
+    y: 20
+
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: -360
+    y: 120
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeDeclareRef204
+  position:
+    x: -180
+    y: -60
+
+NodeDeclareRef204:
+  type: DECLARE_REF
+  arguments:
+    reference_name: ItemCamera
+    target: ItemCamera
+  outputs:
+    0: NodeDeclareRef249
+  position:
+    x: 80
+    y: -20
+
+NodeDeclareRef249:
+  type: DECLARE_REF
+  arguments:
+    reference_name: SideCamera
+    target: SideCamera
+  outputs:
+    0: NodeText
+  position:
+    x: 300
+    y: -80
+
+NodeText265:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Before they..."
+  outputs:
+    0: NodeWait271
+  position:
+    x: 3000
+    y: 20
+
+NodeText305:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Why can't I remember?"
+  outputs:
+    0: NodeText321
+  position:
+    x: 4020
+    y: 20
+
+NodeText321:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I just want to know why they gave this strange thing to me."
+  outputs:
+    0: NodeWait349
+  position:
+    x: 4340
+    y: 20
+
+NodeWait289:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText305
+  position:
+    x: 3860
+    y: 40
+
+NodeCameraFade283:
+  type: CAMERA_FADE
+  arguments:
+    from_reference: ItemCamera
+    to_reference: SideCamera
+    time: 1
+  outputs:
+    0: NodeWait289
+  position:
+    x: 3600
+    y: 60
+
+NodeWait271:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText337
+  position:
+    x: 3220
+    y: 120
+
+NodeText337:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I don't want to talk about it."
+  outputs:
+    0: NodeWait343
+  position:
+    x: 3340
+    y: -280
+
+NodeWait343:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraFade283
+  position:
+    x: 3580
+    y: -180
+
+NodeWait349:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText365
+  position:
+    x: 4680
+    y: 80
+
+NodeText365:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "..."
+  outputs:
+    0: NodeText381
+  position:
+    x: 4860
+    y: -60
+
+NodeText381:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Wait."
+  outputs:
+    0: NodeText397
+  position:
+    x: 5140
+    y: 20
+
+NodeText397:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "You're a Darkspawn, right?"
+  outputs:
+    0: NodeText413
+  position:
+    x: 5400
+    y: 0
+
+NodeWait419:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeText435
+  position:
+    x: 5960
+    y: 60
+
+NodeText413:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "You have those... hypnosis mind traversal powers, or whatever?"
+  outputs:
+    0: NodeWait419
+  position:
+    x: 5660
+    y: 0
+
+NodeText435:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Please help me."
+  outputs:
+    0: NodeText451
+  position:
+    x: 6140
+    y: 0
+
+NodeText451:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I need to remember..."
+  outputs:
+    0: NodeWait457
+  position:
+    x: 6440
+    y: -20
+
+NodeWait457:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeCameraFade469
+  position:
+    x: 6740
+    y: 0
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 7320
+    y: 40
+
+NodeCameraFade469:
+  type: CAMERA_FADE
+  arguments:
+    from_reference: SideCamera
+    to_reference: PlayerCamera
+    time: 2
+  outputs:
+    0: NodeWait2
+  position:
+    x: 6920
+    y: -40
+
+NodeWait2:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeEnd
+  position:
+    x: 6740
+    y: 0
+
+NodeCameraFade:
+  type: CAMERA_FADE
+  arguments:
+    from_reference: PlayerCamera
+    to_reference: ItemCamera
+    time: 1
+  outputs:
+    0: NodeWait210
+  position:
+    x: 2020
+    y: -20
+
+NodeWait210:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeText226
+  position:
+    x: 2240
+    y: 100

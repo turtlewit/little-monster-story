@@ -1,0 +1,454 @@
+[gd_scene load_steps=64 format=2]
+
+[ext_resource path="res://player/audio/jump.ogg" type="AudioStream" id=1]
+[ext_resource path="res://characters/frog/frog.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/player_movement.gd" type="Script" id=3]
+[ext_resource path="res://player/audio/land3.ogg" type="AudioStream" id=4]
+[ext_resource path="res://player/player_camera.gd" type="Script" id=5]
+[ext_resource path="res://effects/hypno.png" type="Texture" id=6]
+[ext_resource path="res://player/sound_ribbit.gd" type="Script" id=7]
+[ext_resource path="res://characters/frog/ribbit.ogg" type="AudioStream" id=8]
+[ext_resource path="res://player/player_tether_point_finder.gd" type="Script" id=9]
+[ext_resource path="res://player/slide_particles.gd" type="Script" id=10]
+[ext_resource path="res://materials/blob_shadow/blob_shadow.shader" type="Shader" id=11]
+[ext_resource path="res://player/blob_shadow_caster.gd" type="Script" id=12]
+[ext_resource path="res://player/blink_controller.gd" type="Script" id=13]
+[ext_resource path="res://player/jump_blend_controller.gd" type="Script" id=14]
+[ext_resource path="res://player/audio/respawn_poof.ogg" type="AudioStream" id=15]
+[ext_resource path="res://materials/cel_new.shader" type="Shader" id=16]
+[ext_resource path="res://player/grass_position_updater.gd" type="Script" id=17]
+[ext_resource path="res://areas/environment_art_test/grass_sway.material" type="Material" id=18]
+[ext_resource path="res://characters/frog/tongue.ogg" type="AudioStream" id=19]
+
+[sub_resource type="AnimationNodeAdd2" id=45]
+filter_enabled = true
+filters = [ "FrogArmature/Skeleton:croak" ]
+
+[sub_resource type="AnimationNodeAdd2" id=46]
+filter_enabled = true
+filters = [ "FrogArmature/Skeleton/BoneAttachment 2/RightEye:current_texture", "FrogArmature/Skeleton/BoneAttachment/LeftEye:current_texture", "FrogArmature/Skeleton:eyel", "FrogArmature/Skeleton:eyer" ]
+
+[sub_resource type="AnimationNodeAnimation" id=47]
+animation = "Blink"
+
+[sub_resource type="AnimationNodeAnimation" id=48]
+animation = "Empty"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=51]
+states/Blink/node = SubResource( 47 )
+states/Blink/position = Vector2( 543, 126 )
+states/Empty/node = SubResource( 48 )
+states/Empty/position = Vector2( 355, 126 )
+transitions = [ "Empty", "Blink", SubResource( 49 ), "Blink", "Empty", SubResource( 50 ) ]
+start_node = "Empty"
+
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "Climb"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "Idle-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=54]
+animation = "Fall-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=55]
+animation = "Fly-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=56]
+
+[sub_resource type="AnimationNodeBlendTree" id=57]
+graph_offset = Vector2( -314, 40 )
+nodes/Fall/node = SubResource( 54 )
+nodes/Fall/position = Vector2( 60, 180 )
+nodes/Fly/node = SubResource( 55 )
+nodes/Fly/position = Vector2( 60, 60 )
+nodes/FlyFallBlend/node = SubResource( 56 )
+nodes/FlyFallBlend/position = Vector2( 240, 100 )
+nodes/output/position = Vector2( 420, 100 )
+node_connections = [ "output", 0, "FlyFallBlend", "FlyFallBlend", 0, "Fly", "FlyFallBlend", 1, "Fall" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=62]
+states/Climb/node = SubResource( 52 )
+states/Climb/position = Vector2( 489, 164 )
+states/Idle-loop/node = SubResource( 53 )
+states/Idle-loop/position = Vector2( 489, 72 )
+states/JumpBlendTree/node = SubResource( 57 )
+states/JumpBlendTree/position = Vector2( 677, 72 )
+transitions = [ "JumpBlendTree", "Idle-loop", SubResource( 58 ), "Idle-loop", "JumpBlendTree", SubResource( 59 ), "Idle-loop", "Climb", SubResource( 60 ), "Climb", "Idle-loop", SubResource( 61 ) ]
+start_node = "Idle-loop"
+graph_offset = Vector2( 5, -12 )
+
+[sub_resource type="AnimationNodeAnimation" id=63]
+animation = "Empty"
+
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "Ribbit"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=65]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=66]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=67]
+states/Empty/node = SubResource( 63 )
+states/Empty/position = Vector2( 446, 85 )
+states/Ribbit/node = SubResource( 64 )
+states/Ribbit/position = Vector2( 616, 85 )
+transitions = [ "Empty", "Ribbit", SubResource( 65 ), "Ribbit", "Empty", SubResource( 66 ) ]
+start_node = "Empty"
+
+[sub_resource type="AnimationNodeBlendTree" id=68]
+graph_offset = Vector2( 0, 327.5 )
+nodes/Add2/node = SubResource( 46 )
+nodes/Add2/position = Vector2( 120, 180 )
+"nodes/Add2 2/node" = SubResource( 45 )
+"nodes/Add2 2/position" = Vector2( 300, 260 )
+nodes/Blink/node = SubResource( 51 )
+nodes/Blink/position = Vector2( -80, 260 )
+nodes/MainAction/node = SubResource( 62 )
+nodes/MainAction/position = Vector2( -80, 140 )
+nodes/Ribbit/node = SubResource( 67 )
+nodes/Ribbit/position = Vector2( 120, 360 )
+nodes/output/position = Vector2( 480, 260 )
+node_connections = [ "output", 0, "Add2 2", "Add2", 0, "MainAction", "Add2", 1, "Blink", "Add2 2", 0, "Add2", "Add2 2", 1, "Ribbit" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=69]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=70]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=71]
+
+[sub_resource type="SphereShape" id=72]
+radius = 0.130332
+
+[sub_resource type="QuadMesh" id=73]
+size = Vector2( 0.35, 0.35 )
+
+[sub_resource type="ShaderMaterial" id=74]
+shader = ExtResource( 11 )
+shader_param/transparency = 0.498
+
+[sub_resource type="Animation" id=75]
+
+[sub_resource type="BoxShape" id=76]
+extents = Vector3( 0.154648, 0.15682, 0.650994 )
+
+[sub_resource type="SpatialMaterial" id=77]
+flags_transparent = true
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_texture = ExtResource( 6 )
+
+[sub_resource type="QuadMesh" id=78]
+material = SubResource( 77 )
+
+[sub_resource type="Curve" id=79]
+_data = [ Vector2( 0, 0.0954546 ), 0.0, 0.736364, 0, 0, Vector2( 1, 1 ), 2.57727, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=80]
+offsets = PoolRealArray( 0.0060241, 0.114458, 0.783133, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 0.32549, 0.741176, 1, 1, 0.32549, 0.741176, 1, 1, 1, 1, 0 )
+
+[sub_resource type="CylinderMesh" id=81]
+top_radius = 0.349
+bottom_radius = 4.039
+height = 6.0
+radial_segments = 4
+rings = 1
+
+[sub_resource type="ConvexPolygonShape" id=82]
+points = PoolVector3Array( 0, 3, 0.349, 0.349, 3, 2.13701e-17, 4.27402e-17, 3, -0.349, -0.349, 3, -6.41103e-17, -8.54804e-17, 3, 0.349, 0, 0, 2.194, 2.194, 0, 1.34344e-16, 2.68688e-16, 0, -2.194, -2.194, 0, -4.03031e-16, -5.37375e-16, 0, 2.194, 0, -3, 4.039, 4.039, -3, 2.47317e-16, 4.94635e-16, -3, -4.039, -4.039, -3, -7.41952e-16, -9.8927e-16, -3, 4.039, 0, 3, 0, 0, 3, 0.349, 0.349, 3, 2.13701e-17, 4.27402e-17, 3, -0.349, -0.349, 3, -6.41103e-17, -8.54804e-17, 3, 0.349, 0, -3, 0, 0, -3, 4.039, 4.039, -3, 2.47317e-16, 4.94635e-16, -3, -4.039, -4.039, -3, -7.41952e-16, -9.8927e-16, -3, 4.039 )
+
+[sub_resource type="SpatialMaterial" id=83]
+flags_transparent = true
+flags_do_not_receive_shadows = true
+flags_disable_ambient_light = true
+params_diffuse_mode = 4
+params_specular_mode = 3
+albedo_color = Color( 0.0901961, 0.0901961, 0.0901961, 0.721569 )
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color( 1, 1, 1, 1 )
+emission_energy = 0.31
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SphereMesh" id=84]
+material = SubResource( 83 )
+radius = 0.025
+height = 0.05
+radial_segments = 10
+rings = 5
+
+[sub_resource type="Curve" id=85]
+max_value = 2.0
+_data = [ Vector2( 0, 0 ), 0.0, 1.40206, 0, 0, Vector2( 0.457547, 2 ), 1.65632, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="ShaderMaterial" id=86]
+shader = ExtResource( 16 )
+shader_param/base_color = Color( 0.494118, 0.494118, 0.494118, 1 )
+shader_param/shade_color = Color( 0.105882, 0.141176, 0.211765, 1 )
+shader_param/rim_tint = Color( 0.74902, 0.74902, 0.74902, 0.74902 )
+shader_param/shade_threshold = 0.0
+shader_param/shade_softness = 0.0
+shader_param/use_shadow = false
+shader_param/shadow_threshold = 0.7
+shader_param/shadow_softness = 0.1
+shader_param/emission_color = null
+shader_param/shadow_texture_scale = 1.0
+shader_param/uv_scale = Vector2( 1, 1 )
+
+[sub_resource type="ArrayMesh" id=87]
+surfaces/0 = {
+"aabb": AABB( -0.804087, -0.84094, -0.784677, 1.48186, 1.66887, 1.67514 ),
+"array_data": PoolByteArray( 171, 185, 13, 63, 200, 70, 56, 63, 56, 231, 160, 190, 87, 85, 222, 0, 22, 9, 20, 63, 240, 162, 6, 63, 224, 92, 231, 190, 97, 37, 185, 0, 58, 103, 178, 62, 8, 6, 57, 63, 32, 136, 248, 190, 21, 89, 169, 0, 244, 2, 203, 62, 250, 242, 83, 63, 96, 234, 60, 190, 38, 120, 6, 0, 201, 169, 101, 62, 124, 241, 83, 63, 32, 186, 152, 190, 234, 121, 225, 0, 200, 24, 46, 62, 192, 135, 74, 63, 128, 2, 197, 188, 215, 107, 53, 0, 130, 99, 16, 63, 30, 64, 40, 63, 0, 64, 21, 187, 90, 63, 62, 0, 9, 96, 171, 62, 64, 225, 58, 63, 32, 163, 155, 61, 17, 89, 88, 0, 32, 219, 181, 62, 134, 143, 16, 63, 80, 92, 37, 62, 36, 52, 110, 0, 152, 127, 224, 62, 168, 65, 35, 62, 64, 91, 46, 62, 123, 7, 30, 0, 62, 185, 19, 63, 220, 100, 187, 62, 0, 67, 252, 60, 106, 248, 69, 0, 243, 90, 199, 62, 224, 78, 163, 62, 176, 94, 81, 62, 93, 40, 75, 0, 228, 0, 248, 62, 12, 25, 209, 190, 0, 158, 42, 188, 125, 244, 239, 0, 115, 184, 5, 63, 224, 141, 157, 189, 16, 204, 219, 62, 123, 22, 16, 0, 84, 67, 142, 62, 243, 4, 32, 191, 160, 136, 157, 190, 69, 185, 177, 0, 2, 118, 132, 62, 156, 252, 73, 191, 0, 38, 225, 187, 60, 145, 244, 0, 92, 95, 137, 61, 85, 153, 68, 191, 96, 118, 117, 190, 255, 147, 192, 0, 36, 69, 166, 61, 90, 230, 32, 191, 32, 130, 194, 190, 253, 189, 149, 0, 116, 147, 57, 190, 54, 71, 33, 191, 176, 64, 136, 190, 184, 185, 180, 0, 160, 40, 1, 190, 176, 68, 75, 191, 0, 125, 4, 60, 197, 145, 244, 0, 120, 206, 122, 61, 217, 71, 87, 191, 0, 31, 231, 60, 1, 130, 255, 0, 232, 215, 129, 61, 134, 10, 137, 190, 180, 245, 99, 63, 0, 0, 126, 0, 220, 30, 151, 61, 0, 223, 218, 60, 232, 170, 79, 63, 9, 48, 116, 0, 240, 134, 91, 190, 160, 202, 89, 61, 60, 4, 60, 63, 192, 47, 98, 0, 4, 37, 90, 190, 244, 212, 187, 62, 216, 174, 226, 62, 189, 98, 42, 0, 192, 55, 7, 190, 252, 38, 148, 62, 124, 174, 29, 63, 211, 84, 83, 0, 96, 60, 97, 61, 156, 190, 208, 62, 248, 81, 248, 62, 9, 113, 56, 0, 0, 31, 214, 60, 40, 89, 249, 62, 0, 202, 41, 62, 210, 107, 49, 0, 208, 108, 145, 61, 96, 200, 49, 63, 56, 99, 213, 190, 190, 88, 194, 0, 0, 112, 240, 186, 114, 171, 52, 63, 208, 39, 64, 190, 163, 85, 4, 0, 206, 208, 98, 62, 160, 97, 224, 62, 0, 172, 142, 62, 38, 98, 70, 0, 206, 26, 137, 62, 56, 57, 110, 62, 76, 95, 28, 63, 65, 79, 74, 0, 208, 84, 152, 61, 80, 6, 109, 62, 176, 144, 51, 63, 12, 76, 100, 0, 30, 240, 138, 62, 16, 86, 44, 190, 148, 185, 80, 63, 60, 22, 109, 0, 115, 6, 101, 62, 156, 175, 234, 190, 48, 106, 80, 63, 45, 207, 107, 0, 88, 247, 139, 62, 24, 44, 38, 191, 0, 138, 28, 63, 55, 157, 55, 0, 20, 117, 182, 61, 48, 30, 50, 191, 148, 164, 36, 63, 11, 148, 64, 0, 56, 178, 206, 62, 246, 69, 15, 191, 56, 245, 20, 63, 94, 186, 48, 0, 106, 92, 2, 63, 118, 147, 202, 190, 252, 129, 1, 63, 121, 232, 28, 0, 63, 135, 213, 62, 220, 198, 153, 190, 120, 132, 53, 63, 96, 249, 82, 0, 249, 227, 212, 62, 192, 213, 178, 61, 48, 191, 20, 63, 99, 51, 60, 0, 140, 43, 43, 190, 224, 18, 220, 62, 80, 186, 48, 190, 193, 109, 11, 0, 254, 127, 42, 62, 224, 105, 21, 190, 240, 160, 56, 191, 2, 185, 151, 0, 248, 240, 14, 190, 16, 116, 153, 190, 184, 25, 210, 190, 209, 193, 157, 0, 64, 204, 72, 190, 96, 160, 37, 189, 100, 24, 26, 191, 223, 211, 143, 0, 116, 241, 193, 61, 132, 113, 178, 190, 144, 237, 245, 190, 244, 186, 151, 0, 248, 229, 168, 190, 212, 130, 184, 190, 112, 47, 141, 190, 193, 169, 190, 0, 226, 64, 146, 190, 48, 182, 28, 191, 96, 229, 247, 62, 170, 168, 30, 0, 26, 91, 160, 190, 110, 23, 27, 191, 0, 242, 155, 188, 152, 189, 233, 0, 232, 55, 236, 190, 144, 217, 97, 190, 224, 25, 232, 61, 149, 200, 36, 0, 210, 184, 205, 190, 110, 15, 222, 190, 40, 45, 249, 62, 140, 217, 30, 0, 130, 112, 246, 190, 64, 233, 64, 189, 0, 17, 85, 62, 144, 250, 59, 0, 76, 21, 227, 190, 232, 204, 23, 62, 96, 96, 85, 62, 163, 50, 69, 0, 10, 163, 43, 191, 96, 28, 108, 62, 0, 209, 225, 60, 173, 54, 79, 0, 28, 68, 49, 191, 128, 26, 58, 189, 64, 245, 16, 61, 161, 226, 77, 0, 60, 229, 165, 190, 116, 146, 162, 62, 16, 104, 22, 62, 197, 105, 39, 0, 244, 187, 236, 190, 228, 229, 214, 62, 64, 90, 171, 189, 235, 117, 42, 0, 48, 33, 51, 191, 96, 124, 173, 62, 176, 121, 46, 190, 170, 91, 17, 0, 154, 25, 135, 190, 132, 138, 219, 62, 128, 146, 111, 190, 6, 126, 0, 0, 230, 188, 254, 190, 152, 26, 225, 62, 112, 251, 154, 190, 226, 120, 231, 0, 164, 216, 77, 191, 96, 98, 221, 61, 32, 161, 28, 190, 132, 7, 23, 0, 128, 237, 44, 191, 120, 115, 131, 62, 144, 103, 234, 190, 176, 62, 181, 0, 62, 238, 72, 191, 104, 248, 51, 62, 240, 72, 161, 190, 137, 31, 225, 0, 249, 111, 1, 191, 208, 216, 154, 62, 208, 145, 2, 191, 227, 79, 162, 0, 205, 14, 6, 191, 176, 109, 181, 61, 180, 63, 24, 191, 218, 4, 136, 0, 176, 111, 56, 191, 208, 249, 15, 189, 240, 152, 237, 190, 160, 225, 181, 0, 166, 103, 60, 191, 240, 164, 44, 190, 224, 167, 41, 190, 154, 184, 15, 0, 26, 80, 202, 190, 44, 249, 193, 190, 128, 189, 53, 189, 154, 182, 247, 0, 198, 182, 210, 190, 224, 180, 24, 189, 224, 26, 10, 63, 144, 25, 53, 0, 132, 28, 122, 190, 126, 83, 134, 190, 248, 67, 75, 63, 182, 255, 102, 0, 167, 25, 140, 62, 118, 118, 164, 190, 64, 12, 233, 190, 62, 182, 175, 0, 157, 218, 219, 62, 196, 245, 15, 191, 48, 147, 19, 190, 108, 204, 215, 0, 42, 80, 215, 62, 168, 155, 138, 190, 168, 169, 138, 190, 115, 216, 225, 0, 76, 161, 196, 62, 48, 92, 142, 62, 232, 247, 51, 191, 55, 25, 145, 0, 120, 1, 21, 62, 72, 116, 50, 62, 240, 221, 72, 191, 249, 18, 131, 0, 24, 218, 18, 62, 192, 206, 169, 60, 148, 224, 72, 191, 251, 234, 132, 0, 244, 56, 74, 190, 224, 95, 57, 62, 104, 146, 26, 191, 219, 36, 141, 0, 76, 12, 132, 61, 40, 154, 202, 62, 88, 40, 40, 191, 214, 63, 155, 0, 226, 219, 230, 62, 80, 35, 177, 189, 212, 181, 31, 191, 82, 202, 177, 0, 124, 37, 47, 190, 244, 55, 194, 62, 88, 193, 233, 190, 206, 95, 189, 0, 80, 167, 144, 189, 96, 236, 0, 191, 228, 234, 78, 63, 227, 196, 107, 0, 48, 219, 147, 190, 234, 155, 228, 190, 80, 131, 51, 63, 167, 210, 76, 0, 192, 30, 189, 189, 242, 56, 47, 191, 228, 238, 30, 63, 216, 151, 57, 0, 84, 210, 21, 63, 24, 180, 10, 62, 48, 38, 46, 190, 116, 215, 29, 0, 7, 13, 12, 63, 176, 162, 0, 189, 224, 219, 191, 190, 116, 207, 248, 0, 68, 125, 3, 191, 188, 88, 61, 190, 108, 35, 1, 191, 226, 176, 163, 0, 97, 130, 45, 63, 40, 167, 247, 62, 208, 96, 61, 190, 126, 13, 7, 0, 186, 165, 37, 191, 228, 11, 109, 190, 16, 163, 165, 190, 185, 156, 226, 0, 204, 199, 14, 63, 48, 76, 235, 61, 44, 218, 11, 191, 110, 241, 196, 0, 55, 57, 205, 62, 54, 221, 40, 191, 64, 218, 111, 61, 99, 178, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 2, 0, 1, 0, 0, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 6, 0, 8, 0, 7, 0, 9, 0, 11, 0, 10, 0, 12, 0, 13, 0, 9, 0, 14, 0, 16, 0, 15, 0, 17, 0, 16, 0, 14, 0, 18, 0, 19, 0, 16, 0, 19, 0, 20, 0, 16, 0, 21, 0, 23, 0, 22, 0, 24, 0, 26, 0, 25, 0, 27, 0, 26, 0, 24, 0, 4, 0, 29, 0, 28, 0, 30, 0, 31, 0, 26, 0, 32, 0, 26, 0, 31, 0, 31, 0, 22, 0, 32, 0, 33, 0, 22, 0, 31, 0, 33, 0, 34, 0, 21, 0, 35, 0, 36, 0, 34, 0, 15, 0, 36, 0, 35, 0, 20, 0, 36, 0, 15, 0, 15, 0, 35, 0, 37, 0, 13, 0, 12, 0, 38, 0, 39, 0, 37, 0, 34, 0, 21, 0, 22, 0, 33, 0, 31, 0, 30, 0, 40, 0, 11, 0, 40, 0, 30, 0, 41, 0, 28, 0, 29, 0, 42, 0, 44, 0, 43, 0, 43, 0, 17, 0, 45, 0, 46, 0, 18, 0, 43, 0, 19, 0, 48, 0, 47, 0, 49, 0, 51, 0, 50, 0, 52, 0, 54, 0, 53, 0, 51, 0, 54, 0, 52, 0, 55, 0, 52, 0, 53, 0, 53, 0, 56, 0, 55, 0, 56, 0, 53, 0, 57, 0, 58, 0, 56, 0, 59, 0, 55, 0, 56, 0, 58, 0, 60, 0, 53, 0, 54, 0, 57, 0, 62, 0, 61, 0, 59, 0, 61, 0, 63, 0, 64, 0, 63, 0, 61, 0, 64, 0, 61, 0, 65, 0, 49, 0, 67, 0, 66, 0, 67, 0, 18, 0, 46, 0, 59, 0, 57, 0, 61, 0, 60, 0, 66, 0, 65, 0, 57, 0, 60, 0, 62, 0, 68, 0, 24, 0, 23, 0, 51, 0, 52, 0, 68, 0, 23, 0, 69, 0, 68, 0, 51, 0, 49, 0, 54, 0, 67, 0, 48, 0, 18, 0, 14, 0, 70, 0, 17, 0, 45, 0, 17, 0, 70, 0, 71, 0, 72, 0, 14, 0, 70, 0, 14, 0, 72, 0, 2, 0, 74, 0, 73, 0, 75, 0, 44, 0, 42, 0, 74, 0, 77, 0, 76, 0, 2, 0, 77, 0, 74, 0, 42, 0, 70, 0, 78, 0, 72, 0, 78, 0, 70, 0, 42, 0, 45, 0, 70, 0, 79, 0, 63, 0, 76, 0, 79, 0, 59, 0, 63, 0, 41, 0, 58, 0, 79, 0, 27, 0, 24, 0, 55, 0, 21, 0, 34, 0, 80, 0, 80, 0, 82, 0, 81, 0, 82, 0, 47, 0, 81, 0, 36, 0, 20, 0, 82, 0, 19, 0, 47, 0, 82, 0, 9, 0, 10, 0, 83, 0, 6, 0, 3, 0, 0, 0, 1, 0, 2, 0, 73, 0, 10, 0, 11, 0, 6, 0, 78, 0, 75, 0, 42, 0, 11, 0, 30, 0, 8, 0, 77, 0, 28, 0, 79, 0, 5, 0, 27, 0, 29, 0, 23, 0, 32, 0, 22, 0, 25, 0, 32, 0, 23, 0, 84, 0, 78, 0, 72, 0, 7, 0, 27, 0, 5, 0, 77, 0, 79, 0, 76, 0, 46, 0, 44, 0, 85, 0, 60, 0, 65, 0, 62, 0, 49, 0, 66, 0, 54, 0, 16, 0, 20, 0, 15, 0, 17, 0, 43, 0, 18, 0, 18, 0, 48, 0, 19, 0, 1, 0, 86, 0, 0, 0, 71, 0, 12, 0, 72, 0, 12, 0, 71, 0, 38, 0, 72, 0, 12, 0, 9, 0, 33, 0, 31, 0, 40, 0, 40, 0, 39, 0, 33, 0, 37, 0, 35, 0, 34, 0, 59, 0, 56, 0, 57, 0, 3, 0, 7, 0, 5, 0, 6, 0, 7, 0, 3, 0, 6, 0, 11, 0, 8, 0, 17, 0, 18, 0, 16, 0, 19, 0, 82, 0, 20, 0, 82, 0, 80, 0, 36, 0, 21, 0, 80, 0, 69, 0, 21, 0, 69, 0, 23, 0, 39, 0, 13, 0, 38, 0, 40, 0, 13, 0, 39, 0, 25, 0, 26, 0, 32, 0, 41, 0, 29, 0, 27, 0, 5, 0, 29, 0, 4, 0, 8, 0, 27, 0, 7, 0, 8, 0, 30, 0, 27, 0, 9, 0, 13, 0, 40, 0, 33, 0, 39, 0, 34, 0, 38, 0, 37, 0, 39, 0, 73, 0, 75, 0, 78, 0, 73, 0, 74, 0, 75, 0, 28, 0, 41, 0, 79, 0, 49, 0, 50, 0, 67, 0, 57, 0, 53, 0, 60, 0, 54, 0, 66, 0, 60, 0, 66, 0, 87, 0, 65, 0, 64, 0, 65, 0, 85, 0, 46, 0, 66, 0, 67, 0, 66, 0, 46, 0, 87, 0, 87, 0, 46, 0, 85, 0, 64, 0, 85, 0, 44, 0, 76, 0, 64, 0, 44, 0, 63, 0, 64, 0, 76, 0, 59, 0, 79, 0, 58, 0, 62, 0, 65, 0, 61, 0, 24, 0, 52, 0, 55, 0, 24, 0, 68, 0, 52, 0, 51, 0, 68, 0, 50, 0, 50, 0, 81, 0, 47, 0, 78, 0, 84, 0, 88, 0, 1, 0, 73, 0, 88, 0, 2, 0, 28, 0, 77, 0, 75, 0, 76, 0, 44, 0, 74, 0, 76, 0, 75, 0, 37, 0, 71, 0, 89, 0, 37, 0, 38, 0, 71, 0, 0, 0, 86, 0, 6, 0, 84, 0, 83, 0, 86, 0, 88, 0, 84, 0, 86, 0, 83, 0, 10, 0, 86, 0, 86, 0, 10, 0, 6, 0, 88, 0, 86, 0, 1, 0, 73, 0, 78, 0, 88, 0, 43, 0, 45, 0, 42, 0, 41, 0, 55, 0, 58, 0, 27, 0, 55, 0, 41, 0, 23, 0, 24, 0, 25, 0, 80, 0, 81, 0, 69, 0, 14, 0, 15, 0, 71, 0, 71, 0, 15, 0, 89, 0, 89, 0, 15, 0, 37, 0, 50, 0, 69, 0, 81, 0, 68, 0, 69, 0, 50, 0, 72, 0, 9, 0, 83, 0, 4, 0, 2, 0, 3, 0, 4, 0, 28, 0, 2, 0, 43, 0, 44, 0, 46, 0, 65, 0, 87, 0, 85, 0, 72, 0, 83, 0, 84, 0, 50, 0, 48, 0, 67, 0, 9, 0, 40, 0, 11, 0, 26, 0, 27, 0, 30, 0, 36, 0, 80, 0, 34, 0, 50, 0, 47, 0, 48, 0 ),
+"blend_shape_data": [  ],
+"format": 97539,
+"index_count": 528,
+"material": SubResource( 86 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 90
+}
+
+[sub_resource type="GDScript" id=44]
+script/source = "extends AudioStreamPlayer
+
+
+func play_swing() -> void:
+	play(0.9)
+"
+
+[node name="Player" type="KinematicBody" groups=[
+"Player",
+"Save",
+]]
+collision_layer = 1120
+collision_mask = 1025
+script = ExtResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 68 )
+anim_player = NodePath("../Frog/Frog/AnimationPlayer")
+active = true
+process_mode = 0
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
+parameters/Blink/playback = SubResource( 69 )
+parameters/MainAction/playback = SubResource( 70 )
+parameters/MainAction/JumpBlendTree/FlyFallBlend/blend_amount = 0.0
+parameters/Ribbit/playback = SubResource( 71 )
+
+[node name="BlinkController" type="Node" parent="AnimationTree"]
+script = ExtResource( 13 )
+
+[node name="JumpBlendController" type="Node" parent="AnimationTree"]
+script = ExtResource( 14 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 72 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.3 )
+shape = SubResource( 72 )
+disabled = true
+
+[node name="Frog" type="Spatial" parent="."]
+
+[node name="Frog" parent="Frog" instance=ExtResource( 2 )]
+transform = Transform( -1.30337e-08, 0, 0.08, 0, 0.08, 0, -0.08, 0, -1.30337e-08, 0, -0.13, 0 )
+
+[node name="Skeleton" parent="Frog/Frog/FrogArmature" index="0"]
+bones/1/bound_children = [ NodePath("BoneAttachment"), NodePath("BoneAttachment 2"), NodePath("BodyAttachment") ]
+
+[node name="BoneAttachment" parent="Frog/Frog/FrogArmature/Skeleton" index="0"]
+transform = Transform( 1.00573, -0.0201235, 0.0293425, -0.0276383, 0.0807984, 1.00273, -0.0224068, -1.00291, 0.0801952, 0.0638371, 1.40078, 1.63092 )
+
+[node name="BoneAttachment 2" parent="Frog/Frog/FrogArmature/Skeleton" index="1"]
+transform = Transform( 1.00573, -0.0201235, 0.0293425, -0.0276383, 0.0807984, 1.00273, -0.0224068, -1.00291, 0.0801952, 0.0638371, 1.40078, 1.63092 )
+
+[node name="BodyAttachment" type="BoneAttachment" parent="Frog/Frog/FrogArmature/Skeleton" index="3"]
+transform = Transform( 1.00573, -0.0201235, 0.0293425, -0.0276383, 0.0807984, 1.00273, -0.0224068, -1.00291, 0.0801952, 0.0638371, 1.40078, 1.63092 )
+bone_name = "body"
+
+[node name="BlobShadowCaster" type="Spatial" parent="Frog/Frog/FrogArmature/Skeleton/BodyAttachment"]
+transform = Transform( 12.3892, -0.180365, -0.200341, -0.175751, 1.57877, -12.2899, 0.2044, 12.2899, 1.57584, 0.00505524, 1.67206, -0.00157489 )
+script = ExtResource( 12 )
+collision_mask = 1
+
+[node name="BlobShadow" type="Spatial" parent="Frog/Frog/FrogArmature/Skeleton/BodyAttachment/BlobShadowCaster"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.146349, 0 )
+
+[node name="BlobShadow" type="MeshInstance" parent="Frog/Frog/FrogArmature/Skeleton/BodyAttachment/BlobShadowCaster/BlobShadow"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
+cast_shadow = 0
+mesh = SubResource( 73 )
+material/0 = SubResource( 74 )
+
+[node name="AnimationPlayer" parent="Frog/Frog" index="1"]
+anims/Empty = SubResource( 75 )
+
+[node name="CameraPivot" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.958879, 0.283815, 0, -0.283815, 0.958879, 0, 0.286487, 0 )
+
+[node name="PlayerCamera" type="ClippedCamera" parent="CameraPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.072 )
+current = true
+near = 0.1
+far = 1000.0
+script = ExtResource( 5 )
+vertical_lerp_speed = 4.0
+horizontal_lerp_speed = 8.0
+
+[node name="SoundJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -8.0
+bus = "SFX"
+
+[node name="SoundLand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -6.0
+bus = "SFX"
+
+[node name="JumpQueueTimer" type="Timer" parent="."]
+
+[node name="ParticlesPivot" type="Spatial" parent="."]
+
+[node name="HypnoArea" type="Area" parent="ParticlesPivot" groups=[
+"Hypno",
+]]
+collision_layer = 2147483649
+
+[node name="CollisionShape" type="CollisionShape" parent="ParticlesPivot/HypnoArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.115458, -0.785633 )
+shape = SubResource( 76 )
+disabled = true
+
+[node name="HypnoParticles" type="CPUParticles" parent="ParticlesPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00807582, -0.159158 )
+emitting = false
+amount = 6
+lifetime = 1.25
+local_coords = false
+mesh = SubResource( 78 )
+direction = Vector3( 0, 0, -1 )
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1.0
+scale_amount_curve = SubResource( 79 )
+color_ramp = SubResource( 80 )
+
+[node name="TetherShape" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159791, -0.130566 )
+script = ExtResource( 9 )
+collision_mask = 2147483650
+
+[node name="Camera" type="Camera" parent="TetherShape"]
+transform = Transform( 1, 0, 0, 0, 0.633894, -0.77342, 0, 0.77342, 0.633894, 0, 0, 0 )
+fov = 76.5394
+
+[node name="TetherTargetArea" type="Area" parent="TetherShape"]
+transform = Transform( 0.707107, 0, 0.707107, 0.411884, -0.812837, -0.411884, 0.574762, 0.582492, -0.574762, 0, 1.22169, -0.901661 )
+collision_layer = 2
+collision_mask = 0
+
+[node name="TetherTargetMesh" type="MeshInstance" parent="TetherShape/TetherTargetArea"]
+transform = Transform( 1, 0, 2.98023e-08, -1.19209e-07, 1, 1.49012e-07, 0, 8.9407e-08, 1, -0.0165816, -1.48591, 0.0165815 )
+visible = false
+mesh = SubResource( 81 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="TetherShape/TetherTargetArea"]
+transform = Transform( 1, 0, 2.98023e-08, -1.19209e-07, 1, 1.49012e-07, 0, 8.9407e-08, 1, -0.0165816, -1.48591, 0.0165815 )
+shape = SubResource( 82 )
+
+[node name="SoundRibbit" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00230853, -0.187452 )
+stream = ExtResource( 8 )
+bus = "Ribbit"
+script = ExtResource( 7 )
+
+[node name="JumpChargeTween" type="Tween" parent="."]
+
+[node name="SlideParticles" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.120654, 0 )
+visible = false
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.21
+explosiveness = 0.48
+lifetime_randomness = 0.37
+mesh = SubResource( 84 )
+emission_shape = 3
+emission_points = PoolVector3Array( -0.129, 0, -0.067, -0.125, 0, 0.093, 0.12, 0, -0.087, 0.118, 0, 0.099 )
+gravity = Vector3( 0, -1, 0 )
+scale_amount = 2.29
+scale_amount_random = 0.64
+scale_amount_curve = SubResource( 85 )
+script = ExtResource( 10 )
+
+[node name="SlideParticles2" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.120654, 0 )
+cast_shadow = 0
+emitting = false
+amount = 4
+lifetime = 0.3
+explosiveness = 0.48
+lifetime_randomness = 0.37
+local_coords = false
+mesh = SubResource( 87 )
+emission_shape = 3
+emission_points = PoolVector3Array( -0.129, 0, -0.067, -0.125, 0, 0.093, 0.12, 0, -0.087, 0.118, 0, 0.099 )
+flag_align_y = true
+direction = Vector3( 0, 0, 0 )
+spread = 180.0
+gravity = Vector3( 0, -1, 0 )
+initial_velocity = 1.0
+initial_velocity_random = 0.5
+tangential_accel = 2.0
+scale_amount = 0.04
+scale_amount_curve = SubResource( 85 )
+script = ExtResource( 10 )
+
+[node name="LedgeClimbPosition2" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.224577, -0.200467 )
+
+[node name="SoundRespawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX"
+
+[node name="GrassPositionUpdater" type="Spatial" parent="."]
+script = ExtResource( 17 )
+material = ExtResource( 18 )
+
+[node name="SoundSwing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+bus = "SFX"
+script = SubResource( 44 )
+
+[connection signal="timeout" from="JumpQueueTimer" to="." method="_on_JumpQueueTimer_timeout"]
+[connection signal="body_entered" from="TetherShape/TetherTargetArea" to="TetherShape" method="_on_TetherTargetArea_body_entered"]
+[connection signal="body_exited" from="TetherShape/TetherTargetArea" to="TetherShape" method="_on_TetherTargetArea_body_exited"]
+
+[editable path="Frog/Frog"]

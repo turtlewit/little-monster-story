@@ -1,0 +1,212 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://ui/menus/settings_panel/settings_panel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/menus/main_menu/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://ui/menus/save_panel/save_panel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://systems/dialogue/choice_button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/menus/main_menu/title.png" type="Texture" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float invert_amount : hint_range(0f, 1f);
+
+void fragment() {
+	vec4 tex = texture(TEXTURE, UV);
+	COLOR.rgb = mix(tex.rgb, vec3(1f) - tex.rgb, invert_amount);
+	COLOR.a = tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="Environment" id=7]
+
+[sub_resource type="Animation" id=8]
+resource_name = "Fadein"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Fadeout"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundTemp" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Logo" type="TextureRect" parent="."]
+anchor_top = 0.012
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_left = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 64.0
+margin_top = 129.0
+margin_right = 448.0
+margin_bottom = 590.0
+
+[node name="NewGame" parent="CenterContainer/Buttons" instance=ExtResource( 4 )]
+material = SubResource( 2 )
+
+[node name="Text" parent="CenterContainer/Buttons/NewGame" index="0"]
+text = "New Game"
+
+[node name="LoadGame" parent="CenterContainer/Buttons" instance=ExtResource( 4 )]
+material = SubResource( 3 )
+margin_top = 93.0
+margin_bottom = 182.0
+
+[node name="Text" parent="CenterContainer/Buttons/LoadGame" index="0"]
+text = "Load Game"
+
+[node name="Settings" parent="CenterContainer/Buttons" instance=ExtResource( 4 )]
+material = SubResource( 4 )
+margin_top = 186.0
+margin_bottom = 275.0
+
+[node name="Text" parent="CenterContainer/Buttons/Settings" index="0"]
+text = "Settings"
+
+[node name="Credits" parent="CenterContainer/Buttons" instance=ExtResource( 4 )]
+material = SubResource( 5 )
+margin_top = 279.0
+margin_bottom = 368.0
+
+[node name="Text" parent="CenterContainer/Buttons/Credits" index="0"]
+text = "Credits"
+
+[node name="Quit" parent="CenterContainer/Buttons" instance=ExtResource( 4 )]
+material = SubResource( 6 )
+margin_top = 372.0
+margin_bottom = 461.0
+
+[node name="Text" parent="CenterContainer/Buttons/Quit" index="0"]
+text = "Exit"
+
+[node name="CenterContainer2" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -163.0
+margin_right = 427.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsPanelLayer" type="CanvasLayer" parent="."]
+
+[node name="SettingsPanel" parent="SettingsPanelLayer" instance=ExtResource( 1 )]
+visible = false
+
+[node name="SavePanelLayer" type="CanvasLayer" parent="."]
+
+[node name="SavePanel" parent="SavePanelLayer" instance=ExtResource( 3 )]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 7 )
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Fade" type="ColorRect" parent="FadeLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeLayer"]
+autoplay = "Fadein"
+anims/Fadein = SubResource( 8 )
+anims/Fadeout = SubResource( 9 )
+
+[connection signal="button_pressed" from="CenterContainer/Buttons/NewGame" to="." method="button_pressed"]
+[connection signal="button_pressed" from="CenterContainer/Buttons/LoadGame" to="." method="button_pressed"]
+[connection signal="button_pressed" from="CenterContainer/Buttons/Settings" to="." method="button_pressed"]
+[connection signal="button_pressed" from="CenterContainer/Buttons/Credits" to="." method="button_pressed"]
+[connection signal="button_pressed" from="CenterContainer/Buttons/Quit" to="." method="button_pressed"]
+
+[editable path="CenterContainer/Buttons/NewGame"]
+[editable path="CenterContainer/Buttons/LoadGame"]
+[editable path="CenterContainer/Buttons/Settings"]
+[editable path="CenterContainer/Buttons/Credits"]
+[editable path="CenterContainer/Buttons/Quit"]

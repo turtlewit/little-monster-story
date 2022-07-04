@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hypno_teleport.ogg-44b8a4228530d4e6cac78fb7e7e1a444.oggstr"
+
+[deps]
+
+source_file="res://effects/hypno_teleport.ogg"
+dest_files=[ "res://.import/hypno_teleport.ogg-44b8a4228530d4e6cac78fb7e7e1a444.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

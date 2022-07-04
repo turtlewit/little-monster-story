@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://collectibles/collectible_level.gd" type="Script" id=1]
+[ext_resource path="res://areas/movement_test/Clouds_UV.png" type="Texture" id=2]
+[ext_resource path="res://collectibles/pick_up_collectible_small.ogg" type="AudioStream" id=3]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.05
+height = 0.1
+radial_segments = 8
+rings = 3
+
+[sub_resource type="Shader" id=2]
+code = "shader_type spatial;
+render_mode cull_disabled;
+
+uniform sampler2D distortion_texture : hint_albedo;
+uniform sampler2D vision_texture : hint_albedo;
+uniform vec4 fresnel_color : hint_color;
+uniform float amplifier = 3.0;
+uniform float speed : hint_range(0, 4) = 0.4;
+uniform float distortion = 0.1;
+uniform float texture_normal_scale = 1f;
+
+
+float value(vec3 rgb) {
+	return max(max(rgb.r, rgb.g), rgb.b);
+}
+
+
+void vertex() {
+	vec4 surface = texture(distortion_texture, UV + vec2(TIME) * speed);
+	VERTEX += NORMAL * value(surface.rgb) * distortion;
+}
+
+
+void fragment() {
+
+	
+	float fresnel = sqrt(1f - dot(NORMAL, VIEW));
+	ALBEDO = fresnel_color.rgb;
+	EMISSION = vec3(0.7f);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/fresnel_color = Color( 16, 16, 16, 1 )
+shader_param/amplifier = 12.0
+shader_param/speed = 0.4
+shader_param/distortion = 0.168
+shader_param/texture_normal_scale = 1.0
+shader_param/distortion_texture = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+length = 0.8
+
+[sub_resource type="Animation" id=5]
+loop = true
+
+[sub_resource type="SphereShape" id=6]
+radius = 0.15
+
+[sub_resource type="SphereShape" id=7]
+
+[node name="CollectibleSmall" type="Spatial"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+collect_sound = ExtResource( 3 )
+volume_offset = -5.0
+
+[node name="Model" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Spin"
+playback_speed = 0.5
+anims/Fade = SubResource( 4 )
+anims/Spin = SubResource( 5 )
+
+[node name="CollectArea" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape" type="CollisionShape" parent="CollectArea"]
+shape = SubResource( 6 )
+
+[node name="TimerDestroy" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="MagnetArea" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape" type="CollisionShape" parent="MagnetArea"]
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="CollectArea" to="." method="_on_CollectArea_body_entered"]
+[connection signal="timeout" from="TimerDestroy" to="." method="queue_free"]
+[connection signal="body_entered" from="MagnetArea" to="." method="_on_MagnetArea_body_entered"]

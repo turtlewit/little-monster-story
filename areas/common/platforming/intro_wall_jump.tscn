@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://materials/test_material/test_material.tres" type="Material" id=1]
+
+[node name="Intro Wall Jump" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51518, 6.50346 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.00857 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.695, 1.20571 )
+width = 4.70745
+height = 6.48327
+depth = 0.406456
+material = ExtResource( 1 )
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.63768, 2.58512 )
+width = 4.70745
+height = 0.58835
+depth = 2.80334
+material = ExtResource( 1 )
+
+[node name="CSGBox4" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25185, -2.15185 )
+width = 4.70745
+height = 0.58835
+depth = 7.09572
+material = ExtResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0652981, 4.51773, -2.64209 )
+width = 4.70745
+height = 8.01449
+depth = 0.115176
+material = ExtResource( 1 )

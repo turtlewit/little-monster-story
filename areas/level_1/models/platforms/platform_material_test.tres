@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://materials/cel_new.shader" type="Shader" id=1]
+[ext_resource path="res://areas/level_1/models/platforms/platform_texture.png" type="Texture" id=2]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/base_color = Color( 0.423529, 0.356863, 0.356863, 1 )
+shader_param/shade_color = Color( 0.0588235, 0.129412, 0.360784, 1 )
+shader_param/rim_tint = Color( 0.75, 0.75, 0.75, 0.75 )
+shader_param/shade_threshold = 0.0
+shader_param/shade_softness = 0.01
+shader_param/use_shadow = false
+shader_param/shadow_threshold = 0.7
+shader_param/shadow_softness = 0.1
+shader_param/emission_color = null
+shader_param/shadow_texture_scale = 1.0
+shader_param/base_texture = ExtResource( 2 )
+shader_param/shade_texture = ExtResource( 2 )

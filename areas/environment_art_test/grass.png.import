@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path.s3tc="res://.import/grass.png-ee9b68abb06631afc4a52a8518fc3a0d.s3tc.stex"
+path.etc="res://.import/grass.png-ee9b68abb06631afc4a52a8518fc3a0d.etc.stex"
+metadata={
+"imported_formats": [ "s3tc", "etc" ],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://areas/environment_art_test/grass.png"
+dest_files=[ "res://.import/grass.png-ee9b68abb06631afc4a52a8518fc3a0d.s3tc.stex", "res://.import/grass.png-ee9b68abb06631afc4a52a8518fc3a0d.etc.stex" ]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=true
+flags/anisotropic=false
+flags/srgb=1
+process/fix_alpha_border=false
+process/premult_alpha=true
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

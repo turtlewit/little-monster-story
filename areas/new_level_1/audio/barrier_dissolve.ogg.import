@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/barrier_dissolve.ogg-c8519e9fa45a67c4f9d48105b5fa1032.oggstr"
+
+[deps]
+
+source_file="res://areas/new_level_1/audio/barrier_dissolve.ogg"
+dest_files=[ "res://.import/barrier_dissolve.ogg-c8519e9fa45a67c4f9d48105b5fa1032.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

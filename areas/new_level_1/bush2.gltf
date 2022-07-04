@@ -1,0 +1,105 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.2.75",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Foilage.001",
+            "scale" : [
+                0.8301195502281189,
+                1,
+                1.338358998298645
+            ]
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cube.004",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 4375,
+            "max" : [
+                16.34181785583496,
+                13.309513092041016,
+                17.778305053710938
+            ],
+            "min" : [
+                -17.017536163330078,
+                -8.384441375732422,
+                -13.555021286010742
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 4375,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 4375,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 20160,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 52500,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 52500,
+            "byteOffset" : 52500
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 35000,
+            "byteOffset" : 105000
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 40320,
+            "byteOffset" : 140000
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 180320,
+            "uri" : "bush2.bin"
+        }
+    ]
+}

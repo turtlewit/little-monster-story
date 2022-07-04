@@ -1,0 +1,121 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeWait
+  position:
+    x: 120
+    y: 120
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeText
+  position:
+    x: 360
+    y: 160
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Hey! Can you hear me in there?"
+  outputs:
+    0: NodeText136
+  position:
+    x: 600
+    y: 0
+
+NodeText136:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I don't think you're in my mind quite yet."
+  outputs:
+    0: NodeText152
+  position:
+    x: 860
+    y: 20
+
+NodeText152:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "You're in the ethereal subconscious passageway that leads to my mind."
+  outputs:
+    0: NodeText168
+  position:
+    x: 1220
+    y: 60
+
+NodeText168:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Might be a good opportunity to brush up on your hopping skills."
+  outputs:
+    0: NodeWait190
+  position:
+    x: 1480
+    y: 40
+
+NodeWait190:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText184
+  position:
+    x: 1720
+    y: 100
+
+NodeText206:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Those are tiny little forgotten fragments of my memories."
+  outputs:
+    0: NodeText222
+  position:
+    x: 2120
+    y: 40
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2680
+    y: 80
+
+NodeText222:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Collect as many as you can!"
+  outputs:
+    0: NodeEnd
+  position:
+    x: 2360
+    y: 40
+
+NodeText184:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Also, see those little bubbles?"
+  outputs:
+    0: NodeText206
+  position:
+    x: 1900
+    y: 40

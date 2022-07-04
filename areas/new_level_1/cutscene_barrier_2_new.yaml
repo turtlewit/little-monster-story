@@ -1,0 +1,252 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeWait55
+  position:
+    x: 100
+    y: 120
+
+NodeWait55:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText
+  position:
+    x: 280
+    y: 120
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Ah, yes! A little sculpture of a deer, made out of crystal."
+  outputs:
+    0: NodeText136
+  position:
+    x: 480
+    y: 100
+
+NodeText136:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I was planning this gift for a while."
+  outputs:
+    0: NodeText152
+  position:
+    x: 740
+    y: 100
+
+NodeText152:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Looks like I need to go collect some crystals from that tree."
+  outputs:
+    0: NodeText168
+  position:
+    x: 980
+    y: 100
+
+NodeText168:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "The tree where Inerma and I always... went to talk."
+  outputs:
+    0: NodeWait190
+  position:
+    x: 1220
+    y: 100
+
+NodeWait190:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText184
+  position:
+    x: 1440
+    y: 120
+
+NodeText184:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Inerma."
+  outputs:
+    0: NodeText206
+  position:
+    x: 1600
+    y: 120
+
+NodeText206:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Why am I making them a birthday present?"
+  outputs:
+    0: NodeText222
+  position:
+    x: 1860
+    y: 100
+
+NodeText222:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "They're..."
+  outputs:
+    0: NodeText238
+  position:
+    x: 2120
+    y: 80
+
+NodeWait244:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText260
+  position:
+    x: 2620
+    y: 140
+
+NodeText260:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Um... c-could you go find what I had planned for tomorrow?"
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 2780
+    y: 60
+
+NodeText238:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Oh no..."
+  outputs:
+    0: NodeWait244
+  position:
+    x: 2360
+    y: 80
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera
+    target: CameraCutscene2
+  outputs:
+    0: NodeDeclareRef164
+  position:
+    x: 400
+    y: 120
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 920
+    y: 60
+
+NodeDeclareRef164:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 660
+    y: 140
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait
+  position:
+    x: 1220
+    y: 20
+
+NodePlayEventAnimation:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: RemoveBarrier
+  outputs:
+    0: NodeWait178
+  position:
+    x: 1780
+    y: 120
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 2.5
+  outputs:
+    0: NodePlayEventAnimation
+  position:
+    x: 1620
+    y: 120
+
+NodeCameraMemorizePosition187:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 2.5
+    interpolation: true
+  outputs:
+    0: NodeWait193
+  position:
+    x: 2180
+    y: 100
+
+NodeWait178:
+  type: WAIT
+  arguments:
+    time: 4
+  outputs:
+    0: NodeCameraMemorizePosition187
+  position:
+    x: 2020
+    y: 100
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2880
+    y: 160
+
+NodeWait193:
+  type: WAIT
+  arguments:
+    time: 3
+  outputs:
+    0: NodeEnd
+  position:
+    x: 2580
+    y: 140

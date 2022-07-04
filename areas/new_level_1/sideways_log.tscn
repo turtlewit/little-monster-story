@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://areas/new_level_1/sideways_log.glb" type="PackedScene" id=1]
+[ext_resource path="res://areas/new_level_1/sideways_log_end_mat_cel.tres" type="Material" id=2]
+[ext_resource path="res://areas/new_level_1/sideways_log_mat_cel.tres" type="Material" id=4]
+
+[node name="SidewaysLog" instance=ExtResource( 1 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+
+[node name="SidewaysLog2" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="SidewaysLog" parent="." index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+material/0 = ExtResource( 4 )
+material/1 = ExtResource( 2 )

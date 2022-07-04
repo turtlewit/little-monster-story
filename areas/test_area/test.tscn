@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://characters/frog/frog.tscn" type="PackedScene" id=1]
+[ext_resource path="res://materials/cel_new.shader" type="Shader" id=2]
+[ext_resource path="res://ui/text_3d/text_3d.gd" type="Script" id=3]
+[ext_resource path="res://characters/npc.tscn" type="PackedScene" id=4]
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=10]
+[ext_resource path="res://areas/common/teleportation_area/teleportation_area.tscn" type="PackedScene" id=11]
+
+[sub_resource type="CylinderMesh" id=1]
+top_radius = 4.0
+bottom_radius = 0.001
+height = 1.02
+radial_segments = 6
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/base_color = Color( 0.0196078, 0.0431373, 0.0588235, 1 )
+shader_param/shade_color = Color( 0.0352941, 0.0196078, 0.0745098, 1 )
+shader_param/rim_tint = Color( 0.75, 0.75, 0.75, 0.75 )
+shader_param/shade_threshold = 0.0
+shader_param/shade_softness = 0.01
+shader_param/use_shadow = false
+shader_param/shadow_threshold = 0.7
+shader_param/shadow_softness = 0.1
+shader_param/emission_color = null
+shader_param/shadow_texture_scale = 1.0
+shader_param/uv_scale = Vector2( 1, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( 0, 0.51, 4, 3.4641, 0.51, 2, 3.4641, 0.51, -2, 4.89859e-16, 0.51, -4, -3.4641, 0.51, -2, -3.4641, 0.51, 2, -9.79717e-16, 0.51, 4, 0, 0.306, 3.2002, 2.77145, 0.306, 1.6001, 2.77145, 0.306, -1.6001, 3.91912e-16, 0.306, -3.2002, -2.77145, 0.306, -1.6001, -2.77145, 0.306, 1.6001, -7.83823e-16, 0.306, 3.2002, 0, 0.102, 2.4004, 2.07881, 0.102, 1.2002, 2.07881, 0.102, -1.2002, 2.93964e-16, 0.102, -2.4004, -2.07881, 0.102, -1.2002, -2.07881, 0.102, 1.2002, -5.87928e-16, 0.102, 2.4004, 0, -0.102, 1.6006, 1.38616, -0.102, 0.8003, 1.38616, -0.102, -0.8003, 1.96017e-16, -0.102, -1.6006, -1.38616, -0.102, -0.8003, -1.38616, -0.102, 0.8003, -3.92034e-16, -0.102, 1.6006, 0, -0.306, 0.8008, 0.693513, -0.306, 0.4004, 0.693513, -0.306, -0.4004, 9.80697e-17, -0.306, -0.8008, -0.693513, -0.306, -0.4004, -0.693513, -0.306, 0.4004, -1.96139e-16, -0.306, 0.8008, 0, -0.51, 0.000999928, 0.000865963, -0.51, 0.000499964, 0.000865963, -0.51, -0.000499964, 1.22456e-19, -0.51, -0.000999928, -0.000865963, -0.51, -0.000499964, -0.000865963, -0.51, 0.000499964, -2.44912e-19, -0.51, 0.000999928, 0, 0.51, 0, 0, 0.51, 4, 3.4641, 0.51, 2, 3.4641, 0.51, -2, 4.89859e-16, 0.51, -4, -3.4641, 0.51, -2, -3.4641, 0.51, 2, -9.79717e-16, 0.51, 4, 0, -0.51, 0, 0, -0.51, 0.001, 0.000866026, -0.51, 0.0005, 0.000866025, -0.51, -0.0005, 1.22465e-19, -0.51, -0.001, -0.000866026, -0.51, -0.0005, -0.000866026, -0.51, 0.0005, -2.44929e-19, -0.51, 0.001 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.3, 0.2, 0.3 )
+
+[sub_resource type="Environment" id=5]
+background_mode = 1
+glow_enabled = true
+glow_intensity = 0.47
+glow_strength = 1.24
+glow_blend_mode = 0
+glow_hdr_threshold = 0.51
+glow_hdr_scale = 1.0
+glow_bicubic_upscale = true
+
+[node name="Scene" type="Spatial"]
+
+[node name="NewPlayer" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.786203, 0 )
+
+[node name="Floor" type="StaticBody" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Floor"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor"]
+shape = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.829574, 1.23616e-08, 0.558397, -0.282307, 0.862787, 0.419405, -0.481778, -0.505567, 0.715746, 0, 2.40077, 8.34571 )
+
+[node name="NPC" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59814, 0.604142, 0 )
+
+[node name="CollisionShape" parent="NPC" index="0"]
+shape = SubResource( 4 )
+
+[node name="Model" parent="NPC" instance=ExtResource( 1 )]
+transform = Transform( 0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 5 )
+
+[node name="movement_test_teleporter" type="Spatial" parent="."]
+transform = Transform( 0.897651, 0, 0.440707, 0, 1, 0, -0.440707, 0, 0.897651, -1.76771, 1.0793, -2.6108 )
+
+[node name="TeleportArea" parent="movement_test_teleporter" instance=ExtResource( 11 )]
+scene = "res://areas/movement_test/movement_test.tscn"
+
+[node name="Text3D" type="Spatial" parent="movement_test_teleporter"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02249, 0 )
+script = ExtResource( 3 )
+text = "Kat's
+Movement Test"
+both_sides = false
+
+[node name="timmy_test_level" type="Spatial" parent="."]
+transform = Transform( 0.85587, 0, -0.517191, 0, 1, 0, 0.517191, 0, 0.85587, 1.65541, 1.0793, -3.08757 )
+
+[node name="TeleportArea" parent="timmy_test_level" instance=ExtResource( 11 )]
+scene = "res://areas/test_platforming/test_platforming2.tscn"
+
+[node name="Text3D" type="Spatial" parent="timmy_test_level"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12514, 0 )
+script = ExtResource( 3 )
+text = "Timmy's
+Test Level"
+both_sides = false
+
+[editable path="NPC"]

@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint"]
+linear_limit_x/restitution = 0.01
+angular_limit_x/enabled = false
+linear_limit_y/restitution = 16.0
+angular_limit_y/enabled = false
+linear_limit_z/restitution = 16.0
+angular_limit_z/enabled = false

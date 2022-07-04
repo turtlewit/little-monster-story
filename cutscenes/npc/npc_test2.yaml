@@ -1,0 +1,81 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeText
+  position:
+    x: 100
+    y: 160
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "The moon is a lot brighter than usual."
+  outputs:
+    0: NodeChoice
+  position:
+    x: 320
+    y: 120
+
+NodeText147:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "Yeah."
+  outputs:
+    0: NodeEnd
+  position:
+    x: 940
+    y: 0
+
+NodeText163:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "Oh. That's strange."
+  outputs:
+    0: NodeText179
+  position:
+    x: 920
+    y: 300
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 1480
+    y: 200
+
+NodeText179:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "Maybe my eyesight is failing me."
+  outputs:
+    0: NodeEnd
+  position:
+    x: 1180
+    y: 300
+
+NodeChoice:
+  type: DIALOGUE_CHOICE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "What do you think?"
+    choices: 
+    - "Yeah, kinda"
+    - "Not really"
+  outputs:
+    0: NodeText147
+    1: NodeText163
+  position:
+    x: 620
+    y: 60

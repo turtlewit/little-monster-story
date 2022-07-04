@@ -1,0 +1,373 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://areas/test_platforming/flooring_tmp.tres" type="Material" id=1]
+
+[node name="World Geometry" type="Spatial"]
+
+[node name="Ground" type="CSGCylinder" parent="."]
+transform = Transform( -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 52.2821, -67.5281, -37.3452 )
+radius = 121.321
+height = 130.36
+cone = true
+material = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0859, -69.7407, -19.3168 )
+radius = 14.8937
+height = 49.2651
+material = ExtResource( 1 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6592, -74.0319, -30.1515 )
+radius = 8.46793
+height = 49.2651
+material = ExtResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Ground"]
+transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 41.6253, -73.035, 24.5717 )
+width = 1.79917
+height = 20.0784
+depth = 65.8761
+material = ExtResource( 1 )
+
+[node name="CSGBox6" type="CSGBox" parent="Ground"]
+transform = Transform( 3.17865e-08, 1, 0, -1, 3.17865e-08, 0, 0, 0, 1, 49.159, -66.1529, 25.6542 )
+width = 2.95343
+height = 12.9119
+depth = 54.5513
+material = ExtResource( 1 )
+
+[node name="CSGBox7" type="CSGBox" parent="Ground"]
+transform = Transform( 0.921212, -0.38906, 0, 0.38906, 0.921212, 0, 0, 0, 1, 57.3101, -68.0432, 25.6573 )
+width = 2.95343
+height = 5.20537
+depth = 54.8682
+material = ExtResource( 1 )
+
+[node name="CSGBox4" type="CSGBox" parent="Ground"]
+transform = Transform( 0.0277714, 0.952199, 0.304214, -0.995859, 3.54718e-08, 0.0909107, 0.086565, -0.305479, 0.948256, 39.8184, -70.3206, -45.9129 )
+width = 9.61998
+height = 20.0784
+depth = 18.7798
+material = ExtResource( 1 )
+
+[node name="CSGBox8" type="CSGBox" parent="Ground"]
+transform = Transform( 0.826944, -0.555174, -0.0891322, 0.560597, 0.80177, 0.207113, -0.0435203, -0.221238, 0.974248, 53.9706, -74.2008, -43.2285 )
+width = 9.61998
+height = 20.0784
+depth = 18.7798
+material = ExtResource( 1 )
+
+[node name="CSGBox9" type="CSGBox" parent="Ground"]
+transform = Transform( -0.249061, -0.941981, -0.225036, 0.96751, -0.25244, -0.0141065, -0.0435203, -0.221238, 0.974248, 43.8343, -66.7361, -29.6488 )
+width = 3.32748
+height = 6.13549
+depth = 5.17822
+material = ExtResource( 1 )
+
+[node name="CSGBox12" type="CSGBox" parent="Ground"]
+transform = Transform( 1, -1.43265e-08, 4.7955e-08, -1.43265e-08, 0.836123, 0.548541, -4.7955e-08, -0.548541, 0.836123, 46.3346, -67.8167, -29.3267 )
+width = 3.32748
+height = 2.69623
+depth = 5.17822
+material = ExtResource( 1 )
+
+[node name="CSGBox11" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.9275, -65.9694, -25.4523 )
+width = 6.19343
+height = 3.18725
+depth = 5.17822
+material = ExtResource( 1 )
+
+[node name="CSGBox10" type="CSGBox" parent="Ground"]
+transform = Transform( 0.100047, 0.0476829, -0.99384, 0.881003, -0.468454, 0.066212, -0.462411, -0.8822, -0.088876, 41.3828, -67.9652, -34.6243 )
+width = 7.40671
+height = 6.13549
+depth = 5.17822
+material = ExtResource( 1 )
+
+[node name="CSGBox5" type="CSGBox" parent="Ground"]
+transform = Transform( 3.18315e-08, 1, 2.80549e-09, -0.999485, 3.17251e-08, 0.0320911, 0.0320911, -3.82556e-09, 0.999485, 41.3723, -70.3205, -62.9515 )
+width = 9.61998
+height = 20.0784
+depth = 27.1834
+material = ExtResource( 1 )
+
+[node name="CSGBox13" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0297, -82.5713, -80.1136 )
+width = 10.9841
+height = 42.9357
+depth = 16.2684
+material = ExtResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="Ground/CSGBox13"]
+transform = Transform( 0.999999, 2.13163e-14, 0, -2.13163e-14, 0.999999, 0, 0, 0, 1, -4.29644, -13.8512, -1.72181 )
+operation = 2
+width = 17.7613
+height = 13.4528
+depth = 15.94
+material = ExtResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="Ground"]
+transform = Transform( 3.17865e-08, 1, 0, -1, 3.17865e-08, 0, 0, 0, 1, 29.9429, -82.0014, 24.5717 )
+width = 1.79917
+height = 20.0784
+depth = 65.8761
+material = ExtResource( 1 )
+
+[node name="CSGBox3" type="CSGBox" parent="Ground"]
+transform = Transform( 0.950433, -0.306138, -0.0543702, -0.0315719, -0.26898, 0.962628, -0.309322, -0.913197, -0.265313, 39.9956, -75.2922, -11.0176 )
+width = 1.79917
+height = 17.2326
+depth = 17.5765
+material = ExtResource( 1 )
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.26273, -101.37, -53.0697 )
+height = 27.8371
+material = ExtResource( 1 )
+
+[node name="CSGCylinder5" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.538, -101.37, -71.8162 )
+height = 27.8371
+material = ExtResource( 1 )
+
+[node name="CSGCylinder6" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.79181, -97.6244, -45.9496 )
+height = 24.0626
+material = ExtResource( 1 )
+
+[node name="CSGCylinder7" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48735, -92.4086, -50.5464 )
+radius = 5.91911
+height = 24.0626
+material = ExtResource( 1 )
+
+[node name="CSGCylinder8" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.922989, 6.73254e-09, 0.384827, 6.73255e-09, 1, -3.36426e-08, -0.384827, 3.36426e-08, 0.922989, -14.0061, -92.4086, -59.5865 )
+radius = 5.91911
+height = 24.0626
+material = ExtResource( 1 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, -8.87056e-10, 1.24222e-08, -8.87056e-10, 0.989853, 0.142093, -1.24222e-08, -0.142093, 0.989853, -5.08002, -73.0478, -47.1606 )
+radius = 27.4036
+height = 49.2651
+material = ExtResource( 1 )
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="Ground/CSGCylinder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01694, -17.7138, 0.107376 )
+operation = 2
+radius = 29.6195
+height = 17.5889
+material = ExtResource( 1 )
+
+[node name="CSGCylinder5" type="CSGCylinder" parent="Ground/CSGCylinder"]
+transform = Transform( 0.984143, 0.177377, 0, -0.177377, 0.984143, 0, 0, 0, 1, -22.4682, -1.15892, -36.0936 )
+radius = 27.4036
+height = 27.3805
+material = ExtResource( 1 )
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="Ground/CSGCylinder/CSGCylinder5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38931, -3.62718, 0 )
+operation = 2
+radius = 27.0671
+height = 23.7216
+material = ExtResource( 1 )
+
+[node name="CSGCylinder9" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 45.9857, -67.2933, -33.4544 )
+radius = 3.41441
+height = 6.86445
+material = ExtResource( 1 )
+
+[node name="CSGCylinder10" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -56.6506, -77.6644, -89.3244 )
+radius = 6.29139
+height = 39.5696
+material = ExtResource( 1 )
+
+[node name="CSGCylinder11" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -61.3193, -79.172, -58.1787 )
+radius = 4.19799
+height = 39.5696
+material = ExtResource( 1 )
+
+[node name="CSGCylinder15" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.4699, -92.2664, -38.6045 )
+radius = 4.19799
+height = 13.3392
+material = ExtResource( 1 )
+
+[node name="CSGCylinder13" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, -2.2952e-09, -1.99007e-08, -2.2952e-09, 0.973746, -0.227637, 1.99007e-08, 0.227637, 0.973746, -60.7714, -99.1729, -53.1338 )
+radius = 4.19799
+height = 3.20579
+material = ExtResource( 1 )
+
+[node name="CSGCylinder14" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7572, -99.9453, -50.5401 )
+radius = 4.19799
+height = 3.47692
+material = ExtResource( 1 )
+
+[node name="CSGCylinder12" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.967832, -0.248906, -0.0366931, 0.249324, 0.968393, 0.00720151, 0.0337409, -0.0161183, 0.999301, -61.68, -66.6623, -42.534 )
+radius = 41.2966
+height = 39.5696
+material = ExtResource( 1 )
+
+[node name="CSGBox14" type="CSGBox" parent="Ground"]
+transform = Transform( 0.98597, 0.156693, -0.05754, -0.166924, 0.92554, -0.339872, 3.01354e-08, 0.344709, 0.93871, -40.2398, -98.5379, -35.1143 )
+width = 6.19343
+height = 3.18725
+depth = 5.17822
+material = ExtResource( 1 )
+
+[node name="CSGBox15" type="CSGBox" parent="Ground"]
+transform = Transform( 0.989696, -0.134406, 0.0493559, 0.143182, 0.929038, -0.341157, 3.01354e-08, 0.344709, 0.93871, -41.3612, -100.544, -31.9077 )
+width = 6.19343
+height = 3.18725
+depth = 5.17822
+material = ExtResource( 1 )
+
+[node name="CSGBox16" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -40.45, -101.034, -29.7312 )
+width = 6.19343
+height = 3.18725
+depth = 3.49173
+material = ExtResource( 1 )
+
+[node name="CSGBox17" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2584, -93.7346, -28.6687 )
+width = 0.50778
+height = 15.8117
+depth = 0.66222
+material = ExtResource( 1 )
+
+[node name="CSGBox18" type="CSGBox" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3362, -93.7346, -29.8051 )
+width = 0.50778
+height = 15.8117
+depth = 0.66222
+material = ExtResource( 1 )
+
+[node name="CSGCylinder16" type="CSGCylinder" parent="Ground"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.652193, -39.8162, -102.703, 2.11187 )
+radius = 4.19799
+height = 13.3392
+material = ExtResource( 1 )
+
+[node name="CSGCylinder17" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.949748, -0.313015, 0, 0.313015, 0.949748, 0, 0, 0, 1, -50.5581, -73.8573, 22.3654 )
+radius = 41.2966
+height = 44.3848
+material = ExtResource( 1 )
+
+[node name="CSGCylinder18" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.969437, 0.245341, 0, -0.245341, 0.969437, 0, 0, 0, 1, 4.51086, -60.6648, 50.0837 )
+radius = 32.4558
+height = 44.3848
+material = ExtResource( 1 )
+
+[node name="CSGCylinder19" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.811539, 1.64547e-08, -1.91932e-09, 1.64547e-08, 0.999759, -0.0219545, 1.91932e-09, 0.0219545, 0.999759, -54.7752, -100.426, 47.9771 )
+radius = 4.19799
+height = 16.7796
+material = ExtResource( 1 )
+
+[node name="CSGCylinder20" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.708884, -0.0818373, 0.479885, 0.112185, 0.986888, -0.0833266, -0.378805, 0.139125, 0.873365, -56.9491, -101.132, 55.7139 )
+radius = 4.19799
+height = 14.7401
+material = ExtResource( 1 )
+
+[node name="CSGCylinder21" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.691536, 0.247798, 0.460947, -0.169167, 0.96862, -0.135361, -0.389558, 0.0192597, 0.877044, -50.3368, -99.1505, 54.3191 )
+radius = 4.19799
+height = 18.3513
+material = ExtResource( 1 )
+
+[node name="CSGCylinder22" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.543437, -0.0645909, 0.739874, 0.0627049, 0.996864, 0.0170943, -0.599449, 0.0457206, 0.672528, -35.1149, -100.345, 54.3074 )
+radius = 4.19799
+height = 20.6279
+material = ExtResource( 1 )
+
+[node name="CSGCylinder23" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.163449, -0.775296, 0.149673, 0.288202, 0.450562, 0.237876, -0.181297, 0.0172736, 0.513081, -35.4327, -98.3207, 54.3191 )
+radius = 4.19799
+height = 18.3513
+material = ExtResource( 1 )
+
+[node name="CSGBox19" type="CSGBox" parent="Ground"]
+transform = Transform( 1.76306e-08, 1, 2.85131e-08, -0.441991, 3.33694e-08, -0.897019, -0.897019, 3.21246e-09, 0.441991, 34.6718, -79.3659, 56.5879 )
+width = 11.5865
+height = 13.356
+depth = 26.4506
+material = ExtResource( 1 )
+
+[node name="CSGBox20" type="CSGBox" parent="Ground"]
+transform = Transform( 0.0276071, 0.999619, 0.000162003, -0.999602, 0.0276076, -0.00586196, -0.00586419, -1.06601e-07, 0.999983, 36.1948, -88.4949, 51.6743 )
+width = 15.0895
+height = 9.5921
+depth = 5.86749
+material = ExtResource( 1 )
+
+[node name="CSGBox21" type="CSGBox" parent="Ground"]
+transform = Transform( 0.0276072, 0.999619, 0.000161918, 0.244167, -0.00658627, -0.969711, -0.96934, 0.0268105, -0.244256, 38.7222, -93.3019, 55.752 )
+width = 8.47721
+height = 7.26258
+depth = 5.86749
+material = ExtResource( 1 )
+
+[node name="CSGCylinder24" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.711883, -0.000524433, 0.480122, 0.0078776, 0.999814, -0.0166429, -0.389558, 0.0192597, 0.877044, 33.8068, -86.9014, 55.3348 )
+radius = 4.19799
+height = 18.3513
+material = ExtResource( 1 )
+
+[node name="CSGCylinder25" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.687062, -0.261184, 0.463706, 0.196371, 0.964936, 0.101716, -0.38468, 0.0260901, 0.880131, 40.9872, -89.0961, 45.1895 )
+radius = 5.08795
+height = 33.4449
+material = ExtResource( 1 )
+
+[node name="CSGCylinder26" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.671959, 0.301608, 0.472693, -0.242774, 0.950628, -0.0825415, -0.384873, -0.0730626, 0.877353, 45.446, -103.606, 44.5982 )
+radius = 5.08795
+height = 3.22119
+material = ExtResource( 1 )
+
+[node name="CSGCylinder27" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.478121, 3.59173e-08, 0.808021, 2.91483e-08, 1, -7.06394e-08, -0.65574, 7.06394e-08, 0.589154, 42.2782, -104.271, 42.7111 )
+radius = 3.61783
+height = 3.22119
+material = ExtResource( 1 )
+
+[node name="CSGCylinder28" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.478121, 3.59173e-08, 0.808021, 2.91483e-08, 1, -7.06394e-08, -0.217846, 2.34674e-08, 0.195725, 18.6895, -92.2923, 20.1141 )
+radius = 6.63291
+height = 33.8495
+material = ExtResource( 1 )
+
+[node name="CSGCylinder29" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.889794, -0.0769125, 0.449833, -0.0291622, 0.974099, 0.224236, -0.455429, -0.212642, 0.864505, 14.9846, -107.926, 17.8529 )
+radius = 1.54428
+height = 2.87892
+material = ExtResource( 1 )
+
+[node name="CSGCylinder30" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.890706, -0.00476177, 0.454554, -0.0196045, 0.998612, 0.0488766, -0.454156, -0.052446, 0.889377, 13.8423, -107.926, 16.5774 )
+radius = 1.54428
+height = 2.87892
+material = ExtResource( 1 )
+
+[node name="CSGCylinder31" type="CSGCylinder" parent="Ground"]
+transform = Transform( 0.891709, 0.208068, 0.401949, 0.108797, 0.763495, -0.636584, -0.439339, 0.611378, 0.658178, 14.4423, -105.835, 17.8867 )
+radius = 1.54428
+height = 5.54098
+material = ExtResource( 1 )

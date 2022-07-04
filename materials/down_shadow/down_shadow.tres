@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode unshaded;
+
+
+uniform vec3 shadow_position = vec3(0.0, 0.0, 0.0);
+uniform float raycast_position = 0.0;
+uniform float radius = 0.4;
+uniform float dropoff = 0.015;
+uniform float raycast_dist = 0.5;
+
+
+void fragment() {
+	vec4 vert = CAMERA_MATRIX * vec4(VERTEX, 1.0);
+	vec4 norm = CAMERA_MATRIX * vec4(NORMAL, 0.0);
+	ALBEDO = vec3(0.0);
+	ALPHA = 0.0;
+	if (distance(shadow_position.xz, vert.xz) < (max(0.0, radius - ((shadow_position.y - vert.y) * dropoff))) && vert.y < shadow_position.y && norm.y > 0.001 && abs(vert.y - raycast_position) < raycast_dist) {
+		ALPHA = 0.2;
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/shadow_position = Vector3( 0, 0.589, 3.479 )
+shader_param/raycast_position = 0.0
+shader_param/radius = 0.168
+shader_param/dropoff = 0.048
+shader_param/raycast_dist = 0.12

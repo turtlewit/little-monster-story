@@ -1,0 +1,516 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 200
+    y: 140
+
+NodeDeclareRef120:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera3
+    target: CameraFinalScene3
+  outputs:
+    0: NodeDeclareRef127
+  position:
+    x: 800
+    y: 100
+
+NodeDeclareRef127:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera4
+    target: CameraFinalScene4
+  outputs:
+    0: NodeDeclareRef128
+  position:
+    x: 1020
+    y: 100
+
+NodeDeclareRef128:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera5
+    target: CameraFinalScene5
+  outputs:
+    0: NodeDeclareRef134
+  position:
+    x: 1020
+    y: 100
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera1
+    target: CameraFinalScene1
+  outputs:
+    0: NodeDeclareRef113
+  position:
+    x: 360
+    y: 100
+
+NodeDeclareRef113:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera2
+    target: CameraFinalScene2
+  outputs:
+    0: NodeDeclareRef120
+  position:
+    x: 580
+    y: 100
+
+NodeDeclareRef134:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeWait
+  position:
+    x: 1240
+    y: 100
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText
+  position:
+    x: 1460
+    y: 120
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "V... Visit Inerma's grave."
+  outputs:
+    0: NodeText170
+  position:
+    x: 1640
+    y: 60
+
+NodeText170:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Th-that's right. I remember now."
+  outputs:
+    0: NodeWait176
+  position:
+    x: 1880
+    y: 80
+
+NodeWait176:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 2120
+    y: 120
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 2280
+    y: 80
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera1
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait228
+  position:
+    x: 1220
+    y: 20
+
+NodeWait228:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText244
+  position:
+    x: 2900
+    y: 140
+
+NodeText244:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It feels like so long ago now."
+  outputs:
+    0: NodeText260
+  position:
+    x: 3080
+    y: 80
+
+NodeText260:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "They were killed by an adventurer ransacking the forest."
+  outputs:
+    0: NodeText276
+  position:
+    x: 3320
+    y: 100
+
+NodeText276:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I wasn't there to help..."
+  outputs:
+    0: NodeCameraMove320
+  position:
+    x: 3560
+    y: 100
+
+NodeCameraMove320:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera2
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait326
+  position:
+    x: 1220
+    y: 20
+
+NodeWait326:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText342
+  position:
+    x: 4140
+    y: 120
+
+NodeText358:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I just couldn't take the pain of losing them anymore."
+  outputs:
+    0: NodeText374
+  position:
+    x: 4540
+    y: 100
+
+NodeText342:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It was a long time ago that I planned to visit their grave. But..."
+  outputs:
+    0: NodeText358
+  position:
+    x: 4320
+    y: 120
+
+NodeText390:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "...I must have asked another darkspawn frog to erase my memories."
+  outputs:
+    0: NodeText406
+  position:
+    x: 5100
+    y: 60
+
+NodeText374:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "So, I must have..."
+  outputs:
+    0: NodeText390
+  position:
+    x: 4820
+    y: 80
+
+NodeText406:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "..."
+  outputs:
+    0: NodeWait412
+  position:
+    x: 5340
+    y: 40
+
+NodeWait412:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraMove456
+  position:
+    x: 5640
+    y: 100
+
+NodeCameraMove456:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera3
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait478
+  position:
+    x: 1220
+    y: 20
+
+NodeText472:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I knew I couldn't forget about it forever."
+  outputs:
+    0: NodeText494
+  position:
+    x: 6440
+    y: 80
+
+NodeWait478:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText472
+  position:
+    x: 6140
+    y: 180
+
+NodeText494:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Ugh..."
+  outputs:
+    0: NodeCameraMove554
+  position:
+    x: 6760.776855
+    y: 99
+
+NodeText510:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "But, you know..."
+  outputs:
+    0: NodeText576
+  position:
+    x: 7500
+    y: 40
+
+NodeCameraMove554:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera4
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait560
+  position:
+    x: 1220
+    y: 20
+
+NodeWait560:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText510
+  position:
+    x: 7340
+    y: 180
+
+NodeText576:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I think it's better this way. It is better this way."
+  outputs:
+    0: NodeText592
+  position:
+    x: 7740
+    y: 40
+
+NodeText592:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I can't just erase the past."
+  outputs:
+    0: NodeWait674
+  position:
+    x: 7960
+    y: 40
+
+NodeText608:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It's better that I remember them for when they were alive than to not remember them at all."
+  outputs:
+    0: NodeText624
+  position:
+    x: 8200
+    y: 40
+
+NodeText624:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It's better that I face the truth and learn to heal from it."
+  outputs:
+    0: NodeWait674
+  position:
+    x: 8440
+    y: 40
+
+NodeWait674:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraMove668
+  position:
+    x: 8680
+    y: 120
+
+NodeCameraMove668:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera5
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait680
+  position:
+    x: 1220
+    y: 20
+
+NodeWait680:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText696
+  position:
+    x: 9200
+    y: 80
+
+NodeText696:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I'm... I'm glad you helped me remember."
+  outputs:
+    0: NodeWait702
+  position:
+    x: 9449.777344
+    y: -48
+
+NodeWait702:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText718
+  position:
+    x: 9680
+    y: 20
+
+NodeText718:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Thank you."
+  outputs:
+    0: NodeWait724
+  position:
+    x: 9860
+    y: 20
+
+NodeWait724:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodePlayEventAnimation
+  position:
+    x: 10120
+    y: 80
+
+NodeWaitEnd:
+  type: WAIT
+  arguments:
+    time: 5
+  outputs:
+    0: NodeEnd
+  position:
+    x: 10120
+    y: 80
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 10740
+    y: -20
+
+NodePlayEventAnimation:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: End
+  outputs:
+    0: NodeWaitEnd
+  position:
+    x: 10360
+    y: 0

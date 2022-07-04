@@ -1,0 +1,183 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://ui/menus/pause_menu/pause_menu.gd" type="Script" id=1]
+[ext_resource path="res://systems/dialogue/choice_button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/menus/settings_panel/settings_panel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/menus/save_panel/save_panel.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/fonts/font_ui.tres" type="DynamicFont" id=5]
+[ext_resource path="res://ui/textures/large_collectibles.png" type="Texture" id=6]
+[ext_resource path="res://ui/textures/small_collectibles.png" type="Texture" id=7]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float invert_amount : hint_range(0f, 1f);
+
+void fragment() {
+	vec4 tex = texture(TEXTURE, UV);
+	COLOR.rgb = mix(tex.rgb, vec3(1f) - tex.rgb, invert_amount);
+	COLOR.a = tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[sub_resource type="ShaderMaterial" id=5]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/invert_amount = 1.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 5
+script = ExtResource( 1 )
+
+[node name="Base" type="Control" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="Base"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="VBoxContainer" parent="Base/CenterContainer"]
+margin_left = 448.0
+margin_top = 152.0
+margin_right = 832.0
+margin_bottom = 568.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Button1" parent="Base/CenterContainer/Buttons" instance=ExtResource( 2 )]
+material = SubResource( 2 )
+
+[node name="Text" parent="Base/CenterContainer/Buttons/Button1" index="0"]
+text = "Resume"
+
+[node name="Button2" parent="Base/CenterContainer/Buttons" instance=ExtResource( 2 )]
+material = SubResource( 3 )
+margin_top = 109.0
+margin_bottom = 198.0
+
+[node name="Text" parent="Base/CenterContainer/Buttons/Button2" index="0"]
+text = "Save"
+
+[node name="Button3" parent="Base/CenterContainer/Buttons" instance=ExtResource( 2 )]
+material = SubResource( 4 )
+margin_top = 218.0
+margin_bottom = 307.0
+
+[node name="Text" parent="Base/CenterContainer/Buttons/Button3" index="0"]
+text = "Options"
+
+[node name="Button4" parent="Base/CenterContainer/Buttons" instance=ExtResource( 2 )]
+material = SubResource( 5 )
+margin_top = 327.0
+margin_bottom = 416.0
+
+[node name="Text" parent="Base/CenterContainer/Buttons/Button4" index="0"]
+text = "Exit"
+
+[node name="Collectibles" type="CenterContainer" parent="Base"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = -136.0
+margin_right = 540.0
+margin_bottom = 120.0
+rect_scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Base/Collectibles"]
+margin_left = 175.0
+margin_right = 544.0
+margin_bottom = 256.0
+custom_constants/separation = 40
+
+[node name="LargeCollectibles" type="TextureRect" parent="Base/Collectibles/HBoxContainer"]
+margin_right = 256.0
+margin_bottom = 256.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LargeCollectiblesText" type="Label" parent="Base/Collectibles/HBoxContainer"]
+margin_left = 296.0
+margin_top = 52.0
+margin_right = 369.0
+margin_bottom = 203.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="SmallCollectibles" type="TextureRect" parent="Base/Collectibles/HBoxContainer"]
+visible = false
+margin_left = 409.0
+margin_right = 537.0
+margin_bottom = 256.0
+texture = ExtResource( 7 )
+
+[node name="SmallCollectiblesText" type="Label" parent="Base/Collectibles/HBoxContainer"]
+visible = false
+margin_left = 409.0
+margin_top = 52.0
+margin_right = 482.0
+margin_bottom = 203.0
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="SettingsPanelLayer" type="CanvasLayer" parent="Base"]
+layer = 6
+
+[node name="SettingsPanel" parent="Base/SettingsPanelLayer" instance=ExtResource( 3 )]
+visible = false
+
+[node name="SavePanelLayer" type="CanvasLayer" parent="Base"]
+layer = 6
+
+[node name="SavePanel" parent="Base/SavePanelLayer" instance=ExtResource( 4 )]
+visible = false
+
+[node name="TweenBackground" type="Tween" parent="Base"]
+
+[editable path="Base/CenterContainer/Buttons/Button1"]
+[editable path="Base/CenterContainer/Buttons/Button2"]
+[editable path="Base/CenterContainer/Buttons/Button3"]
+[editable path="Base/CenterContainer/Buttons/Button4"]

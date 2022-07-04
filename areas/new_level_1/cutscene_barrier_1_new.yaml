@@ -1,0 +1,277 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeWait55
+  position:
+    x: 100
+    y: 120
+
+NodeWait55:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText
+  position:
+    x: 280
+    y: 120
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Simmered mushroom stew with crushed red pepper."
+  outputs:
+    0: NodeText136
+  position:
+    x: 480
+    y: 100
+
+NodeText136:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Yes! That's it! THAT'S what I was going to make for dinner tonight."
+  outputs:
+    0: NodeText152
+  position:
+    x: 740
+    y: 100
+
+NodeText152:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Wow... I haven't made that recipe in a long time."
+  outputs:
+    0: NodeText168
+  position:
+    x: 980
+    y: 100
+
+NodeText168:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I think it was Inerma's favorite recipe."
+  outputs:
+    0: NodeWait190
+  position:
+    x: 1220
+    y: 100
+
+NodeWait190:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText184
+  position:
+    x: 1440
+    y: 120
+
+NodeText184:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "..."
+  outputs:
+    0: NodeText206
+  position:
+    x: 1600
+    y: 120
+
+NodeText206:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Inerma?"
+  outputs:
+    0: NodeText222
+  position:
+    x: 1860
+    y: 100
+
+NodeText222:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Why do I know that name?"
+  outputs:
+    0: NodeText238
+  position:
+    x: 2120
+    y: 80
+
+NodeWait244:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText260
+  position:
+    x: 2620
+    y: 140
+
+NodeText260:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Well... that's kind of weird."
+  outputs:
+    0: NodeText276
+  position:
+    x: 2780
+    y: 60
+
+NodeText238:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I-I don't know anyone named Inerma."
+  outputs:
+    0: NodeWait244
+  position:
+    x: 2360
+    y: 80
+
+NodeText276:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Let's move on, I guess."
+  outputs:
+    0: NodeText292
+  position:
+    x: 3020
+    y: 60
+
+NodeText292:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "What was I going to get for my friend's birthday...?"
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 3260
+    y: 60
+
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera
+    target: CameraCutscene1
+  outputs:
+    0: NodeDeclareRef164
+  position:
+    x: 400
+    y: 120
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 920
+    y: 60
+
+NodeDeclareRef164:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 660
+    y: 140
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait
+  position:
+    x: 1220
+    y: 20
+
+NodePlayEventAnimation:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: RemoveBarrier
+  outputs:
+    0: NodeWait178
+  position:
+    x: 1780
+    y: 120
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 2.5
+  outputs:
+    0: NodePlayEventAnimation
+  position:
+    x: 1620
+    y: 120
+
+NodeCameraMemorizePosition187:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 2.5
+    interpolation: true
+  outputs:
+    0: NodeWait193
+  position:
+    x: 2180
+    y: 100
+
+NodeWait178:
+  type: WAIT
+  arguments:
+    time: 4
+  outputs:
+    0: NodeCameraMemorizePosition187
+  position:
+    x: 2020
+    y: 100
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2880
+    y: 160
+
+NodeWait193:
+  type: WAIT
+  arguments:
+    time: 3
+  outputs:
+    0: NodeEnd
+  position:
+    x: 2580
+    y: 140

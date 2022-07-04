@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+
+# Declare member variables here. Examples:
+# var a: int = 2
+# var b: String = \"text\"
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton:
+		var button := event as InputEventJoypadButton
+		match button.button_index:
+			JOY_XBOX_A:
+				print(\"A\")
+			JOY_XBOX_B:
+				print(\"B\")
+			JOY_XBOX_X:
+				print(\"X\")
+			JOY_XBOX_Y:
+				print(\"Y\")
+			JOY_START:
+				print(\"Start\")
+			JOY_SELECT:
+				print(\"Select\")
+			JOY_R:
+				print(\"RB\")
+			JOY_R2:
+				print(\"RT\")
+			JOY_R3:
+				print(\"RS\")
+			JOY_L:
+				print(\"LB\")
+			JOY_L2:
+				print(\"LT\")
+			JOY_L3:
+				print(\"LS\")
+			JOY_DPAD_UP:
+				print(\"Dpad UP\")
+			JOY_DPAD_DOWN:
+				print(\"Dpad DOWN\")
+			JOY_DPAD_LEFT:
+				print(\"Dpad LEFT\")
+			JOY_DPAD_RIGHT:
+				print(\"Dpad RIGHT\")
+	if event is InputEventJoypadMotion:
+		var motion := event as InputEventJoypadMotion
+		match motion.axis:
+			JOY_AXIS_0:
+				pass
+"
+
+[node name="ControllerTest" type="Node"]
+script = SubResource( 1 )

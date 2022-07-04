@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/closed_wind.ogg-b631952328442856cc4d3a7f9e48abf6.oggstr"
+
+[deps]
+
+source_file="res://areas/new_level_1/audio/ambience/closed_wind.ogg"
+dest_files=[ "res://.import/closed_wind.ogg-b631952328442856cc4d3a7f9e48abf6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/textures/large_collectibles.png" type="Texture" id=1]
+[ext_resource path="res://ui/fonts/font_ui.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/textures/small_collectibles.png" type="Texture" id=3]
+[ext_resource path="res://ui/game_ui/collectables.gd" type="Script" id=4]
+
+[node name="Collectibles" type="HBoxContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -144.0
+margin_right = 720.0
+margin_bottom = 176.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/separation = 24
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LargeCollectibles" type="TextureRect" parent="."]
+margin_right = 256.0
+margin_bottom = 320.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LargeCollectiblesText" type="Label" parent="."]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 353.0
+margin_bottom = 235.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+
+[node name="SmallCollectibles" type="TextureRect" parent="."]
+margin_left = 377.0
+margin_right = 505.0
+margin_bottom = 320.0
+texture = ExtResource( 3 )
+
+[node name="SmallCollectiblesText" type="Label" parent="."]
+margin_left = 529.0
+margin_top = 84.0
+margin_right = 602.0
+margin_bottom = 235.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"

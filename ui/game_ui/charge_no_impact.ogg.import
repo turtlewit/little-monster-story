@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/charge_no_impact.ogg-34db166287ce618e0ecfd45bc45529eb.oggstr"
+
+[deps]
+
+source_file="res://ui/game_ui/charge_no_impact.ogg"
+dest_files=[ "res://.import/charge_no_impact.ogg-34db166287ce618e0ecfd45bc45529eb.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

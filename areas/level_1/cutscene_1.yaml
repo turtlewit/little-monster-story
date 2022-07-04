@@ -1,0 +1,194 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 200
+    y: 140
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeDeclareRef2
+  position:
+    x: 420
+    y: 120
+
+NodeDeclareRef2:
+  type: DECLARE_REF
+  arguments:
+    reference_name: CutsceneCamera
+    target: Cutscenes/Cutscene1/Camera
+  outputs:
+    0: NodeWait
+  position:
+    x: 420
+    y: 120
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 680
+    y: 80
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodePlayAnimationStart
+  position:
+    x: 880
+    y: 120
+
+NodePlayAnimationStart:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: Start
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 880
+    y: 120
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: CutsceneCamera
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait167
+  position:
+    x: 1200
+    y: 0
+
+NodeWait167:
+  type: WAIT
+  arguments:
+    time: 4.5
+  outputs:
+    0: NodeText
+  position:
+    x: 1560
+    y: 60
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "There we are, walking through the woods together."
+  outputs:
+    0: NodeText198
+  position:
+    x: 1760
+    y: -40
+
+NodeText198:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "We'd been best friends since we were kids."
+  outputs:
+    0: NodeText214
+  position:
+    x: 2120
+    y: -40
+
+NodeText214:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It's been so long since I've been in those woods that I forgot what they looked like."
+  outputs:
+    0: NodeText230
+  position:
+    x: 2340
+    y: -60
+
+NodeText230:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Ah... It's starting to come back to me now."
+  outputs:
+    0: NodeText246
+  position:
+    x: 2600
+    y: -100
+
+NodeText246:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It's painful, but... I'm glad we're getting somewhere."
+  outputs:
+    0: NodeWait252
+  position:
+    x: 2940
+    y: -40
+
+NodeWait252:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraMemorizePosition256
+  position:
+    x: 3240
+    y: 100
+
+NodeCameraMemorizePosition256:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 3
+    interpolation: true
+  outputs:
+    0: NodeWait262
+  position:
+    x: 3420
+    y: 100
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 3960
+    y: 100
+
+NodeWait262:
+  type: WAIT
+  arguments:
+    time: 4.5
+  outputs:
+    0: NodePlayAnimationEnd
+  position:
+    x: 3700
+    y: 60
+
+NodePlayAnimationEnd:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: End
+  outputs:
+    0: NodeEnd
+  position:
+    x: 3750
+    y: 60

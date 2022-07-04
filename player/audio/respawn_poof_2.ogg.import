@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/respawn_poof_2.ogg-259798432bc340a0fad25b6fc9b6e203.oggstr"
+
+[deps]
+
+source_file="res://player/audio/respawn_poof_2.ogg"
+dest_files=[ "res://.import/respawn_poof_2.ogg-259798432bc340a0fad25b6fc9b6e203.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

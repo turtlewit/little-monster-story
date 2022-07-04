@@ -1,0 +1,643 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://ui/fonts/roboto_medium.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/menus/settings_panel/volume_slider.gd" type="Script" id=2]
+[ext_resource path="res://ui/menus/settings_panel/settings_panel.gd" type="Script" id=3]
+[ext_resource path="res://ui/menus/settings_panel/boolean_setting.gd" type="Script" id=4]
+[ext_resource path="res://ui/menus/settings_panel/generic_slider.gd" type="Script" id=5]
+[ext_resource path="res://ui/menus/settings_panel/tab_container.gd" type="Script" id=6]
+[ext_resource path="res://ui/menus/settings_panel/spin_box_setting.gd" type="Script" id=7]
+[ext_resource path="res://ui/menus/settings_panel/gamepad-index.gd" type="Script" id=8]
+[ext_resource path="res://ui/tutorial/tutorial_jump_controller.png" type="Texture" id=9]
+[ext_resource path="res://ui/tutorial/tutorial_tongue_controller.png" type="Texture" id=10]
+[ext_resource path="res://ui/menus/settings_panel/enum_setting.gd" type="Script" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+content_margin_left = 4.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 0.0
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends HBoxContainer
+
+
+func _enter_tree() -> void:
+	if OS.get_name() == \"HTML5\":
+		queue_free()
+"
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 728, 72, 184, 104 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 296, 112, 192, 112 )
+
+[node name="SettingsPanel" type="Panel"]
+anchor_left = 0.13
+anchor_top = 0.15
+anchor_right = 0.87
+anchor_bottom = 0.85
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 931.0
+margin_bottom = 50.0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 54.0
+margin_right = 931.0
+margin_bottom = 58.0
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+margin_top = 62.0
+margin_right = 931.0
+margin_bottom = 454.0
+size_flags_vertical = 3
+custom_constants/side_margin = 7
+script = ExtResource( 6 )
+
+[node name="Volume" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 46.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/TabContainer/Volume"]
+margin_right = 931.0
+margin_bottom = 208.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Volume/Panel"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 923.0
+margin_bottom = 208.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Master volume" type="HBoxContainer" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer"]
+margin_right = 919.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Master volume"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Master volume"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+script = ExtResource( 2 )
+setting = "master"
+
+[node name="Music Volume" type="HBoxContainer" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer"]
+margin_top = 42.0
+margin_right = 919.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Music Volume"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Music Volume"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+script = ExtResource( 2 )
+setting = "music"
+
+[node name="SFX Volume" type="HBoxContainer" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer"]
+margin_top = 84.0
+margin_right = 919.0
+margin_bottom = 122.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/SFX Volume"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "SFX Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/SFX Volume"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+script = ExtResource( 2 )
+setting = "sfx"
+
+[node name="Ambiance Volume" type="HBoxContainer" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer"]
+margin_top = 126.0
+margin_right = 919.0
+margin_bottom = 164.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Ambiance Volume"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Ambiance Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Ambiance Volume"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+script = ExtResource( 2 )
+setting = "ambiance"
+
+[node name="Text Volume" type="HBoxContainer" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer"]
+margin_top = 168.0
+margin_right = 919.0
+margin_bottom = 206.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Text Volume"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Text Volume"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Text Volume"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+script = ExtResource( 2 )
+setting = "text"
+
+[node name="Gameplay" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 46.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/TabContainer/Gameplay"]
+margin_right = 931.0
+margin_bottom = 2.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Gameplay/Panel"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 923.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DisableActiveCamera" type="HBoxContainer" parent="VBoxContainer/TabContainer/Gameplay/Panel/VBoxContainer"]
+margin_right = 919.0
+margin_bottom = 46.0
+hint_tooltip = "When checked, the camera
+will only be moved manually."
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Gameplay/Panel/VBoxContainer/DisableActiveCamera"]
+margin_top = 4.0
+margin_right = 457.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Disable Active Camera"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Gameplay/Panel/VBoxContainer/DisableActiveCamera"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+section = "gameplay"
+setting = "disable_active_camera"
+
+[node name="Controls" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 46.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/TabContainer/Controls"]
+margin_right = 931.0
+margin_bottom = 2.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 923.0
+margin_bottom = 262.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mouse Sensitivity Horizontal" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer"]
+margin_right = 919.0
+margin_bottom = 38.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Horizontal"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Mouse Sensitivity Horizontal"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Horizontal"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.01
+max_value = 4.0
+step = 0.1
+value = 1.0
+script = ExtResource( 5 )
+section = "controls"
+setting = "camera_sensitivity_mouse_x"
+
+[node name="Mouse Sensitivity Vertical" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer"]
+margin_top = 42.0
+margin_right = 919.0
+margin_bottom = 80.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Vertical"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Mouse Sensitivity Vertical"
+
+[node name="HSlider2" type="HSlider" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Vertical"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.01
+max_value = 4.0
+step = 0.1
+value = 1.0
+script = ExtResource( 5 )
+section = "controls"
+setting = "camera_sensitivity_mouse_y"
+
+[node name="Joystick Sensitivity Horizontal" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer"]
+margin_top = 84.0
+margin_right = 919.0
+margin_bottom = 122.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Horizontal"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Joystick Sensitivity Horizontal"
+
+[node name="HSlider3" type="HSlider" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Horizontal"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.01
+max_value = 4.0
+step = 0.1
+value = 1.0
+script = ExtResource( 5 )
+section = "controls"
+setting = "camera_sensitivity_joystick_x"
+
+[node name="Joystick Sensitivity Vertical" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer"]
+margin_top = 126.0
+margin_right = 919.0
+margin_bottom = 164.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Vertical"]
+margin_right = 457.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+text = "Joystick Sensitivity Vertical"
+
+[node name="HSlider4" type="HSlider" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Vertical"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 38.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 0.01
+max_value = 4.0
+step = 0.1
+value = 1.0
+script = ExtResource( 5 )
+section = "controls"
+setting = "camera_sensitivity_joystick_y"
+
+[node name="Gamepad Index" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer"]
+margin_top = 168.0
+margin_right = 919.0
+margin_bottom = 210.0
+hint_tooltip = "If you have multiple
+controllers plugged in,
+this value determines which
+controller to use."
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Gamepad Index"]
+margin_top = 2.0
+margin_right = 457.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "Gamepad Index"
+
+[node name="SpinBox2" type="SpinBox" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Gamepad Index"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+max_value = 0.0
+rounded = true
+allow_greater = true
+align = 2
+suffix = "()"
+script = ExtResource( 8 )
+section = "controls"
+setting = "gamepad_index"
+
+[node name="DisableMouseGrab" type="HBoxContainer" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer"]
+margin_top = 214.0
+margin_right = 919.0
+margin_bottom = 260.0
+hint_tooltip = "If enabled, the game will
+no longer capture the mouse
+cursor."
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/DisableMouseGrab"]
+margin_top = 4.0
+margin_right = 457.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Disable Mouse Grab"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/DisableMouseGrab"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+section = "controls"
+setting = "disable_mouse_grab"
+
+[node name="Video" type="ScrollContainer" parent="VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 46.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/TabContainer/Video"]
+margin_right = 931.0
+margin_bottom = 2.0
+size_flags_horizontal = 3
+custom_styles/panel = SubResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Video/Panel"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 923.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MSAA" type="HBoxContainer" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer"]
+margin_right = 919.0
+margin_bottom = 42.0
+hint_tooltip = "MSAA makes edges smoother, at the cost of performance."
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/MSAA"]
+margin_top = 2.0
+margin_right = 457.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "MSAA"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/MSAA"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+script = ExtResource( 11 )
+choices = [ "Disabled", "2x", "4x", "8x" ]
+section = "video"
+setting = "msaa"
+
+[node name="FXAA" type="HBoxContainer" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer"]
+margin_top = 46.0
+margin_right = 919.0
+margin_bottom = 92.0
+hint_tooltip = "FXAA makes edges and textures smoother with a small performance cost."
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/FXAA"]
+margin_top = 4.0
+margin_right = 457.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Use FXAA"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/FXAA"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+section = "video"
+setting = "fxaa"
+
+[node name="Fullscreen" type="HBoxContainer" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer"]
+margin_top = 96.0
+margin_right = 919.0
+margin_bottom = 142.0
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/Fullscreen"]
+margin_top = 4.0
+margin_right = 457.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="CheckBox" type="CheckBox" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/Fullscreen"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+script = ExtResource( 4 )
+section = "video"
+setting = "fullscreen"
+
+[node name="PhysicsFPS" type="HBoxContainer" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer"]
+margin_top = 146.0
+margin_right = 919.0
+margin_bottom = 188.0
+hint_tooltip = "This framerate should match your 
+monitor's refresh rate. If unsure, 
+leave default."
+script = SubResource( 3 )
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/PhysicsFPS"]
+margin_top = 2.0
+margin_right = 457.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "Physics FPS"
+
+[node name="SpinBox" type="SpinBox" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/PhysicsFPS"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 0.0
+value = 1.0
+rounded = true
+allow_greater = true
+align = 2
+suffix = "FPS"
+script = ExtResource( 7 )
+section = "physics"
+setting = "fps"
+
+[node name="GrassDensity" type="HBoxContainer" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer"]
+margin_top = 192.0
+margin_right = 919.0
+margin_bottom = 234.0
+hint_tooltip = "If the game is running slowly, try lowering this value."
+
+[node name="Label" type="Label" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/GrassDensity"]
+margin_top = 2.0
+margin_right = 457.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+text = "Grass Density"
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/GrassDensity"]
+margin_left = 461.0
+margin_right = 919.0
+margin_bottom = 42.0
+size_flags_horizontal = 3
+script = ExtResource( 11 )
+choices = [ "High", "Medium", "Low", "Off" ]
+section = "video"
+setting = "grass_density"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 458.0
+margin_right = 931.0
+margin_bottom = 496.0
+alignment = 2
+
+[node name="SaveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 560.0
+margin_right = 730.0
+margin_bottom = 38.0
+size_flags_horizontal = 8
+text = "Save"
+
+[node name="CancelButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 734.0
+margin_right = 931.0
+margin_bottom = 38.0
+focus_neighbour_bottom = NodePath(".")
+size_flags_horizontal = 8
+text = "Cancel"
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 770.838, 87.6693 )
+scale = Vector2( 0.458147, 0.458147 )
+texture = SubResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 181.776, 87.6693 )
+scale = Vector2( 0.458147, 0.458147 )
+texture = SubResource( 5 )
+
+[connection signal="visibility_changed" from="." to="." method="_on_SettingsPanel_visibility_changed"]
+[connection signal="visibility_changed" from="VBoxContainer/TabContainer" to="VBoxContainer/TabContainer" method="_on_TabContainer_visibility_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Master volume/HSlider" to="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Master volume/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Music Volume/HSlider" to="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Music Volume/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/SFX Volume/HSlider" to="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/SFX Volume/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Ambiance Volume/HSlider" to="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Ambiance Volume/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Text Volume/HSlider" to="VBoxContainer/TabContainer/Volume/Panel/VBoxContainer/Text Volume/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="toggled" from="VBoxContainer/TabContainer/Gameplay/Panel/VBoxContainer/DisableActiveCamera/CheckBox" to="VBoxContainer/TabContainer/Gameplay/Panel/VBoxContainer/DisableActiveCamera/CheckBox" method="_on_CheckBox_toggled"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Horizontal/HSlider" to="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Horizontal/HSlider" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Vertical/HSlider2" to="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Mouse Sensitivity Vertical/HSlider2" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Horizontal/HSlider3" to="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Horizontal/HSlider3" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Vertical/HSlider4" to="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Joystick Sensitivity Vertical/HSlider4" method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Gamepad Index/SpinBox2" to="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/Gamepad Index/SpinBox2" method="_on_SpinBox_value_changed"]
+[connection signal="toggled" from="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/DisableMouseGrab/CheckBox" to="VBoxContainer/TabContainer/Controls/Panel/VBoxContainer/DisableMouseGrab/CheckBox" method="_on_CheckBox_toggled"]
+[connection signal="item_selected" from="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/MSAA/OptionButton" to="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/MSAA/OptionButton" method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/FXAA/CheckBox" to="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/FXAA/CheckBox" method="_on_CheckBox_toggled"]
+[connection signal="toggled" from="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/Fullscreen/CheckBox" to="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/Fullscreen/CheckBox" method="_on_CheckBox_toggled"]
+[connection signal="value_changed" from="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/PhysicsFPS/SpinBox" to="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/PhysicsFPS/SpinBox" method="_on_SpinBox_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/GrassDensity/OptionButton" to="VBoxContainer/TabContainer/Video/Panel/VBoxContainer/GrassDensity/OptionButton" method="_on_OptionButton_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_SaveButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]

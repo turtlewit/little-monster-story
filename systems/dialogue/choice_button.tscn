@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ui/textures/box3.png" type="Texture" id=1]
+[ext_resource path="res://systems/dialogue/font_dialogue.tres" type="DynamicFont" id=2]
+[ext_resource path="res://systems/dialogue/cursor.ogg" type="AudioStream" id=3]
+[ext_resource path="res://systems/dialogue/select2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://systems/cutscene/choice_button.gd" type="Script" id=5]
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform float invert_amount : hint_range(0f, 1f);
+
+void fragment() {
+	vec4 tex = texture(TEXTURE, UV);
+	COLOR.rgb = mix(tex.rgb, vec3(1f) - tex.rgb, invert_amount);
+	COLOR.a = tex.a;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = SubResource( 2 )
+shader_param/invert_amount = 1.0
+
+[node name="ChoiceButton" type="TextureButton"]
+material = SubResource( 3 )
+margin_right = 384.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 150, 0 )
+action_mode = 0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 1 )
+texture_focused = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+sound_hover = ExtResource( 3 )
+sound_click = ExtResource( 4 )
+
+[node name="Text" type="Label" parent="."]
+use_parent_material = true
+margin_left = 24.0
+margin_top = 16.0
+margin_right = 360.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 2 )
+text = "Button"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TweenInvert" type="Tween" parent="."]
+[connection signal="focus_entered" from="." to="." method="_on_focus_grabbed"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_released"]
+[connection signal="mouse_entered" from="." to="." method="grab_focus"]
+[connection signal="mouse_exited" from="." to="." method="release_focus"]
+[connection signal="pressed" from="." to="." method="_on_ChoiceButton_pressed"]
+[connection signal="tween_all_completed" from="TweenInvert" to="." method="_on_TweenInvert_tween_all_completed"]

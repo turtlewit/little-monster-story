@@ -1,0 +1,22 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+octaves = 9
+period = 0.1
+persistence = 0.0
+lacunarity = 0.1
+
+[sub_resource type="NoiseTexture" id=2]
+seamless = true
+as_normalmap = true
+bump_strength = 0.7
+noise = SubResource( 1 )
+
+[resource]
+albedo_color = Color( 0.12549, 0.254902, 0.282353, 1 )
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 2 )
+uv1_scale = Vector3( 0.5, 0.5, 0.5 )
+uv1_triplanar = true

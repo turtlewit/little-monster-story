@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://areas/new_level_1/bush2.tres" type="Material" id=1]
+[ext_resource path="res://areas/new_level_1/bush3.gltf" type="PackedScene" id=2]
+
+[node name="bush3" instance=ExtResource( 2 )]
+
+[node name="Foilage001" parent="." index="0"]
+cast_shadow = 0
+material/0 = ExtResource( 1 )

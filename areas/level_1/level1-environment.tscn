@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://areas/level_1/sky.png" type="Texture" id=1]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 4.27
+ambient_light_color = Color( 0.235294, 0.235294, 0.235294, 1 )
+ambient_light_sky_contribution = 0.29
+fog_enabled = true
+fog_color = Color( 0.341176, 0, 0.345098, 1 )
+fog_sun_color = Color( 1, 0.901961, 0.701961, 1 )
+fog_depth_end = 184.8
+fog_transmit_enabled = true
+glow_enabled = true
+glow_intensity = 0.29
+glow_strength = 1.41
+glow_blend_mode = 0
+glow_hdr_threshold = 0.5
+glow_bicubic_upscale = true
+
+[node name="WorldEnvironment2" type="WorldEnvironment"]
+environment = SubResource( 2 )

@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://materials/test_material/test_material.tres" type="Material" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+albedo_color = Color( 0.470588, 0.470588, 0.470588, 0.666667 )
+roughness = 0.63
+
+[node name="Under Swing" type="Spatial"]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.92296, -4.30517 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.60989, 2.85385 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.51278
+height = 0.575441
+depth = 2.87763
+material = SubResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.44788, 7.17465 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 4.83704
+height = 0.575441
+depth = 9.11279
+material = ExtResource( 1 )

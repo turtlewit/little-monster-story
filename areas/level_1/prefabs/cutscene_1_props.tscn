@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://areas/level_1/models/pine_tree/pine_tree_material4.tres" type="Material" id=1]
+[ext_resource path="res://characters/deer/deer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://areas/level_1/models/pine_tree/pine_tree_small.tscn" type="PackedScene" id=3]
+[ext_resource path="res://areas/level_1/models/pine_tree/pine_tree_large.tscn" type="PackedScene" id=4]
+[ext_resource path="res://areas/level_1/models/pine_tree/pine_tree_material3.tres" type="Material" id=5]
+[ext_resource path="res://areas/level_1/models/pine_tree/pine_tree_material2.tres" type="Material" id=6]
+
+[node name="Cutscene1Props" type="Spatial"]
+
+[node name="Deer" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.149644, 0, -0.200266, 0, 0.25, 0, 0.200266, 0, 0.149644, 2.39722, -0.0545486, -9.20229 )
+visible = false
+
+[node name="Deer2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.223527, 0, -0.111963, 0, 0.25, 0, 0.111963, 0, 0.223527, 0.171113, -0.0545471, -5.96386 )
+visible = false
+
+[node name="pine_tree_small" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.536267, 1.34906, 1.36587 )
+
+[node name="pine_tree_small2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.00676229, 0, 0.249909, 0, 0.25, 0, -0.249909, 0, 0.00676229, -8.43227, 1.34906, -9.67361 )
+
+[node name="pine_tree_small3" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.196675, 0, 0.154334, 0, 0.25, 0, -0.154334, 0, -0.196675, 8.79407, 1.34906, 16.145 )
+
+[node name="pine_tree_small4" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.0404139, 0, 0.246712, 0, 0.25, 0, -0.246712, 0, -0.0404139, 7.97668, 1.34906, -8.704 )
+
+[node name="Cylinder" parent="pine_tree_small4" index="0"]
+material/0 = ExtResource( 1 )
+
+[node name="pine_tree_large" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.276269, 0, -0.214884, 0, 0.35, 0, 0.214884, 0, 0.276269, -1.31341, 0, -12.6281 )
+
+[node name="Plane004" parent="pine_tree_large" index="0"]
+material/0 = ExtResource( 6 )
+
+[node name="pine_tree_large2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.346042, 0, 0.0524884, 0, 0.35, 0, -0.0524884, 0, 0.346042, -7.82932, 0, -0.676755 )
+
+[node name="Plane004" parent="pine_tree_large2" index="0"]
+material/0 = ExtResource( 1 )
+
+[node name="pine_tree_large3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.13734, 0, -0.321928, 0, 0.35, 0, 0.321928, 0, 0.13734, -5.2427, 0, 11.4274 )
+
+[node name="Plane004" parent="pine_tree_large3" index="0"]
+material/0 = ExtResource( 5 )
+
+[editable path="pine_tree_small"]
+
+[editable path="pine_tree_small2"]
+
+[editable path="pine_tree_small3"]
+
+[editable path="pine_tree_small4"]
+
+[editable path="pine_tree_large"]
+
+[editable path="pine_tree_large2"]
+
+[editable path="pine_tree_large3"]

@@ -1,0 +1,114 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 200
+    y: 140
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera
+    target: CameraCutscene2
+  outputs:
+    0: NodeDeclareRef164
+  position:
+    x: 400
+    y: 120
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 920
+    y: 60
+
+NodeDeclareRef164:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 660
+    y: 140
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait
+  position:
+    x: 1220
+    y: 20
+
+NodePlayEventAnimation:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: RemoveBarrier
+  outputs:
+    0: NodeWait178
+  position:
+    x: 1780
+    y: 120
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 2.5
+  outputs:
+    0: NodePlayEventAnimation
+  position:
+    x: 1620
+    y: 120
+
+NodeCameraMemorizePosition187:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 2.5
+    interpolation: true
+  outputs:
+    0: NodeWait193
+  position:
+    x: 2180
+    y: 100
+
+NodeWait178:
+  type: WAIT
+  arguments:
+    time: 4
+  outputs:
+    0: NodeCameraMemorizePosition187
+  position:
+    x: 2020
+    y: 100
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2880
+    y: 160
+
+NodeWait193:
+  type: WAIT
+  arguments:
+    time: 3
+  outputs:
+    0: NodeEnd
+  position:
+    x: 2580
+    y: 140

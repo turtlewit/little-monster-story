@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/insects.ogg-d6652c106baf55ebc323c5c84ab82b8a.oggstr"
+
+[deps]
+
+source_file="res://areas/new_level_1/audio/ambience/insects.ogg"
+dest_files=[ "res://.import/insects.ogg-d6652c106baf55ebc323c5c84ab82b8a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

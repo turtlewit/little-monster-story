@@ -1,0 +1,41 @@
+---
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 960
+    y: 200
+
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeText
+  position:
+    x: 120
+    y: 180
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "Hello there."
+  outputs:
+    0: NodeText131
+  position:
+    x: 360
+    y: 40
+
+NodeText131:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Darkspawn
+    sound_pitch: 1
+    text: "This is a test."
+  outputs:
+    0: NodeEnd
+  position:
+    x: 640
+    y: 40

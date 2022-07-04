@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ui/textures/interact_box.png" type="Texture" id=1]
+[ext_resource path="res://systems/dialogue/font_dialogue.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/game_ui/game_ui.gd" type="Script" id=3]
+[ext_resource path="res://ui/game_ui/player_jump_ui.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/textures/interact_box_controller.png" type="Texture" id=8]
+
+[node name="GameUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+interact_keyboard = ExtResource( 1 )
+interact_controller = ExtResource( 8 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -251.0
+margin_bottom = 7.0
+rect_scale = Vector2( 0.5, 0.5 )
+rect_pivot_offset = Vector2( 640, 125 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="InteractBox" type="TextureRect" parent="CenterContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 208.0
+margin_right = 1071.0
+margin_bottom = 258.0
+rect_pivot_offset = Vector2( 432, 129 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="InteractText" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 540.277
+margin_top = 572.075
+margin_right = 831.277
+margin_bottom = 625.075
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TweenInteract" type="Tween" parent="."]
+
+[node name="PlayerJumpUI" parent="." instance=ExtResource( 4 )]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://materials/test_material/test_material.tres" type="Material" id=1]
+[ext_resource path="res://areas/common/moving_platforms/rotating_log.gd" type="Script" id=2]
+
+[sub_resource type="CylinderMesh" id=1]
+material = ExtResource( 1 )
+top_radius = 2.0
+bottom_radius = 2.0
+height = 10.0
+radial_segments = 16
+rings = 1
+
+[sub_resource type="CylinderShape" id=2]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="CubeMesh" id=3]
+material = ExtResource( 1 )
+size = Vector3( 2, 12, 2 )
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1, 6, 1 )
+
+[node name="Rolling log" type="RigidBody" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03854, 0.8183 )
+collision_layer = 1025
+collision_mask = 1025
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 2 )
+velocity = -0.3
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+shape = SubResource( 4 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 3.8147e-06, 0 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 3.8147e-06, 0 )
+shape = SubResource( 4 )

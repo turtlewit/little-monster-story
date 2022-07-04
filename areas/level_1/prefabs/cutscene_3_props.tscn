@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/deer/deer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://areas/level_1/models/pine_tree/pine_tree_small.tscn" type="PackedScene" id=2]
+
+[node name="Cutscene3Props" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 66.3549, 37.7692, -82.6078 )
+
+[node name="Deer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.242039, 0, 0.0625862, 0, 0.25, 0, -0.0625862, 0, 0.242039, -53.755, -30.3685, -20.9798 )
+visible = false
+
+[node name="Deer2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.236266, 0, -0.0817218, 0, 0.25, 0, 0.0817218, 0, 0.236266, -54.6285, -30.3685, -15.9238 )
+visible = false
+
+[node name="Deer3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.242039, 0, 0.0625862, 0, 0.25, 0, -0.0625862, 0, 0.242039, 7.14605, -1.26678, -34.431 )
+visible = false
+
+[node name="Deer4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.236266, 0, -0.0817218, 0, 0.25, 0, 0.0817218, 0, 0.236266, 7.60246, -1.26678, -30.7193 )
+visible = false
+
+[node name="Deer5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.177531, 0, -0.176019, 0, 0.25, 0, 0.176019, 0, 0.177531, -47.0057, -9.01979, 98.003 )
+visible = false
+
+[node name="Deer6" parent="." instance=ExtResource( 1 )]
+transform = Transform( -0.141558, 0, -0.206061, 0, 0.25, 0, 0.206061, 0, -0.141558, -50.5066, -9.01979, 98.0718 )
+visible = false
+
+[node name="pine_tree_small" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0447993, 0, 0.245953, 0, 0.25, 0, -0.245953, 0, 0.0447993, 3.49794, -0.0488625, -33.9574 )
+
+[node name="pine_tree_small2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.155123, 0, 0.196053, 0, 0.25, 0, -0.196053, 0, 0.155123, -49.0982, -7.76746, 95.9737 )
+
+[node name="pine_tree_small3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.116531, 0, -0.22118, 0, 0.25, 0, 0.22118, 0, 0.116531, -52.4809, -7.76746, 102.701 )

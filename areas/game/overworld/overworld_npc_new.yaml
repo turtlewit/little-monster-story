@@ -1,0 +1,259 @@
+---
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Oh... hello!"
+  outputs:
+    0: NodeText133
+  position:
+    x: 320
+    y: 60
+
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeText
+  position:
+    x: 100
+    y: 140
+
+NodeText133:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "The moon sure is bright tonight, isn't it?"
+  outputs:
+    0: NodeWait
+  position:
+    x: 640
+    y: 40
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 0.5
+  outputs:
+    0: NodeText154
+  position:
+    x: 940
+    y: -60
+
+NodeText154:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I'm Buck-Thoo. What's your name, little frog?"
+  outputs:
+    0: NodeText170
+  position:
+    x: 1140
+    y: -20
+
+NodeText170:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Oh, right. You're one of those darkspawn frogs. Not the talkative type."
+  outputs:
+    0: NodeWait176
+  position:
+    x: 1440
+    y: -40
+
+NodeText192:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Hey, listen..."
+  outputs:
+    0: NodeText208
+  position:
+    x: 1940
+    y: -40
+
+NodeWait176:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText192
+  position:
+    x: 1740
+    y: -20
+
+NodeText208:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I have a request."
+  outputs:
+    0: NodeText224
+  position:
+    x: 2220
+    y: -40
+
+NodeText224:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "You darkspawn have the ability to enter other monsters' minds, right? Sift around in their memories?"
+  outputs:
+    0: NodeText240
+  position:
+    x: 2500
+    y: -20
+
+NodeText240:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Well, I need someone to do that for me."
+  outputs:
+    0: NodeText256
+  position:
+    x: 2800
+    y: -40
+
+NodeText256:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I'm just..."
+  outputs:
+    0: NodeWait262
+  position:
+    x: 3040
+    y: -40
+
+NodeWait262:
+  type: WAIT
+  arguments:
+    time: 0.5
+  outputs:
+    0: NodeText278
+  position:
+    x: 3280
+    y: -20
+
+NodeText278:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "My short term memory isn't great. And today has been a particularly forgetful day."
+  outputs:
+    0: NodeText294
+  position:
+    x: 3520
+    y: -80
+
+NodeText294:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I had some plans for tomorrow that I've forgotten about, I need to remember what to buy for a friend's birthday..."
+  outputs:
+    0: NodeText310
+  position:
+    x: 3760
+    y: -80
+
+NodeText310:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I don't even remember what I was going to have for dinner tonight!"
+  outputs:
+    0: NodeWait332
+  position:
+    x: 4020
+    y: -60
+
+NodeText326:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "So, do you think you could hop into my mind and help me remember those things?"
+  outputs:
+    0: NodeText348
+  position:
+    x: 4540
+    y: -100
+
+NodeWait332:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeText326
+  position:
+    x: 4320
+    y: -40
+
+NodeText348:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "It'll be real quick. I swear."
+  outputs:
+    0: NodeText364
+  position:
+    x: 4820
+    y: -100
+
+NodeText364:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "They're on the tip of my tongue, so they're probably front and center in my mind."
+  outputs:
+    0: NodeText380
+  position:
+    x: 5141.758301
+    y: -64
+
+NodeText380:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I'd really appreciate it!"
+  outputs:
+    0: NodeWait386
+  position:
+    x: 5400
+    y: -80
+
+NodeWait386:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeEnd
+  position:
+    x: 5700
+    y: -60
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 5900
+    y: -20

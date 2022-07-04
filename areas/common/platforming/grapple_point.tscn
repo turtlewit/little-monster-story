@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0, 0.858824, 1, 1 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[node name="Grapple Point" type="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65884, 1.33078, -7.98289 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )

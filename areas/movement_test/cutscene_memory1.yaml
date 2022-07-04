@@ -1,0 +1,135 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 40
+    y: 100
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeDeclareRef118
+  position:
+    x: 240
+    y: 80
+
+NodeDeclareRef118:
+  type: DECLARE_REF
+  arguments:
+    reference_name: TargetCamera
+    target: Cutscenes/CutsceneTest/Camera
+  outputs:
+    0: NodeWait
+  position:
+    x: 480
+    y: 60
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 760
+    y: 160
+
+NodeWait167:
+  type: WAIT
+  arguments:
+    time: 4
+  outputs:
+    0: NodeText
+  position:
+    x: 1300
+    y: 240
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "This is the first memory."
+  outputs:
+    0: NodeText198
+  position:
+    x: 1500
+    y: -120
+
+NodeText198:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I sure do... remember it now."
+  outputs:
+    0: NodeCameraMoveToMemorized
+  position:
+    x: 1740
+    y: -140
+
+NodeCameraMoveToMemorized:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait264
+  position:
+    x: 2020
+    y: -20
+
+NodeCameraMove:
+  type: CAMERA_MOVE
+  arguments:
+    target_reference: PlayerCamera
+    position:
+      x: 0.52
+      y: 2.76
+      z: 18.5
+    rotation:
+      x: -34.75
+      y: 36.389999
+      z: 0
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait167
+  position:
+    x: 1000
+    y: 60
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 920
+    y: -200
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2620
+    y: 80
+
+NodeWait264:
+  type: WAIT
+  arguments:
+    time: 3
+  outputs:
+    0: NodeEnd
+  position:
+    x: 2400
+    y: 140

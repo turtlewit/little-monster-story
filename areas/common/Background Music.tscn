@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://areas/level_1/bgm.ogg" type="AudioStream" id=1]
+
+[node name="Background Music" type="AudioStreamPlayer"]
+pause_mode = 2
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Music"

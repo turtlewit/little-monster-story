@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stationary_water.ogg-848bd0905267b7f6c702906f4ec787c4.oggstr"
+
+[deps]
+
+source_file="res://areas/new_level_1/audio/ambience/stationary_water.ogg"
+dest_files=[ "res://.import/stationary_water.ogg-848bd0905267b7f6c702906f4ec787c4.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

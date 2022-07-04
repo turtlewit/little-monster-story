@@ -1,0 +1,239 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 200
+    y: 140
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera
+    target: CameraCutsceneIntro
+  outputs:
+    0: NodeDeclareRef164
+  position:
+    x: 400
+    y: 120
+
+NodeDeclareRef164:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeWait2
+  position:
+    x: 660
+    y: 140
+
+NodeWait2:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeText
+  position:
+    x: 200
+    y: 300
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Oh, looks like you made it!"
+  outputs:
+    0: NodeText131
+  position:
+    x: 400
+    y: 80
+
+NodeText131:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "What's the inside of my mind look like?"
+  outputs:
+    0: NodeText147
+  position:
+    x: 720
+    y: 60
+
+NodeText147:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Actually, don't tell me. I'm sure it's terrifying."
+  outputs:
+    0: NodeWait
+  position:
+    x: 960
+    y: 40
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 0.5
+  outputs:
+    0: NodeText168
+  position:
+    x: 1200
+    y: 20
+
+NodeText168:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "My memories should be scattered around the place."
+  outputs:
+    0: NodeText184
+  position:
+    x: 1360
+    y: 0
+
+NodeText184:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Try to find enough of them to help me piece together the things I'm trying to remember!"
+  outputs:
+    0: NodeWait3
+  position:
+    x: 1620
+    y: -60
+
+NodeWait3:
+  type: WAIT
+  arguments:
+    time: 0.5
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 1200
+    y: 20
+
+NodeLockCamera:
+  type: LOCK_CAMERA
+  arguments: {}
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 1300
+    y: 20
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodeLockCamera
+  position:
+    x: 920
+    y: 60
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait4
+  position:
+    x: 1220
+    y: 20
+
+NodeWait4:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText132
+  position:
+    x: 1200
+    y: 20
+
+NodeText132:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "See those larger spheres? Those are my scattered memories."
+  outputs:
+    0: NodeText133
+  position:
+    x: 720
+    y: 60
+
+NodeText133:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "You'll need to collect enough of those to get rid of that barrier."
+  outputs:
+    0: NodeWait5
+  position:
+    x: 720
+    y: 60
+
+NodeWait5:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeMoveToMemorized
+  position:
+    x: 1200
+    y: 20
+
+NodeMoveToMemorized:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 2.5
+    interpolation: true
+  outputs:
+    0: NodeWait6
+  position:
+    x: 1400
+    y: 20
+
+NodeWait6:
+  type: WAIT
+  arguments:
+    time: 3
+  outputs:
+    0: NodeEnd
+  position:
+    x: 1200
+    y: 20
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2280
+    y: -40
+
+NodeText200:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I really need to remember what I was going to have for dinner tonight..."
+  outputs:
+    0: NodeEnd
+  position:
+    x: 1900
+    y: -120

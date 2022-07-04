@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends \"res://areas/common/active_camera_area.gd\"
+
+
+# Declare member variables here. Examples:
+# var a: int = 2
+# var b: String = \"text\"
+
+
+func _position_camera(delta: float) -> Transform:
+	var target = Transform()
+	target.basis = Basis(Quat(Vector3(0, -PI/2, 0)))
+	target.origin = global_transform.origin
+	target.origin.y = player.global_transform.origin.y
+	target.origin.x -= 5.0
+	return target
+"
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 2.51058, 7.43068, 2.07983 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends \"res://areas/common/active_camera_area.gd\"
+
+
+onready var annoying_tree := get_tree().current_scene.get_node(\"Cutscene3Props/pine_tree_small3\") as Spatial
+
+
+func _on_body_entered(body: Node) -> void:
+	._on_body_entered(body)
+	if body.is_in_group(\"Player\"):
+		annoying_tree.hide()
+
+
+func _on_body_exited(body: Node) -> void:
+	._on_body_exited(body)
+	if body.is_in_group(\"Player\"):
+		annoying_tree.show()
+
+
+func _position_camera(delta: float) -> Transform:
+	var target := Transform()
+	target.basis = Basis(Vector3(0, PI/2, 0))
+	target.origin = global_transform.origin
+	target.origin.y = player.global_transform.origin.y
+	target.origin.x += 5.0
+	
+	target.origin.y -= global_transform.origin.y
+	target.origin.y *= 0.9
+	target.origin.y += global_transform.origin.y
+	
+	target.origin.z = player.global_transform.origin.z
+	
+	target = target.looking_at(player.global_transform.origin, Vector3.UP)
+	
+	return target
+"
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 1.37216, 7.42266, 7.7799 )
+
+[node name="ActiveCameraAreas" type="Spatial"]
+
+[node name="ActiveCameraArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.69165, -26.7018 )
+script = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ActiveCameraArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.881, 0 )
+shape = SubResource( 2 )
+
+[node name="ActiveCameraArea2" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.54274, 35.4549, 18.9101 )
+script = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="ActiveCameraArea2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.927841, 0 )
+shape = SubResource( 4 )

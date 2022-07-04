@@ -1,0 +1,41 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeText
+  position:
+    x: 200
+    y: 140
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Do you think you'd be able to enter my mind and help me remember all those things?"
+  outputs:
+    0: NodeText131
+  position:
+    x: 420
+    y: 40
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 980
+    y: 180
+
+NodeText131:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I'd really appreciate it!"
+  outputs:
+    0: NodeEnd
+  position:
+    x: 700
+    y: 40

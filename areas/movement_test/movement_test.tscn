@@ -1,0 +1,441 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://areas/movement_test/movement_test.gd" type="Script" id=2]
+[ext_resource path="res://areas/common/kill_area.gd" type="Script" id=3]
+[ext_resource path="res://collectibles/collectible_large_level.tscn" type="PackedScene" id=4]
+[ext_resource path="res://materials/Fire.tres" type="Material" id=5]
+[ext_resource path="res://areas/movement_test/test.png" type="Texture" id=6]
+[ext_resource path="res://areas/common/moving_platforms/bouncy_platform.gd" type="Script" id=7]
+[ext_resource path="res://collectibles/collectible_small_level.tscn" type="PackedScene" id=8]
+[ext_resource path="res://systems/cutscene/cutscene.tscn" type="PackedScene" id=9]
+[ext_resource path="res://areas/common/moving_platforms/rotating_log.gd" type="Script" id=10]
+[ext_resource path="res://areas/common/moving_platforms/moving_platform_path.gd" type="Script" id=11]
+[ext_resource path="res://materials/portal_material_test/test_frog.tscn" type="PackedScene" id=12]
+[ext_resource path="res://ui/game_ui/collectables.tscn" type="PackedScene" id=13]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.470588, 0.470588, 0.470588, 1 )
+roughness = 0.63
+
+[sub_resource type="ProceduralSky" id=2]
+ground_bottom_color = Color( 0.388235, 0.415686, 0.439216, 1 )
+ground_horizon_color = Color( 0.839216, 0.917647, 0.980392, 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+ambient_light_color = Color( 0.2, 0.2, 0.2, 1 )
+ambient_light_sky_contribution = 0.0
+fog_color = Color( 0.560784, 0.560784, 0.560784, 1 )
+fog_depth_begin = 1.0
+fog_depth_end = 20.0
+fog_depth_curve = 0.366022
+fog_transmit_enabled = true
+fog_height_min = -10.0
+fog_height_max = 10.0
+fog_height_curve = 0.901252
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 40.6978, 1, 61.4319 )
+
+[sub_resource type="SphereMesh" id=5]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="CylinderMesh" id=6]
+top_radius = 2.0
+bottom_radius = 2.0
+height = 12.0
+radial_segments = 16
+rings = 1
+
+[sub_resource type="CylinderShape" id=7]
+radius = 2.0
+height = 12.0
+
+[sub_resource type="CubeMesh" id=8]
+size = Vector3( 1, 1, 1 )
+
+[sub_resource type="ConvexPolygonShape" id=9]
+points = PoolVector3Array( -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5 )
+
+[sub_resource type="ConvexPolygonShape" id=10]
+points = PoolVector3Array( -1, 0.25, 2, 1, 0.25, -2, 1, 0.25, 2, -1, 0.25, -2, -1, -0.25, 2, 1, -0.25, -2, 1, -0.25, 2, -1, -0.25, -2, 1, 0.25, 2, -1, 0.25, -2, 1, 0.25, -2, -1, 0.25, 2, 1, -0.25, 2, -1, -0.25, -2, 1, -0.25, -2, -1, -0.25, 2, 1, 0.25, 2, -1, -0.25, 2, -1, 0.25, 2, 1, -0.25, 2, 1, 0.25, -2, -1, -0.25, -2, -1, 0.25, -2, 1, -0.25, -2 )
+
+[sub_resource type="CubeMesh" id=11]
+size = Vector3( 2, 0.5, 4 )
+
+[sub_resource type="CubeMesh" id=12]
+size = Vector3( 2, 0.5, 2 )
+
+[sub_resource type="ConvexPolygonShape" id=13]
+points = PoolVector3Array( -1, 0.25, 1, 1, 0.25, -1, 1, 0.25, 1, -1, 0.25, -1, -1, -0.25, 1, 1, -0.25, -1, 1, -0.25, 1, -1, -0.25, -1, 1, 0.25, 1, -1, 0.25, -1, 1, 0.25, -1, -1, 0.25, 1, 1, -0.25, 1, -1, -0.25, -1, 1, -0.25, -1, -1, -0.25, 1, 1, 0.25, 1, -1, -0.25, 1, -1, 0.25, 1, 1, -0.25, 1, 1, 0.25, -1, -1, -0.25, -1, -1, 0.25, -1, 1, -0.25, -1 )
+
+[sub_resource type="Curve3D" id=14]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0.00290966, 0, 0.000680923, -0.0481172, 0, -2.5315, -0.00306416, 0, -3.07915, 0, 0, 0, -2.62092, 0, 0.155285, -2.44994, 0, 0.0166054, 0, 0, 0, -0.0969682, 0, 2.2233, -0.00741005, 0, 1.98691, 0, 0, 0, 2.10131, 0, 0.17157, 2.48397, 0, 0.0491734, 0, 0, 0, -0.0481172, 0, -2.5315 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="Curve3D" id=15]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.452915, 0, -0.435896, 0, 0, 0, 0, 0, 0, 0.400248, 0, -0.43416 ),
+"tilts": PoolRealArray( 0, 0 )
+}
+
+[sub_resource type="CubeMesh" id=16]
+
+[sub_resource type="ConvexPolygonShape" id=17]
+points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=18]
+size = Vector3( 0.5, 0.5, 0.5 )
+
+[node name="Spatial" type="Spatial" groups=[
+"Save",
+]]
+script = ExtResource( 2 )
+
+[node name="Collectibles" parent="." instance=ExtResource( 13 )]
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.692879, 0 )
+material_override = SubResource( 1 )
+use_collision = true
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.194376, -0.0100605, 10.6602 )
+width = 22.5253
+height = 0.72135
+depth = 29.9987
+
+[node name="CSGBox5" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.997302, 0.00816026, 0.0729573, 0, 0.993803, -0.111157, -0.0734122, 0.110857, 0.991121, -0.194376, -0.0100604, -11.3821 )
+width = 4.85152
+height = 0.72135
+depth = 8.05945
+
+[node name="CSGBox8" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21259, -0.0100605, -38.2413 )
+width = 4.85152
+height = 0.72135
+depth = 8.05945
+
+[node name="CSGBox6" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 0.73802, 0, -0.674779, 0, 1, 0, 0.674779, 0, 0.73802, -6.88381, -0.0100605, -14.4985 )
+width = 4.85152
+height = 0.72135
+depth = 3.31255
+
+[node name="CSGBox7" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -0.4015, 0, -0.915859, -0.146855, 0.987061, 0.0643791, 0.904008, 0.160346, -0.396305, -6.88381, -0.0100607, -25.1129 )
+width = 8.70436
+height = 0.72135
+depth = 3.31255
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15024, 0.661037, -2.65192 )
+height = 0.648043
+
+[node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.583, 0.417, -2.652 )
+height = 1.98076
+
+[node name="CSGBox4" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 1.583, 0, -1.645 )
+height = 1.98076
+
+[node name="CSGPolygon" type="CSGPolygon" parent="CSGCombiner"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -1.88044, 0.338992, -0.612634 )
+polygon = PoolVector2Array( 0, 0, 1.08045, 0.574289, 3.00205, 0.753545, 2.88346, -0.0832304 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.880974, -0.165061, -0.443442, 0.330876, -0.455035, 0.826719, -0.338241, -0.875042, -0.346259, 0, 0, 0 )
+shadow_enabled = true
+shadow_bias = 0.0
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.383
+directional_shadow_split_2 = 0.735
+directional_shadow_split_3 = 1.0
+directional_shadow_normal_bias = 0.25
+directional_shadow_bias_split_scale = 0.3
+directional_shadow_max_distance = 10.0
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( -0.973345, -0.0509102, 0.223622, 0.0268726, 0.943017, 0.331656, -0.227764, 0.328825, -0.916514, 0, 2.0602, -3.28992 )
+
+[node name="KillArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24.416, 0 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="KillArea"]
+shape = SubResource( 4 )
+
+[node name="Collectible" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30374, -0.0015173, -38.4081 )
+
+[node name="Collectible2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30374, 0.0815258, 15.3107 )
+bubble_texture = ExtResource( 6 )
+cutscene = NodePath("../Cutscenes/CutsceneTest")
+
+[node name="NewPlayer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58648, 2.24653, 19.8879 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36629, 0.208725, 14.279 )
+visible = false
+mesh = SubResource( 5 )
+material/0 = ExtResource( 5 )
+
+[node name="RigidBody2" type="RigidBody" parent="." groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -19.2142, -2.06383, 14.3674 )
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 10 )
+velocity = 0.25
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 7 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="RigidBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36659, 0 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="RigidBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.36659, 0 )
+shape = SubResource( 9 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="RigidBody2"]
+transform = Transform( 0.656638, 0.754206, -5.59407e-08, -0.754206, 0.656638, -1.22876e-07, -5.59407e-08, 1.22876e-07, 1, 1.78489, 1.55399, 2.37606 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="RigidBody2"]
+transform = Transform( 0.656638, 0.754206, -5.59407e-08, -0.754206, 0.656638, -1.22876e-07, -5.59407e-08, 1.22876e-07, 1, 1.78489, 1.55399, 2.37606 )
+shape = SubResource( 9 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="RigidBody2"]
+transform = Transform( -0.344004, 0.938968, -2.18966e-07, -0.938968, -0.344004, -1.52977e-07, -2.18966e-07, 1.52977e-07, 1, 2.22215, -0.814116, 4.38442 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="RigidBody2"]
+transform = Transform( -0.344004, 0.938968, -2.18966e-07, -0.938968, -0.344004, -1.52977e-07, -2.18966e-07, 1.52977e-07, 1, 2.22215, -0.814116, 4.38442 )
+shape = SubResource( 9 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="RigidBody2"]
+transform = Transform( 0.600853, -0.79936, -6.50293e-08, 0.79936, 0.600853, 1.30232e-07, -6.50293e-08, -1.30232e-07, 1, -1.89175, 1.42197, -2.57743 )
+mesh = SubResource( 8 )
+material/0 = null
+
+[node name="CollisionShape5" type="CollisionShape" parent="RigidBody2"]
+transform = Transform( 0.600853, -0.79936, -6.50293e-08, 0.79936, 0.600853, 1.30232e-07, -6.50293e-08, -1.30232e-07, 1, -1.89175, 1.42197, -2.57743 )
+shape = SubResource( 9 )
+
+[node name="Spatial4" type="Spatial" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -16.5233, -0.603, 25.2784 )
+
+[node name="RigidBody3" type="RigidBody" parent="." groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1931, -1.60278, 30.6812 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody3"]
+transform = Transform( 0.973535, 0.222578, -0.0518528, -0.228538, 0.948146, -0.220885, 3.72529e-09, 0.226889, 0.973921, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody3"]
+transform = Transform( 0.973535, 0.222578, -0.0518528, -0.228538, 0.948146, -0.220885, 3.72529e-09, 0.226889, 0.973921, 0, 0, 0 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="Spatial2" type="Spatial" parent="."]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.06527, -1.60278, -7.93368 )
+
+[node name="RigidBody" type="RigidBody" parent="Spatial2" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.726, 0, 21.475 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial2/RigidBody"]
+transform = Transform( 0.973535, 0.222578, -0.0518528, -0.228538, 0.948146, -0.220885, 3.72529e-09, 0.226889, 0.973921, 0, 0, 0 )
+shape = SubResource( 10 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial2/RigidBody"]
+transform = Transform( 0.973535, 0.222578, -0.0518528, -0.228538, 0.948146, -0.220885, 3.72529e-09, 0.226889, 0.973921, 0, 0, 0 )
+mesh = SubResource( 11 )
+material/0 = null
+
+[node name="SmallCollectibles" type="Spatial" parent="."]
+
+[node name="CollectibleSmall" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50083, 0, 18.9644 )
+
+[node name="CollectibleSmall2" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66533, 0, 13.2279 )
+
+[node name="CollectibleSmall3" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03282, 0, 14.5289 )
+
+[node name="CollectibleSmall4" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.590792, 0, 19.3584 )
+
+[node name="CollectibleSmall5" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40355, 0, 11.4365 )
+
+[node name="CollectibleSmall6" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.66595, 0, 2.94846 )
+
+[node name="CollectibleSmall7" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75381, -4.76837e-07, 0.00864983 )
+
+[node name="CollectibleSmall8" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.80002, 0, 8.74698 )
+
+[node name="CollectibleSmall9" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.786172, 0, 7.60355 )
+
+[node name="CollectibleSmall10" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03192, 0, 13.9986 )
+
+[node name="CollectibleSmall11" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02988, 4.76837e-07, 18.2349 )
+
+[node name="CollectibleSmall12" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.90413, 4.76837e-07, 23.6299 )
+
+[node name="CollectibleSmall13" parent="SmallCollectibles" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01711, 4.76837e-07, 23.2086 )
+
+[node name="Cutscenes" type="Node" parent="."]
+
+[node name="CutsceneTest" parent="Cutscenes" instance=ExtResource( 9 )]
+cutscene_file = "res://areas/movement_test/cutscene_memory1.yaml"
+
+[node name="Camera" type="Camera" parent="Cutscenes/CutsceneTest"]
+transform = Transform( 0.804973, -0.338223, 0.487467, 0, 0.821603, 0.57006, -0.593312, -0.458883, 0.661368, 0.523382, 2.7606, 18.4969 )
+
+[node name="MovingPlatformPath2" type="RigidBody" parent="." groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.35161, 0, 28.8665 )
+script = ExtResource( 11 )
+interpolate_path = true
+rotation_mode = 2
+speed = 4.0
+cycle_path = true
+
+[node name="MeshInstance" type="MeshInstance" parent="MovingPlatformPath2"]
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="MovingPlatformPath2"]
+shape = SubResource( 13 )
+
+[node name="Path" type="Path" parent="MovingPlatformPath2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0651345, 0, 0.32567 )
+curve = SubResource( 14 )
+
+[node name="Spatial3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84999, 0, 28.8665 )
+
+[node name="MovingPlatformPath3" type="RigidBody" parent="Spatial3" groups=[
+"MovingPlatform",
+]]
+script = ExtResource( 11 )
+speed = 0.0
+cycle_path = true
+springiness = 3.0
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial3/MovingPlatformPath3"]
+transform = Transform( 1.07736, 0, 0, 0, 1.07736, 0, 0, 0, 1.07736, 0, 0, 0 )
+mesh = SubResource( 12 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial3/MovingPlatformPath3"]
+shape = SubResource( 13 )
+
+[node name="Path" type="Path" parent="Spatial3/MovingPlatformPath3"]
+curve = SubResource( 15 )
+
+[node name="MeshInstance" parent="." instance=ExtResource( 12 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -5.19619, 0.0154262, 17.6295 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6741, 4.16604, 17.4658 )
+mesh = SubResource( 16 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance3"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance3/StaticBody"]
+shape = SubResource( 17 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44767, 1.7363, 29.2359 )
+mesh = SubResource( 18 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance6"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance6/StaticBody"]
+shape = SubResource( 17 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28.558, 4.16604, 17.4658 )
+mesh = SubResource( 16 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance4"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance4/StaticBody"]
+shape = SubResource( 17 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5698, 4.16604, 17.4658 )
+mesh = SubResource( 16 )
+material/0 = null
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody" type="StaticBody" parent="MeshInstance5"]
+
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance5/StaticBody"]
+shape = SubResource( 17 )
+
+[connection signal="body_entered" from="KillArea" to="KillArea" method="_on_Area_body_entered"]

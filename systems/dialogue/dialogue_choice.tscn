@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://systems/dialogue/dialogue_choice.gd" type="Script" id=1]
+
+
+[node name="DialogueChoice" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choices" type="HBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -372.0
+margin_bottom = -274.0
+custom_constants/separation = 64
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimerDestroy" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+[connection signal="timeout" from="TimerDestroy" to="." method="_on_TimerDestroy_timeout"]

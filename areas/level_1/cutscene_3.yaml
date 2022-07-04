@@ -1,0 +1,537 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeDeclareRef
+  position:
+    x: 200
+    y: 140
+
+NodeDeclareRef113:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera2
+    target: Cutscenes/Cutscene3/Camera2
+  outputs:
+    0: NodeDeclareRef120
+  position:
+    x: 600
+    y: -180
+
+NodeDeclareRef120:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera3
+    target: Cutscenes/Cutscene3/Camera3
+  outputs:
+    0: NodeDeclareRef127
+  position:
+    x: 820
+    y: -180
+
+NodeDeclareRef127:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera4
+    target: Cutscenes/Cutscene3/Camera4
+  outputs:
+    0: NodeDeclareRef141
+  position:
+    x: 360
+    y: 20
+
+NodeDeclareRef141:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera5
+    target: Cutscenes/Cutscene3/Camera5
+  outputs:
+    0: NodeDeclareRef134
+  position:
+    x: 600
+    y: 20
+
+NodeDeclareRef134:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera6
+    target: Cutscenes/Cutscene3/Camera6
+  outputs:
+    0: NodeDeclareRef148
+  position:
+    x: 820
+    y: 20
+
+NodeDeclareRef148:
+  type: DECLARE_REF
+  arguments:
+    reference_name: PlayerCamera
+    target: CameraPivot/PlayerCamera
+  outputs:
+    0: NodeWait
+  position:
+    x: 820
+    y: 200
+
+NodeDeclareRef:
+  type: DECLARE_REF
+  arguments:
+    reference_name: Camera1
+    target: Cutscenes/Cutscene3/Camera
+  outputs:
+    0: NodeDeclareRef113
+  position:
+    x: 360
+    y: -180
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeCameraMemorizePosition
+  position:
+    x: 1100
+    y: 120
+
+NodeCameraMemorizePosition:
+  type: CAMERA_MEMORIZE_POSITION
+  arguments:
+    target_reference: PlayerCamera
+  outputs:
+    0: NodePlayAnimationStart
+  position:
+    x: 1280
+    y: -40
+
+NodePlayAnimationStart:
+  type: PLAY_EVENT_ANIMATION
+  arguments:
+    animation_name: Start
+  outputs:
+    0: NodeCameraMove
+  position:
+    x: 880
+    y: 120
+
+NodeCameraMove:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera1
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait220
+  position:
+    x: 1620
+    y: -120
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I remember now."
+  outputs:
+    0: NodeCameraMove264
+  position:
+    x: 2200
+    y: -80
+
+NodeWait220:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText
+  position:
+    x: 1960
+    y: -60
+
+NodeCameraMove264:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera2
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait276
+  position:
+    x: 2500
+    y: -140
+
+NodeWait276:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText292
+  position:
+    x: 2860
+    y: -40
+
+NodeText292:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "That time one of the kingdom's heroes showed up in the forest."
+  outputs:
+    0: NodeText308
+  position:
+    x: 3084
+    y: -115
+
+NodeText308:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "He wanted to kill us."
+  outputs:
+    0: NodeCameraMove352
+  position:
+    x: 3320
+    y: -140
+
+NodeCameraMove352:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera3
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait358
+  position:
+    x: 3780
+    y: -180
+
+NodeWait358:
+  type: WAIT
+  arguments:
+    time: 3.5
+  outputs:
+    0: NodeText374
+  position:
+    x: 4200
+    y: -60
+
+NodeText374:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "All he ended up doing was putting a gash in our tree, though."
+  outputs:
+    0: NodeText390
+  position:
+    x: 4400
+    y: -180
+
+NodeText390:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "My friend was really upset."
+  outputs:
+    0: NodeCameraMove450
+  position:
+    x: 4817
+    y: -149
+
+NodeCameraMove450:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera4
+    time: 1.5
+    interpolation: 0.1
+  outputs:
+    0: NodeWait456
+  position:
+    x: 5140
+    y: -200
+
+NodeWait456:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText472
+  position:
+    x: 5520
+    y: -140
+
+NodeText472:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "But then we decided to look inside the tree, and..."
+  outputs:
+    0: NodeWait3
+  position:
+    x: 5680
+    y: -180
+
+NodeWait3:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraMove516
+  position:
+    x: 5520
+    y: -140
+
+
+NodeCameraMove516:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera5
+    time: 1.5
+    interpolation: 0.1
+  outputs:
+    0: NodeWait4
+  position:
+    x: 5960
+    y: -140
+
+NodeWait4:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText532
+  position:
+    x: 5520
+    y: -140
+
+NodeText532:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "That's what it was!"
+  outputs:
+    0: NodeText548
+  position:
+    x: 6320
+    y: -140
+
+NodeText548:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Those crystals growing inside the tree!"
+  outputs:
+    0: NodeText566
+  position:
+    x: 6620
+    y: -160
+
+NodeText566:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "They glowed as red as the leaves."
+  outputs:
+    0: NodeText582
+  position:
+    x: 6920
+    y: -120
+
+NodeText582:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "My friend loved them so much that they took one for themself."
+  outputs:
+    0: NodeWait588
+  position:
+    x: 7200
+    y: -120
+
+NodeWait588:
+  type: WAIT
+  arguments:
+    time: 1
+  outputs:
+    0: NodeCameraMove638
+  position:
+    x: 7460
+    y: -100
+
+NodeWait594:
+  type: WAIT
+  arguments:
+    time: 4
+  outputs:
+    0: NodeText654
+  position:
+    x: 7980
+    y: -120
+
+NodeCameraMove638:
+  type: CAMERA_MOVE_TO_CAMERA
+  arguments:
+    target_reference: PlayerCamera
+    camera_target: Camera6
+    time: 3
+    interpolation: 0.1
+  outputs:
+    0: NodeWait594
+  position:
+    x: 7660
+    y: -140
+
+NodeText654:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "That must be what this crystal is."
+  outputs:
+    0: NodeText670
+  position:
+    x: 8220
+    y: -180
+
+NodeText670:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Something to remember them by. Something to remember our friendship..."
+  outputs:
+    0: NodeWait692
+  position:
+    x: 8460
+    y: -220
+
+NodeText686:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "I remember everything now."
+  outputs:
+    0: NodeText708
+  position:
+    x: 8920
+    y: -220
+
+NodeWait692:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText686
+  position:
+    x: 8700
+    y: -80
+
+NodeText708:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Buck-Thoo
+    sound_pitch: 0.95
+    text: "Thank you."
+  outputs:
+    0: NodeWait714
+  position:
+    x: 9220
+    y: -80
+
+NodeWait714:
+  type: WAIT
+  arguments:
+    time: 1.5
+  outputs:
+    0: NodeFade
+  position:
+    x: 9480
+    y: -60
+
+NodeFade:
+  type: FADE
+  arguments:
+    time: 3
+    color: ff000000
+    fadein: 0
+  outputs:
+    0: NodeWait787
+  position:
+    x: 9660
+    y: -160
+
+NodeFade795:
+  type: FADE
+  arguments:
+    time: 1
+    color: ffffffff
+    fadein: 1
+  outputs:
+    0: NodeWait861
+  position:
+    x: 10100
+    y: -160
+
+NodeWait787:
+  type: WAIT
+  arguments:
+    time: 6
+  outputs:
+    0: NodeEnd
+  position:
+    x: 9940
+    y: -160
+
+NodeWait861:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeCameraMemorizePosition870
+  position:
+    x: 10420
+    y: -160
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 11380
+    y: -80
+
+NodeWait876:
+  type: WAIT
+  arguments:
+    time: 4
+  outputs:
+    0: NodeEnd
+  position:
+    x: 11060
+    y: -60
+
+NodeCameraMemorizePosition870:
+  type: CAMERA_MOVE_TO_MEMORIZED
+  arguments:
+    target_reference: PlayerCamera
+    time: 3
+    interpolation: true
+  outputs:
+    0: NodeWait876
+  position:
+    x: 10680
+    y: -140

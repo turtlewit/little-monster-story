@@ -1,0 +1,213 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://collectibles/collectible_large_level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://areas/test_platforming/flooring_tmp.tres" type="Material" id=3]
+
+
+
+
+
+
+[sub_resource type="Environment" id=1]
+background_mode = 1
+glow_enabled = true
+glow_intensity = 0.05
+glow_strength = 1.24
+glow_blend_mode = 0
+glow_hdr_threshold = 0.51
+glow_hdr_scale = 1.0
+glow_bicubic_upscale = true
+
+[node name="Spatial" type="Spatial"]
+
+[node name="NewPlayer" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.98408, 0.701757, 31.5937 )
+
+[node name="Level" type="CSGBox" parent="."]
+transform = Transform( 8.42014, 0, 0, 0, 0.284854, 0, 0, 0, 34.29, 0, 0, 0 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 2147484673
+width = 3.0
+material = ExtResource( 3 )
+
+[node name="Pedestal" type="CSGCombiner" parent="Level"]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Level/Pedestal"]
+transform = Transform( 0.225182, 0, 0, 0, 9.6488, 0, 0, 0, 0.0580462, 0.755011, 1.1732, 0.595286 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Level/Pedestal"]
+transform = Transform( 0.225182, 0, 0, 0, 9.6488, 0, 0, 0, 0.0580462, 0.343572, 2.92002, 0.445493 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Level/Pedestal"]
+transform = Transform( 0.225182, 0, 0, 0, 11.3886, 0, 0, 0, 0.0580462, -0.425294, 4.4353, 0.412932 )
+
+[node name="Leap" type="CSGCombiner" parent="Level"]
+
+[node name="CSGBox2" type="CSGBox" parent="Level/Leap"]
+transform = Transform( 0.165075, 0, 0, 0, 0.497272, 0, 0, 0, 0.0311095, 1.13997, 9.10181, 0.0779758 )
+
+[node name="CSGBox4" type="CSGBox" parent="Level/Leap"]
+transform = Transform( 0.165075, 0, 0, 0, 0.497273, 0, 0, 0, 0.0311095, 1.13997, 26.0247, -0.171177 )
+
+[node name="CSGBox6" type="CSGBox" parent="Level/Leap"]
+transform = Transform( 0.165075, 0, 0, 0, 0.497273, 0, 0, 0, 0.0311095, 1.13997, 39.2861, -0.361617 )
+
+[node name="CSGBox7" type="CSGBox" parent="Level/Leap"]
+transform = Transform( 0.165075, 0, 0, 0, 0.497273, 0, 0, 0, 0.0311095, 1.13997, 51.5878, -0.585822 )
+
+[node name="CSGBox8" type="CSGBox" parent="Level/Leap"]
+transform = Transform( 0.165075, 0, 0, 0, 0.497273, 0, 0, 0, 0.0311095, 1.13997, 68.8024, -0.315919 )
+
+[node name="First" type="CSGBox" parent="Level"]
+transform = Transform( 1, 0, 0, 0, 2.09789, 0, 0, 0, 0.0772812, -0.013615, 1.45161, 0.777139 )
+
+[node name="Gateway" type="CSGBox" parent="Level"]
+transform = Transform( 1.38367, 0, 0, 0, 0.621474, 0, 0, 0, 0.0772815, -0.0629772, 8.13599, 0.235003 )
+depth = 1.36065
+
+[node name="Aside" type="CSGBox" parent="Level"]
+transform = Transform( 0.931316, 0, 0, 0, 0.751123, 0, 0, 0, 0.573944, -2.42721, 8.0238, 0.0695531 )
+depth = 0.928
+material = ExtResource( 3 )
+
+[node name="Foutnain" type="CSGCombiner" parent="Level/Aside"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.227117 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Level/Aside/Foutnain"]
+transform = Transform( 0.427521, 0, 0, 0, 2.28626, 0, 0, 0, 0.160838, 0, 2.07934, 0 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Level/Aside/Foutnain"]
+transform = Transform( 0.282682, 0, 0, 0, 2.28626, 0, 0, 0, 0.106348, 0, 4.01241, 0 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Level/Aside/Foutnain"]
+transform = Transform( 0.163523, 0, 0, 0, 2.17018, 0, 0, 0, 0.061519, 0, 5.83714, 0 )
+
+[node name="Pit" type="CSGCombiner" parent="Level/Aside"]
+
+[node name="CSGBox3" type="CSGBox" parent="Level/Aside/Pit"]
+transform = Transform( 1.06282, 0, 0, 0, 4.74066, 0, 0, 0, 0.133671, -0.0485623, -46.6972, 0.74959 )
+height = 2.70413
+
+[node name="CSGBox4" type="CSGBox" parent="Level/Aside/Pit"]
+transform = Transform( 1.06282, 0, 0, 0, 4.74066, 0, 0, 0, 0.133671, -0.0485623, -33.6597, 0.580788 )
+height = 3.30542
+
+[node name="CSGBox" type="CSGBox" parent="Level/Aside/Pit"]
+transform = Transform( 0.999999, 0, 0, 0, 28.9032, 0, 0, 0, 0.528986, 0, -28.0274, 0.984042 )
+material = ExtResource( 3 )
+
+[node name="CSGBox" type="CSGBox" parent="Level/Aside/Pit/CSGBox"]
+transform = Transform( 0.858062, 0, 0, 0, 0.925769, 0, 0, 0, 0.925768, -0.0326853, 0.149139, -0.0425248 )
+operation = 2
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Level/Aside/Pit"]
+transform = Transform( 0.16091, 0, 0, 0, 0.999999, 0, 0, 0, 0.117544, 0, 0, 1.3952 )
+depth = 1.6995
+
+[node name="Walls" type="CSGCombiner" parent="Level"]
+
+[node name="Wall2" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.0769849, 0, 0, 0, 53.7708, 0, 0, 0, 1, 1.38213, 39.4607, 0 )
+material = ExtResource( 3 )
+
+[node name="Wall" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.0769849, 0, 0, 0, 4.45074, 0, 0, 0, 1, -1.45967, 4.32319, 0 )
+material = ExtResource( 3 )
+
+[node name="Wall3" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.0769849, 0, 0, 0, 15.6007, 0, 0, 0, 0.341855, -1.46162, 20.5081, 0.631588 )
+height = 5.08411
+material = ExtResource( 3 )
+
+[node name="Wall7" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.0769849, 0, 0, 0, 15.6007, 0, 0, 0, 0.341855, -3.29737, 20.9514, 0.340689 )
+height = 5.08411
+depth = 3.44471
+material = ExtResource( 3 )
+
+[node name="Wall5" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.0769849, 0, 0, 0, 25.1412, 0, 0, 0, 0.4277, -1.46162, 36.606, -0.61894 )
+height = 3.81394
+material = ExtResource( 3 )
+
+[node name="Wall4" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.823783, 0, 0, 0, 15.6007, 0, 0, 0, 0.0139371, -2.40383, 20.5081, 0.901916 )
+height = 5.31696
+material = ExtResource( 3 )
+
+[node name="Wall8" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 0.823783, 0, 0, 0, 15.6007, 0, 0, 0, 0.0139371, -2.40383, 20.5081, -0.213344 )
+width = 2.06066
+height = 5.31696
+material = ExtResource( 3 )
+
+[node name="Wall6" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 1.47931, 0, 0, 0, 28.015, 0, 0, 0, 0.0224482, 0.0417599, 38.5195, -0.992737 )
+width = 2.3875
+height = 3.39692
+material = ExtResource( 3 )
+
+[node name="Wall9" type="CSGBox" parent="Level/Walls"]
+transform = Transform( 1.47931, 0, 0, 0, 28.015, 0, 0, 0, 0.0224482, 0.0417599, 38.5195, 0.99576 )
+width = 2.14612
+height = 3.39692
+material = ExtResource( 3 )
+
+[node name="Fall-cutout" type="CSGCylinder" parent="Level"]
+transform = Transform( 0.692554, 0, 0, 0, 4.41808, 0, 0, 0, 0.168048, -0.428694, -0.0580941, -0.580947 )
+operation = 2
+invert_faces = true
+
+[node name="Fall" type="CSGCombiner" parent="Level"]
+transform = Transform( 0.867208, 0, 0, 0, 0.992346, 0, 0, 0, 0.867209, -0.428694, -0.107946, -0.580947 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Level/Fall"]
+transform = Transform( 0.923979, 0, 0, 0, 24.305, 0, 0, 0, 0.234105, 0, -11.0196, 0 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Level/Fall/CSGCylinder"]
+transform = Transform( 0.912219, 0, 0, 0, 1, 0, 0, 0, 0.912219, 0, 0.0366826, 0 )
+operation = 2
+material = ExtResource( 3 )
+
+[node name="Return" type="CSGCylinder" parent="Level/Fall"]
+transform = Transform( 0.844592, 0, 0, 0, 19.8665, 0, 0, 0, 0.213991, 0, -19.8592, 0 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Level/Fall/Return"]
+transform = Transform( 0.682214, 0, 0, 0, 1, 0, 0, 0, 0.682214, 0, 0.0366831, 0 )
+operation = 2
+
+[node name="Collectible" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63278, -1.38606, -19.8109 )
+visible = false
+
+[node name="Collectible5" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3167, 0.591956, 33.1184 )
+visible = false
+
+[node name="Collectible6" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.66061, 3.1777, 14.1695 )
+visible = false
+
+[node name="Collectible3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4468, 4.06457, -2.07269 )
+visible = false
+
+[node name="Collectible4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4177, 2.87159, 29.6393 )
+visible = false
+
+[node name="Collectible2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.59168, 20.0722, -10.8475 )
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.829574, -1.98794e-07, 0.558397, -0.282307, 0.862787, 0.419405, -0.481778, -0.505567, 0.715746, -4.19112, 13.0415, 5.3803 )
+__meta__ = {
+"_editor_description_": ""
+}

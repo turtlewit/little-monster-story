@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player/ribbit.png" type="Texture" id=1]
+[ext_resource path="res://player/ribbit_particles.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_transparent = true
+flags_unshaded = true
+params_billboard_mode = 3
+params_use_alpha_scissor = true
+params_alpha_scissor_threshold = 0.13
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 28, 28 )
+
+[node name="RibbitParticles" type="CPUParticles"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+emitting = false
+amount = 1
+one_shot = true
+local_coords = false
+mesh = SubResource( 2 )
+direction = Vector3( 0, 1, 0 )
+spread = 7.0
+gravity = Vector3( 0, -4.9, 0 )
+initial_velocity = 2.0
+angular_velocity = 45.0
+angular_velocity_random = 1.0
+scale_amount = 0.01
+script = ExtResource( 2 )

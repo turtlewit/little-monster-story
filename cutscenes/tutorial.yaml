@@ -1,0 +1,139 @@
+---
+NodeStart:
+  type: START
+  arguments: {}
+  outputs:
+    0: NodeWait
+  position:
+    x: 200
+    y: 140
+
+NodeWait:
+  type: WAIT
+  arguments:
+    time: 2
+  outputs:
+    0: NodeText
+  position:
+    x: 400
+    y: 120
+
+NodeText:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Welcome to this prototype, little monster."
+  outputs:
+    0: NodeChoice
+  position:
+    x: 620
+    y: 60
+
+NodeEnd:
+  type: END
+  arguments: {}
+  outputs: {}
+  position:
+    x: 2140
+    y: 40
+
+NodeText168:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Good luck."
+  outputs:
+    0: NodeEnd
+  position:
+    x: 1860
+    y: -60
+
+NodeText136:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Move the mouse to move the camera, and use WASD to change direction."
+  outputs:
+    0: NodeText152
+  position:
+    x: 1340
+    y: 380
+
+NodeText152:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Hold down Space or right click to charge up your jump, and release it to jump."
+  outputs:
+    0: GrappleKeyboard
+  position:
+    x: 1600
+    y: 360
+
+NodeText225:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Hold down A or RT/R2 to charge up your jump, and release it to jump."
+  outputs:
+    0: GrappleGamepad
+  position:
+    x: 1600
+    y: 0
+
+NodeText209:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Use the right stick to move the camera, and use the left stick to change direction."
+  outputs:
+    0: NodeText225
+  position:
+    x: 1320
+    y: 0
+
+GrappleKeyboard:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Hold down Left Click to grapple to surfaces using your tongue."
+  outputs:
+    0: NodeText168
+  position:
+    x: 0
+    y: 0
+
+GrappleGamepad:
+  type: DIALOGUE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Hold down LB/L1 to grapple to surfaces using your tongue."
+  outputs:
+    0: NodeText168
+  position:
+    x: 0
+    y: 0
+
+NodeChoice:
+  type: DIALOGUE_CHOICE
+  arguments:
+    speaker_name: Ominous Voice
+    sound_pitch: 0.8
+    text: "Are you using a controller?"
+    choices: 
+    - "Yes"
+    - "No"
+  outputs:
+    1: NodeText136
+    0: NodeText209
+  position:
+    x: 1040
+    y: -20

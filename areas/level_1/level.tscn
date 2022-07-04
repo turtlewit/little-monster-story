@@ -1,0 +1,556 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://areas/common/kill_area.gd" type="Script" id=2]
+[ext_resource path="res://areas/level_1/Environment.tscn" type="PackedScene" id=3]
+[ext_resource path="res://areas/level_1/prefabs/cutscene_2_props.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/game_ui/collectables.tscn" type="PackedScene" id=5]
+[ext_resource path="res://areas/level_1/prefabs/cutscene_3_props.tscn" type="PackedScene" id=6]
+[ext_resource path="res://collectibles/collectible_large_level.tscn" type="PackedScene" id=7]
+[ext_resource path="res://systems/cutscene/cutscene.tscn" type="PackedScene" id=8]
+[ext_resource path="res://areas/level_1/level_1.gd" type="Script" id=9]
+[ext_resource path="res://areas/level_1/level1-starparticles.tscn" type="PackedScene" id=10]
+[ext_resource path="res://areas/level_1/level1-environment.tscn" type="PackedScene" id=11]
+[ext_resource path="res://areas/common/Background Music.tscn" type="PackedScene" id=12]
+[ext_resource path="res://collectibles/collectible_small_level.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ui/textures/thanks_for_playing.png" type="Texture" id=14]
+[ext_resource path="res://areas/level_1/prefabs/cutscene_1_props.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ui/tutorial/tutorial_grapple.gd" type="Script" id=16]
+[ext_resource path="res://ui/tutorial/tutorial.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ui/tutorial/tutorial_tongue_controller.png" type="Texture" id=18]
+[ext_resource path="res://ui/tutorial/tutorial_tongue_keyboard.png" type="Texture" id=19]
+[ext_resource path="res://areas/level_1/change_lighting_areas.tscn" type="PackedScene" id=20]
+[ext_resource path="res://areas/level_1/active_camera_areas.tscn" type="PackedScene" id=21]
+[ext_resource path="res://areas/level_1/world_geometry.tscn" type="PackedScene" id=22]
+[ext_resource path="res://ui/tutorial/tutorial_walljump.png" type="Texture" id=23]
+[ext_resource path="res://ui/tutorial/tutorial_walljump.gd" type="Script" id=24]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 200, 1, 200 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 46.8184, 1, 98.0937 )
+
+[sub_resource type="BoxShape" id=3]
+extents = Vector3( 91.3173, 1, 40.7743 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "End"
+tracks/0/type = "method"
+tracks/0/path = NodePath("../../Cutscene1Props/Deer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Cutscene1Props/Deer2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "hide"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Start"
+tracks/0/type = "method"
+tracks/0/path = NodePath("../../Cutscene1Props/Deer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Cutscene1Props/Deer2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Start"
+tracks/0/type = "method"
+tracks/0/path = NodePath("../../Cutscene3Props/Deer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("../../Cutscene3Props/Deer2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("../../Cutscene3Props/Deer3")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath("../../Cutscene3Props/Deer4")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath("../../Cutscene3Props/Deer5")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+tracks/5/type = "method"
+tracks/5/path = NodePath("../../Cutscene3Props/Deer6")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "show"
+} ]
+}
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 2.49061, 2.68871, 2.96087 )
+
+[sub_resource type="BoxShape" id=8]
+extents = Vector3( 2.38366, 2.56879, 3.54557 )
+
+[node name="Spatial" type="Spatial" groups=[
+"Save",
+]]
+script = ExtResource( 9 )
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 11 )]
+
+[node name="StarParticles" parent="." instance=ExtResource( 10 )]
+
+[node name="Background Music" parent="." instance=ExtResource( 12 )]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.208881, 0.346251, 12.3443 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.848309, 0.351848, -0.395696, -0.0048723, 0.752454, 0.658627, 0.529479, -0.556791, 0.640028, 2.84961, 3.31138, 3.80575 )
+shadow_enabled = true
+directional_shadow_split_1 = 0.365
+directional_shadow_split_2 = 0.401
+directional_shadow_split_3 = 0.686
+directional_shadow_blend_splits = true
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 20.0
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( -0.237384, 0.967972, -0.0817266, -0.460587, -0.186228, -0.867859, -0.855283, -0.168374, 0.490043, 2.294, 3.75916, 0.328385 )
+visible = false
+light_energy = 0.2
+
+[node name="DirectionalLight3" type="DirectionalLight" parent="."]
+transform = Transform( -0.443813, -0.182411, -0.877358, -0.458182, 0.887603, 0.0472317, 0.770129, 0.422951, -0.477507, -3.59109, 3.75916, 0.328385 )
+visible = false
+light_energy = 0.2
+
+[node name="Environment" parent="." instance=ExtResource( 3 )]
+
+[node name="Kill Zones" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 67, -14.1862, -56 )
+script = ExtResource( 2 )
+
+[node name="Global" type="CollisionShape" parent="Kill Zones"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 22 )
+shape = SubResource( 1 )
+
+[node name="1" type="CollisionShape" parent="Kill Zones"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5435, 36.7466, 24.9098 )
+shape = SubResource( 2 )
+
+[node name="2" type="CollisionShape" parent="Kill Zones"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -47.7657, 36.7466, 55.0085 )
+shape = SubResource( 3 )
+
+[node name="SmallCollectibles" type="Node" parent="."]
+
+[node name="CollectibleSmall" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38301, 10.8422 )
+
+[node name="CollectibleSmall2" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159156, 1.75613, 6.55358 )
+
+[node name="CollectibleSmall3" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159156, 4.73392, -1.25958 )
+
+[node name="CollectibleSmall4" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159156, 3.05004, -10.8609 )
+
+[node name="CollectibleSmall5" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159156, 4.94594, -18.9449 )
+
+[node name="CollectibleSmall6" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49634, 0.373623, -44.74 )
+
+[node name="CollectibleSmall7" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.963248, 0.373623, -50.0785 )
+
+[node name="CollectibleSmall8" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35843, 0.373623, -56.2668 )
+
+[node name="CollectibleSmall9" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.19911, 2.93126, -68.4338 )
+
+[node name="CollectibleSmall10" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19539, 7.59141, -72.7603 )
+
+[node name="CollectibleSmall11" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6003, 10.7935, -85.9232 )
+
+[node name="CollectibleSmall12" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0459, 14.1753, -83.6649 )
+
+[node name="CollectibleSmall13" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.644, 16.8674, -84.499 )
+
+[node name="CollectibleSmall14" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.3014, 20.4118, -88.6057 )
+
+[node name="CollectibleSmall15" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.1179, 23.8451, -91.9307 )
+
+[node name="CollectibleSmall16" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5318, 27.288, -91.852 )
+
+[node name="CollectibleSmall17" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0907, 31.2383, -89.4748 )
+
+[node name="CollectibleSmall18" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7513, 35.9388, -85.6055 )
+
+[node name="CollectibleSmall29" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0368, 42.1205, -22.8611 )
+
+[node name="CollectibleSmall30" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0368, 42.1205, -28.0118 )
+
+[node name="CollectibleSmall31" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0368, 42.1205, -17.975 )
+
+[node name="CollectibleSmall33" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.0368, 42.1205, -8.00227 )
+
+[node name="CollectibleSmall32" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 100.78, 42.2703, -7.86382 )
+
+[node name="CollectibleSmall35" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 107.234, 42.0813, -3.00752 )
+
+[node name="CollectibleSmall36" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 107.234, 42.0813, 1.98867 )
+
+[node name="CollectibleSmall34" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 88.5639, 42.876, -1.50605 )
+
+[node name="CollectibleSmall39" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.66013, 38.5016, 25.4285 )
+
+[node name="CollectibleSmall40" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.66013, 38.4825, 9.95238 )
+
+[node name="CollectibleSmall45" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.2935, 41.8154, -21.2893 )
+
+[node name="CollectibleSmall46" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.125, 35.7472, -28.9285 )
+
+[node name="CollectibleSmall47" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5137, 35.7472, -28.5612 )
+
+[node name="CollectibleSmall48" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8598, 35.7472, -28.1991 )
+
+[node name="CollectibleSmall49" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.0067, 33.3757, -33.2116 )
+
+[node name="CollectibleSmall50" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.5067, 35.2055, -27.1308 )
+
+[node name="CollectibleSmall61" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 56.1776, 35.8162, -24.1268 )
+
+[node name="CollectibleSmall51" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0854, 34.4368, -33.5541 )
+
+[node name="CollectibleSmall52" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 56.7185, 36.9646, -38.1228 )
+
+[node name="CollectibleSmall53" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 58.8389, 38.756, -44.414 )
+
+[node name="CollectibleSmall54" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.1032, 42.7125, -50.714 )
+
+[node name="CollectibleSmall55" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.181, 42.4973, -48.553 )
+
+[node name="CollectibleSmall56" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.9953, 43.5533, -48.1519 )
+
+[node name="CollectibleSmall57" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2352, 45.5905, -43.8338 )
+
+[node name="CollectibleSmall58" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.8245, 48.6013, -41.4252 )
+
+[node name="CollectibleSmall59" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.5514, 52.21, -40.5974 )
+
+[node name="CollectibleSmall60" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.2766, 55.5269, -39.2325 )
+
+[node name="CollectibleSmall62" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 2.52149, -28.1338 )
+
+[node name="CollectibleSmall63" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 3.03322, -27.4062 )
+
+[node name="CollectibleSmall64" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 3.59698, -26.5596 )
+
+[node name="CollectibleSmall65" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 4.10848, -25.738 )
+
+[node name="CollectibleSmall66" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 4.69796, -24.9425 )
+
+[node name="CollectibleSmall71" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 7.49488, -27.4062 )
+
+[node name="CollectibleSmall72" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 8.05864, -26.5596 )
+
+[node name="CollectibleSmall73" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 8.57014, -25.738 )
+
+[node name="CollectibleSmall74" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 9.15962, -24.9425 )
+
+[node name="CollectibleSmall67" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 5.18483, -25.738 )
+
+[node name="CollectibleSmall70" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 6.83872, -28.1338 )
+
+[node name="CollectibleSmall69" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 6.32607, -27.4062 )
+
+[node name="CollectibleSmall68" parent="SmallCollectibles" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11073, 5.68864, -26.5596 )
+
+[node name="LargeCollectibles" type="Node" parent="."]
+
+[node name="CollectibleLarge" parent="LargeCollectibles" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.091, 37.5051, -88.2782 )
+cutscene = NodePath("../../Cutscenes/Cutscene1")
+
+[node name="CollectibleLarge2" parent="LargeCollectibles" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.691, 41.7676, 15.7452 )
+cutscene = NodePath("../../Cutscenes/Cutscene2")
+
+[node name="CollectibleLarge3" parent="LargeCollectibles" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3403, 56.3145, -37.3896 )
+cutscene = NodePath("../../Cutscenes/Cutscene3")
+
+[node name="Cutscene1Props" parent="." instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1707, 7.4566, -94.9564 )
+
+[node name="pine_tree_small3" parent="Cutscene1Props" index="4"]
+transform = Transform( -0.196675, 0, 0.154334, 0, 0.25, 0, -0.154334, 0, -0.196675, 8.79408, 1.34906, 16.1451 )
+
+[node name="Cutscene2Props" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 106.956, 42.2788, 12.9254 )
+
+[node name="Deer" parent="Cutscene2Props" index="0"]
+visible = true
+
+[node name="Deer2" parent="Cutscene2Props" index="1"]
+visible = true
+
+[node name="Cutscene3Props" parent="." instance=ExtResource( 6 )]
+
+[node name="Cutscenes" type="Node" parent="."]
+
+[node name="Cutscene1" parent="Cutscenes" instance=ExtResource( 8 )]
+cutscene_file = "res://areas/level_1/cutscene_1.yaml"
+
+[node name="AnimationPlayer" parent="Cutscenes/Cutscene1" index="0"]
+anims/End = SubResource( 4 )
+anims/Start = SubResource( 5 )
+
+[node name="Camera" type="Camera" parent="Cutscenes/Cutscene1"]
+transform = Transform( -0.450311, -0.0443269, -0.891771, 0, 0.998767, -0.0496453, 0.892872, -0.0223558, -0.449756, 10.1843, 8.50422, -105.074 )
+
+[node name="Cutscene2" parent="Cutscenes" instance=ExtResource( 8 )]
+cutscene_file = "res://areas/level_1/cutscene_2.yaml"
+
+[node name="Camera" type="Camera" parent="Cutscenes/Cutscene2"]
+transform = Transform( -0.751998, -0.212923, -0.623828, 0, 0.946392, -0.323019, 0.659165, -0.24291, -0.711686, 105.571, 42.3965, 15.4875 )
+
+[node name="Cutscene3" parent="Cutscenes" instance=ExtResource( 8 )]
+cutscene_file = "res://areas/level_1/cutscene_3.yaml"
+
+[node name="AnimationPlayer" parent="Cutscenes/Cutscene3" index="0"]
+anims/Start = SubResource( 6 )
+
+[node name="Camera" type="Camera" parent="Cutscenes/Cutscene3"]
+transform = Transform( 0.00697984, -0.910332, 0.41382, 0, 0.41383, 0.910354, -0.999976, -0.00635413, 0.00288847, 100.537, 122.221, -31.3729 )
+
+[node name="Camera2" type="Camera" parent="Cutscenes/Cutscene3"]
+transform = Transform( -0.685288, -0.18055, 0.705537, 0, 0.968782, 0.247916, -0.728272, 0.169894, -0.663894, 13.9233, 9.78731, -104.483 )
+
+[node name="Camera3" type="Camera" parent="Cutscenes/Cutscene3"]
+transform = Transform( 0.949192, 0.0848695, -0.303039, 0, 0.962949, 0.269685, 0.314699, -0.255983, 0.914023, 70.192, 38.664, -111.17 )
+
+[node name="Camera4" type="Camera" parent="Cutscenes/Cutscene3"]
+transform = Transform( 0.57045, 0.510681, -0.643266, 0, 0.783199, 0.621771, 0.821332, -0.35469, 0.446776, 11.7261, 35.2192, 18.4787 )
+
+[node name="Camera5" type="Camera" parent="Cutscenes/Cutscene3"]
+transform = Transform( 0.77969, -0.230971, 0.582011, 0, 0.929483, 0.368865, -0.626167, -0.2876, 0.724708, 19.1665, 31.2324, 16.2421 )
+
+[node name="Camera6" type="Camera" parent="Cutscenes/Cutscene3"]
+transform = Transform( -0.387513, 0.467129, 0.794748, 0, 0.86211, -0.506722, -0.921864, -0.196361, -0.334079, 59.2216, 56.167, -40.0746 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Collectibles" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+layer = 8
+
+[node name="ThanksForPlaying" type="TextureRect" parent="CanvasLayer2"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8418, 37.8674, -88.1254 )
+keyboard_images = [ ExtResource( 19 ) ]
+controller_images = [ ExtResource( 18 ) ]
+action_signals = [ "used_grapple" ]
+
+[node name="CollisionShape" parent="Tutorial" index="0"]
+shape = SubResource( 7 )
+
+[node name="Inputs" parent="Tutorial" index="5"]
+script = ExtResource( 16 )
+
+[node name="Tutorial2" parent="." instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.026212, 1.31609, -28.385 )
+keyboard_images = [ ExtResource( 23 ) ]
+controller_images = [ ExtResource( 23 ) ]
+action_signals = [ "walljumped" ]
+
+[node name="CollisionShape" parent="Tutorial2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20269, 0 )
+shape = SubResource( 8 )
+
+[node name="Inputs" parent="Tutorial2" index="5"]
+script = ExtResource( 24 )
+
+[node name="ChangeLightingAreas" parent="." instance=ExtResource( 20 )]
+
+[node name="ActiveCameraAreas" parent="." instance=ExtResource( 21 )]
+
+[node name="World Geometry" parent="." instance=ExtResource( 22 )]
+visible = false
+[connection signal="body_entered" from="Kill Zones" to="Kill Zones" method="_on_Area_body_entered"]
+[connection signal="cutscene_finished" from="Cutscenes/Cutscene3" to="." method="finish_level_prototype"]
+
+[editable path="Cutscene1Props"]
+
+[editable path="Cutscene2Props"]
+
+[editable path="Cutscene3Props"]
+
+[editable path="Cutscenes/Cutscene1"]
+
+[editable path="Cutscenes/Cutscene3"]
+
+[editable path="Tutorial"]
+
+[editable path="Tutorial2"]

@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://characters/frog/frog_emission.png" type="Texture" id=1]
+[ext_resource path="res://characters/frog/frog_texture.png" type="Texture" id=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type spatial;
+render_mode unshaded;
+
+uniform float flip_mask;
+uniform sampler2D render_texture;
+uniform sampler2D mask;
+uniform sampler2D albedo;
+
+
+void fragment() {
+	float enable = texture(mask, UV).x;
+	
+	enable = (flip_mask - enable) * ((flip_mask - 0.5) * 2.0);
+	ALBEDO = (texture(render_texture, SCREEN_UV).xyz * enable) + (texture(albedo, UV).xyz * (1.0 - enable));
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/flip_mask = 1.0
+shader_param/mask = ExtResource( 1 )
+shader_param/albedo = ExtResource( 2 )

@@ -1,0 +1,1865 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://collectibles/collectible_small_level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://areas/level_1/prefabs/lily_pad_platform_static.tscn" type="PackedScene" id=2]
+[ext_resource path="res://materials/test_material/test_material.tres" type="Material" id=3]
+[ext_resource path="res://areas/common/moving_platforms/rotating_log.gd" type="Script" id=4]
+[ext_resource path="res://areas/common/moving_platforms/moving_platform_path.gd" type="Script" id=5]
+[ext_resource path="res://areas/level_1/models/lily_pad/lily_pad.tscn" type="PackedScene" id=6]
+[ext_resource path="res://areas/common/platforming/rolling_log.tscn" type="PackedScene" id=7]
+[ext_resource path="res://areas/common/platforming/under_swing.tscn" type="PackedScene" id=8]
+[ext_resource path="res://areas/level_1/prefabs/tree_platform_static.tscn" type="PackedScene" id=9]
+[ext_resource path="res://areas/level_1/prefabs/tree_platform_tree_static.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.168627, 0.690196, 0.690196, 1 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+
+[sub_resource type="SpatialMaterial" id=2]
+flags_transparent = true
+albedo_color = Color( 0, 0, 0, 0.470588 )
+
+[sub_resource type="Curve3D" id=3]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0.00435257, -0.00230789, 7.62939e-05, 0, 0, 0, 0, 0, 0, -4.54888, 0.0073967, 0.00868988 ),
+"tilts": PoolRealArray( 0, 0 )
+}
+
+[sub_resource type="CylinderShape" id=4]
+radius = 0.3
+height = 0.02
+
+[sub_resource type="Curve3D" id=5]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0.00435257, -0.00230789, 7.62939e-05, 0, 0, 0, 0, 0, 0, 0.000595093, 2.7805, 0.0156937 ),
+"tilts": PoolRealArray( 0, 0 )
+}
+
+[sub_resource type="CylinderShape" id=6]
+radius = 0.28
+height = 0.0646388
+
+[sub_resource type="CylinderMesh" id=7]
+material = ExtResource( 3 )
+top_radius = 2.0
+bottom_radius = 2.0
+height = 10.0
+
+[sub_resource type="CylinderShape" id=8]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="CylinderShape" id=9]
+radius = 2.0
+height = 10.0
+
+[sub_resource type="CubeMesh" id=10]
+material = ExtResource( 3 )
+size = Vector3( 2, 15, 2 )
+
+[sub_resource type="BoxShape" id=11]
+extents = Vector3( 1, 7.5, 1 )
+
+[sub_resource type="Curve3D" id=12]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, -0.00743484, -0.0469093, 0.0188293, 2.13583, -0.0635681, 0, -2.13583, 0.0635681, 0, -1.84343, 2.1549, -0.0186691, 0, 0, 0, 0, 0, 0, -3.85212, 0.0317841, -0.0186691, -2.23754, 0.0127144, 0, 2.23754, -0.0127144, 0, -1.86885, -2.38374, -0.0186691, 0, 0, 0, 0, 0, 0, -0.00743484, -0.0469093, 0.0188293, 0, 0, 0, 0, 0, 0, -0.00743484, -0.0469093, 0.0188293 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
+}
+
+[sub_resource type="CubeMesh" id=13]
+material = ExtResource( 3 )
+size = Vector3( 8, 0.25, 4.25 )
+
+[sub_resource type="BoxShape" id=14]
+extents = Vector3( 4, 0.125, 2.125 )
+
+[sub_resource type="Curve3D" id=15]
+_data = {
+"points": PoolVector3Array( 0, 0, 0, 0, 0, 0, 0.00435257, -0.00230789, 7.62939e-05, 0, 0, 0, 0, 0, 0, 0.00666857, -0.00846291, 2.28141, 0, 0, 0, 0, 0, 0, 0.0137186, -0.00846291, 5.0507, 0, 0, 0, 0, 0, 0, -0.00972176, -0.001894, 8.09967, 0, 0, 0, 0, 0, 0, -0.0219564, 0.00242424, 10.6872, 0, 0, 0, 0, 0, 0, -0.0382891, 0.00613213, 13.1342 ),
+"tilts": PoolRealArray( 0, 0, 0, 0, 0, 0 )
+}
+
+[node name="Environment" type="Spatial"]
+
+[node name="Height Jump" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1594 )
+
+[node name="CSGBox14" type="CSGBox" parent="Height Jump"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00379753, -3.8147e-06, 0.623725 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 0.25
+depth = 54.1394
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Height Jump/CSGBox14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00379753, 0.611345, 18.0552 )
+width = 5.0
+height = 1.0
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Height Jump/CSGBox14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0033207, 2.10786, 10.2718 )
+width = 5.0
+height = 4.0
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGCombiner" type="Spatial" parent="Height Jump/CSGBox14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00379753, 3.8147e-06, -10.1428 )
+
+[node name="CSGBox3" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.076, 10.8182 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox5" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.73487, 10.8182 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 3.70076
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97329, 2.6809 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 3.72137
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox6" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.55809, 2.6809 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 3.34048
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGCombiner2" type="Spatial" parent="Height Jump/CSGBox14"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00379753, 3.8147e-06, -18.2801 )
+
+[node name="CSGBox4" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.67189, 0.984688 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 9.08338
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox6" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.90642, 5.16187 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 12.4718
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox7" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.73445, -3.27508 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 10.6334
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="CSGBox8" type="CSGBox" parent="Height Jump/CSGBox14/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 15.0312, 0.922848 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 8.65898
+depth = 0.25
+material = ExtResource( 3 )
+
+[node name="Static Jump Distance" type="Spatial" parent="."]
+
+[node name="LilyPadPlatformStatic" parent="Static Jump Distance" instance=ExtResource( 2 )]
+transform = Transform( 0.28, 0, 0, 0, 0.28, 0, 0, 0, 0.28, 1.50959, 0.169983, -44.7523 )
+
+[node name="LilyPadPlatformStatic2" parent="Static Jump Distance" instance=ExtResource( 2 )]
+transform = Transform( -0.23005, 0, -0.159615, 0, 0.28, 0, 0.159615, 0, -0.23005, -1.05603, 0.169983, -50.0191 )
+
+[node name="LilyPadPlatformStatic3" parent="Static Jump Distance" instance=ExtResource( 2 )]
+transform = Transform( 0.0967614, 0, -0.262749, 0, 0.28, 0, 0.262749, 0, 0.0967614, 3.31387, 0.169983, -56.2768 )
+
+[node name="Intro Climbing" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.61832, 0, -67.2272 )
+
+[node name="CSGBox5" type="CSGBox" parent="Intro Climbing"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74388, 5.01557, -24.5741 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 23.9848
+height = 4.77875
+depth = 38.3062
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Intro Climbing/CSGBox5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.06813, -5.01557, 27.0311 )
+width = 6.42905
+height = 0.25
+depth = 9.0231
+material = ExtResource( 3 )
+
+[node name="CSGBox3" type="CSGBox" parent="Intro Climbing/CSGBox5/CSGBox2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16398, 1.31928, -6.4044 )
+width = 8.77371
+height = 2.77225
+depth = 6.39937
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Intro Climbing/CSGBox5/CSGBox2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11971, 3.05579, -7.47936 )
+width = 3.17727
+height = 0.993153
+depth = 1.99009
+material = ExtResource( 3 )
+
+[node name="CSGBox6" type="CSGBox" parent="Intro Climbing/CSGBox5/CSGBox2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14601, 3.73545, -7.34608 )
+width = 4.75147
+height = 2.23954
+depth = 2.55037
+material = ExtResource( 3 )
+
+[node name="CSGBox7" type="CSGBox" parent="Intro Climbing/CSGBox5/CSGBox2"]
+transform = Transform( 1, 0, 0, 0, 0.831973, -0.554815, 0, 0.554815, 0.831973, -1.10986, 1.32357, -1.28729 )
+height = 0.172319
+depth = 4.72034
+material = ExtResource( 3 )
+
+[node name="Tower" type="Spatial" parent="."]
+transform = Transform( -8.02794e-08, 0, -0.492752, 0, 0.8, 0, 0.492752, 0, -8.02794e-08, 20.7992, 7.7437, -88.1684 )
+
+[node name="TreePlatformTree" parent="Tower" instance=ExtResource( 10 )]
+transform = Transform( -7.16851e-08, 0, -0.44, 0, 0.38, 0, 0.44, 0, -7.16851e-08, 0, 12.305, 0 )
+
+[node name="TreePlatform" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( 0.333072, 0, 0.221502, 0, 0.4, 0, -0.221502, 0, 0.333072, 3.7101, 2.94996, 9.08569 )
+
+[node name="TreePlatform2" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( 0.140619, 0, 0.374468, 0, 0.4, 0, -0.374468, 0, 0.140619, 8.43463, 7.45599, 3.39565 )
+
+[node name="TreePlatform3" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( -0.250652, 0, 0.311726, 0, 0.4, 0, -0.311726, 0, -0.250652, 6.75041, 10.6261, -5.09884 )
+
+[node name="TreePlatform4" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( -0.518707, 0, -0.0522333, 0, 0.4, 0, 0.0796933, 0, -0.396798, -1.16129, 14.974, -6.65277 )
+
+[node name="TreePlatform5" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( -0.1249, 0, -0.379999, 0, 0.4, 0, 0.379999, 0, -0.1249, -7.1674, 19.2588, -2.40705 )
+
+[node name="TreePlatform6" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( 0.218458, 0, -0.335075, 0, 0.4, 0, 0.335075, 0, 0.218458, -6.75728, 23.5227, 4.20061 )
+
+[node name="TreePlatform7" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( 0.381448, 0, -0.120402, 0, 0.4, 0, 0.120402, 0, 0.381448, -2.32451, 28.5545, 9.16119 )
+
+[node name="TreePlatform8" parent="Tower" instance=ExtResource( 9 )]
+transform = Transform( 0.350002, 0, 0.193642, 0, 0.4, 0, -0.193642, 0, 0.350002, 5.45213, 34.4774, 9.42052 )
+
+[node name="Intro Grapple2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1823, 39.9389, -88.3184 )
+
+[node name="CSGBox" type="CSGBox" parent="Intro Grapple2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6932, 0.880985, 0 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="Intro Grapple2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47371, -3.191, 0.381622 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 9.43621
+height = 0.25
+depth = 10.3491
+material = ExtResource( 3 )
+
+[node name="Round Grapple" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.2248, 39.9389, -94.6542 )
+
+[node name="CSGBox" type="CSGBox" parent="Round Grapple"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65884, 1.33078, 5.03777 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="CSGCombiner2" type="CSGCombiner" parent="Round Grapple"]
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CSGBox3" type="CSGBox" parent="Round Grapple/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143082, -3.5626, -2.79597 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 9.43621
+height = 0.25
+depth = 10.3491
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Round Grapple/CSGCombiner2"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, -4.64115, 0, -1.47301 )
+use_collision = true
+collision_layer = 2147484673
+collision_mask = 1025
+width = 0.5
+height = 10.0
+depth = 13.1066
+material = SubResource( 2 )
+
+[node name="Round Grapple2" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 73.9472, 39.9389, -113.806 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CSGBox" type="CSGBox" parent="Round Grapple2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65884, 1.33078, -7.98289 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="CSGCombiner2" type="CSGCombiner" parent="Round Grapple2"]
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CSGBox3" type="CSGBox" parent="Round Grapple2/CSGCombiner2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143082, -3.5626, -2.54819 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 9.43621
+height = 0.25
+depth = 5.45997
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Round Grapple2/CSGCombiner2"]
+transform = Transform( 1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, -4.64115, 0, -1.47301 )
+use_collision = true
+collision_layer = 2147484673
+collision_mask = 1025
+width = 0.5
+height = 10.0
+depth = 13.1066
+material = SubResource( 2 )
+
+[node name="Under Swing" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, 1, 71.4279, 36.5263, -118.318 )
+
+[node name="CSGBox4" type="CSGBox" parent="Under Swing"]
+transform = Transform( 8.9407e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, -8.9407e-08, -4.37114e-08, -2.70229, -5.23031, 2.76911 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 12.259
+height = 0.25
+depth = 10.3491
+material = ExtResource( 3 )
+
+[node name="CSGBox6" type="CSGBox" parent="Under Swing"]
+transform = Transform( -1, -8.9407e-08, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -8.9407e-08, 1, 4.37114e-08, 5.24015, -5.23031, 7.46552 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 15.9248
+height = 0.25
+depth = 10.3491
+material = ExtResource( 3 )
+
+[node name="CSGBox5" type="CSGBox" parent="Under Swing"]
+transform = Transform( 8.9407e-08, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, -8.9407e-08, -4.37114e-08, 2.75844, 3.38286, 3.00811 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 11.8479
+height = 0.25
+depth = 10.3491
+material = ExtResource( 3 )
+
+[node name="CSGBox7" type="CSGBox" parent="Under Swing"]
+transform = Transform( 4.56956e-08, 0, 1, 0, 1, 0, -1, 0, 4.56956e-08, 6.77461, -7.30235, 5.25651 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 4.16997
+height = 0.25
+depth = 9.81986
+material = ExtResource( 3 )
+
+[node name="Moving Platforms Distance" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.3321, 28.9689, -119.668 )
+
+[node name="MovingPlatformPath3" type="RigidBody" parent="Moving Platforms Distance" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.47068, 0.23268, -1.11302 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Distance/MovingPlatformPath3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00863647, -0.267281 )
+curve = SubResource( 3 )
+
+[node name="lily_pad" parent="Moving Platforms Distance/MovingPlatformPath3" instance=ExtResource( 6 )]
+transform = Transform( 0.0705416, 0, -0.270968, 0, 0.28, 0, 0.270968, 0, 0.0705416, 0, 0, 7.62939e-06 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="Moving Platforms Distance/MovingPlatformPath3"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, -0.151245, 0 )
+shape = SubResource( 4 )
+
+[node name="MovingPlatformPath4" type="RigidBody" parent="Moving Platforms Distance" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.47068, 0.23268, 1.88698 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Distance/MovingPlatformPath4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00863647, -0.267281 )
+curve = SubResource( 3 )
+
+[node name="lily_pad2" parent="Moving Platforms Distance/MovingPlatformPath4" instance=ExtResource( 6 )]
+transform = Transform( -0.1058, 0, 0.259242, 0, 0.28, 0, -0.259242, 0, -0.1058, -1.52588e-05, 0, 0 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="Moving Platforms Distance/MovingPlatformPath4"]
+transform = Transform( -2.03699e-07, 0, -4.66009, 0, 4.66009, 0, 4.66009, 0, -2.03699e-07, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MovingPlatformPath5" type="RigidBody" parent="Moving Platforms Distance" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0.529323, 0.23268, -1.11302 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Distance/MovingPlatformPath5"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00863647, -0.267281 )
+curve = SubResource( 3 )
+
+[node name="CollectibleSmall19" parent="Moving Platforms Distance/MovingPlatformPath5" instance=ExtResource( 1 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -0.0640106, 0.347595, 0.0280991 )
+
+[node name="lily_pad3" parent="Moving Platforms Distance/MovingPlatformPath5" instance=ExtResource( 6 )]
+transform = Transform( -0.237072, 0, -0.148986, 0, 0.28, 0, 0.148986, 0, -0.237072, 0, 0, 0 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="Moving Platforms Distance/MovingPlatformPath5"]
+transform = Transform( 6.11096e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, 6.11096e-07, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MovingPlatformPath6" type="RigidBody" parent="Moving Platforms Distance" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, 2.52932, 0.23268, 2.88698 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Distance/MovingPlatformPath6"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00863647, -0.267281 )
+curve = SubResource( 3 )
+
+[node name="lily_pad4" parent="Moving Platforms Distance/MovingPlatformPath6" instance=ExtResource( 6 )]
+transform = Transform( 0.18305, 0, -0.211879, 0, 0.28, 0, 0.211879, 0, 0.18305, 0, 0, 0 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="Moving Platforms Distance/MovingPlatformPath6"]
+transform = Transform( -1.0185e-06, 0, -4.66009, 0, 4.66009, 0, 4.66009, 0, -1.0185e-06, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="MovingPlatformPath7" type="RigidBody" parent="Moving Platforms Distance" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 7.52932, 0.23268, -2.85202 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Distance/MovingPlatformPath7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00863647, -0.267281 )
+curve = SubResource( 3 )
+
+[node name="lily_pad9" parent="Moving Platforms Distance/MovingPlatformPath7" instance=ExtResource( 6 )]
+transform = Transform( -0.277183, 0, 0.0396169, 0, 0.28, 0, -0.0396169, 0, -0.277183, 0, 0, 7.62939e-06 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Moving Platforms Distance/MovingPlatformPath7"]
+transform = Transform( 4.66009, 0, -8.14798e-07, 0, 4.66009, 0, 8.14798e-07, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="Break4" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 108.747, 29.7156, -126.776 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 9.43621
+height = 0.25
+depth = 10.3491
+material = ExtResource( 3 )
+
+[node name="Moving Platforms Height" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 116.959, 30.7695, -114.83 )
+
+[node name="MovingPlatformPath6" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.1921e-07, 0, 1, 0, -1.1921e-07, 0, 1, 1.22291, -1.38913, -11.9275 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath6"]
+curve = SubResource( 5 )
+
+[node name="lily_pad5" parent="Moving Platforms Height/MovingPlatformPath6" instance=ExtResource( 6 )]
+transform = Transform( 0.238194, 0, -0.147186, 0, 0.28, 0, 0.147186, 0, 0.238194, 7.62939e-06, 0, 0 )
+
+[node name="CollisionShape6" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath6"]
+transform = Transform( 4.66009, 0, -5.55527e-07, 0, 4.66009, 0, 5.55527e-07, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath7" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, -1.3027e-15, 2.06632e-07, 3.55271e-15, -1, -2.98023e-08, 2.06632e-07, 2.98023e-08, -1, 1.22291, 1.61087, -6.92749 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath7"]
+curve = SubResource( 5 )
+
+[node name="CollectibleSmall21" parent="Moving Platforms Height/MovingPlatformPath7" instance=ExtResource( 1 )]
+transform = Transform( 1.62921e-07, 4.85542e-15, -1, 2.98023e-08, -1, 1.30271e-15, -1, -2.98023e-08, -1.62921e-07, 0.00511932, -0.398022, -0.000839233 )
+
+[node name="lily_pad6" parent="Moving Platforms Height/MovingPlatformPath7" instance=ExtResource( 6 )]
+transform = Transform( -0.00636711, 1.35952e-15, 0.279927, -8.34248e-09, -0.28, -1.89753e-10, 0.279927, -8.34464e-09, 0.00636711, 0, 0, 7.62939e-06 )
+
+[node name="CollisionShape7" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath7"]
+transform = Transform( 4.66009, 2.26267e-14, 9.62926e-07, -1.21414e-14, -4.66009, 1.38881e-07, 9.62926e-07, -1.38881e-07, -4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath8" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 5.12407e-15, 1.1921e-07, -1.77957e-14, 1, 1.17225e-07, -1.1921e-07, -1.17225e-07, 1, -3.77709, 1.61087, -2.92749 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath8"]
+curve = SubResource( 5 )
+
+[node name="lily_pad7" parent="Moving Platforms Height/MovingPlatformPath8" instance=ExtResource( 6 )]
+transform = Transform( -0.0413188, -5.34756e-15, 0.276934, 3.24636e-08, 0.28, 4.84361e-09, -0.276934, 3.2823e-08, -0.0413188, 0, 0, 0 )
+
+[node name="CollisionShape8" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath8"]
+transform = Transform( 4.66009, -8.90003e-14, -5.55527e-07, 1.78079e-14, 4.66009, -5.46279e-07, 5.55527e-07, 5.46279e-07, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath9" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, -3.88433e-14, -1.1921e-07, 0, -1, 3.25841e-07, -1.1921e-07, -3.25841e-07, -1, 3.22291, 0.610874, 0.0725098 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath9"]
+curve = SubResource( 5 )
+
+[node name="CollectibleSmall22" parent="Moving Platforms Height/MovingPlatformPath9" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 4.06576e-20, -1, -3.25841e-07, -1, 5.30863e-14, -1, 3.25841e-07, 1.62921e-07, -0.0156784, -0.356529, -0.012207 )
+
+[node name="lily_pad8" parent="Moving Platforms Height/MovingPlatformPath9" instance=ExtResource( 6 )]
+transform = Transform( -0.20298, 1.23328e-20, -0.19287, -6.2845e-08, -0.28, 6.61393e-08, -0.19287, 9.12355e-08, 0.20298, 0, 0, 0 )
+
+[node name="CollisionShape9" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath9"]
+transform = Transform( 4.66009, 2.05257e-19, -5.55527e-07, -1.81014e-13, -4.66009, -1.51845e-06, -5.55527e-07, 1.51845e-06, -4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath10" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, -1, -0.77709, -1.38913, 5.07251 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath10"]
+curve = SubResource( 5 )
+
+[node name="lily_pad9" parent="Moving Platforms Height/MovingPlatformPath10" instance=ExtResource( 6 )]
+transform = Transform( 0.232373, 0, -0.156213, 0, 0.28, 0, 0.156213, 0, 0.232373, 0, 0, 0 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath10"]
+transform = Transform( -4.66009, 0, -9.62926e-07, 0, 4.66009, 0, 9.62926e-07, 0, -4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath11" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 8.74228e-08, -2.06633e-07, 8.74228e-08, -1, -1.80644e-14, -2.06633e-07, 2.5411e-21, -1, 3.74791, 1.43027, 9.43451 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath11"]
+curve = SubResource( 5 )
+
+[node name="lily_pad10" parent="Moving Platforms Height/MovingPlatformPath11" instance=ExtResource( 6 )]
+transform = Transform( 0.186771, 2.44784e-08, 0.208606, 1.63281e-08, -0.28, 1.82369e-08, 0.208606, -5.05803e-15, -0.186771, 0, 0, -7.62939e-06 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath11"]
+transform = Transform( 4.66009, 4.07398e-07, -9.62926e-07, 4.07398e-07, -4.66009, 1.78333e-20, -9.62926e-07, -8.41817e-14, -4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath12" type="RigidBody" parent="Moving Platforms Height" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1, -1.74846e-07, 2.06632e-07, -1.74846e-07, 1, 3.61288e-14, -2.06632e-07, -2.28699e-20, -1, -2.53009, -0.320427, 11.9585 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+pause_time = 1.0
+pause_at_nodes = [ 0, 1 ]
+
+[node name="Path" type="Path" parent="Moving Platforms Height/MovingPlatformPath12"]
+curve = SubResource( 5 )
+
+[node name="lily_pad11" parent="Moving Platforms Height/MovingPlatformPath12" instance=ExtResource( 6 )]
+transform = Transform( 0.0509106, -4.89569e-08, 0.275333, 8.90152e-09, 0.28, 4.81408e-08, -0.275333, 1.01161e-14, 0.0509106, 7.62939e-06, 0, 0 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="Moving Platforms Height/MovingPlatformPath12"]
+transform = Transform( -4.66009, -8.14798e-07, -9.62926e-07, -8.14798e-07, 4.66009, -2.31911e-19, 9.62926e-07, 1.68364e-13, -4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="Break" type="CSGCombiner" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 113.546, 36.7479, -97.463 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CSGBox" type="CSGBox" parent="Break"]
+transform = Transform( 1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, 0.0442276, -5.46869, 0.992203 )
+use_collision = true
+width = 6.67641
+height = 0.25
+depth = 4.47978
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Break"]
+transform = Transform( 1, 0, 0, 0, 0.870304, 0.492515, 0, -0.492515, 0.870304, 0.0442276, -4.28406, 4.91371 )
+use_collision = true
+width = 6.67641
+height = 0.25
+depth = 5.53884
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Break"]
+transform = Transform( 1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, 0.0442276, -2.95708, 9.49852 )
+use_collision = true
+width = 6.67641
+height = 0.25
+depth = 4.47978
+material = ExtResource( 3 )
+
+[node name="CSGBox3" type="CSGBox" parent="Break"]
+transform = Transform( 1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, -3.33765, -2.95708, 9.49852 )
+use_collision = true
+width = 4.68858
+height = 0.25
+depth = 2.83329
+material = ExtResource( 3 )
+
+[node name="Intro Rolling Log" type="Spatial" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 97.749, 32.1008, -87.3807 )
+
+[node name="RigidBody10" type="RigidBody" parent="Intro Rolling Log" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -2.82129e-07, 1.08849e-07, 0.999996, 2.52612e-14, 1, -1.08849e-07, -0.999996, -5.44831e-15, -2.82129e-07, -5.09203, -0.721241, 0.63517 )
+collision_layer = 1025
+collision_mask = 1025
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 4 )
+velocity = 0.15
+
+[node name="MeshInstance" type="MeshInstance" parent="Intro Rolling Log/RigidBody10"]
+transform = Transform( 1, -3.15544e-30, -1.37929e-37, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Intro Rolling Log/RigidBody10"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 8 )
+
+[node name="RigidBody9" type="RigidBody" parent="Intro Rolling Log" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -2.82129e-07, 1.08849e-07, 0.999996, 2.52612e-14, 1, -1.08849e-07, -0.999996, -5.44831e-15, -2.82129e-07, 4.90797, -0.721241, 0.63517 )
+collision_layer = 1025
+collision_mask = 1025
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 4 )
+velocity = -0.3
+
+[node name="MeshInstance" type="MeshInstance" parent="Intro Rolling Log/RigidBody9"]
+transform = Transform( 1, -3.15544e-30, -1.37929e-37, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Intro Rolling Log/RigidBody9"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 9 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Intro Rolling Log/RigidBody9"]
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Intro Rolling Log/RigidBody9"]
+shape = SubResource( 11 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Intro Rolling Log/RigidBody9"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 3.8147e-06, 0 )
+mesh = SubResource( 10 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Intro Rolling Log/RigidBody9"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 3.8147e-06, 0 )
+shape = SubResource( 11 )
+
+[node name="CollectibleSmall25" parent="Intro Rolling Log/RigidBody9" instance=ExtResource( 1 )]
+transform = Transform( -2.82131e-07, 2.52614e-14, -1, 1.08849e-07, 1, -5.44841e-15, 1, -1.08849e-07, -2.82131e-07, 7.79706, -0.139595, 0.0399094 )
+
+[node name="CollectibleSmall23" parent="Intro Rolling Log/RigidBody9" instance=ExtResource( 1 )]
+transform = Transform( -2.82131e-07, 2.52614e-14, -1, 1.08849e-07, 1, -5.4484e-15, 1, -1.08849e-07, -2.82131e-07, 0.00147247, 7.63488, 0.0259094 )
+
+[node name="CollectibleSmall24" parent="Intro Rolling Log/RigidBody9" instance=ExtResource( 1 )]
+transform = Transform( -2.82131e-07, 2.52614e-14, -1, 1.08849e-07, 1, -5.44841e-15, 1, -1.08849e-07, -2.82131e-07, -7.71552, -0.0519562, 0.0399094 )
+
+[node name="CollectibleSmall26" parent="Intro Rolling Log/RigidBody9" instance=ExtResource( 1 )]
+transform = Transform( -2.80876e-07, 0.0115189, -0.999933, 1.08849e-07, 0.999934, 0.0115189, 0.999999, -1.05606e-07, -2.82111e-07, -0.0148773, -7.73687, 0.0399094 )
+
+[node name="Break5" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.7967, 32.3494, -76.1041 )
+
+[node name="CSGBox5" type="CSGBox" parent="Break5"]
+transform = Transform( 1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, 0.0123672, -0.938602, -1.27216 )
+use_collision = true
+width = 6.67641
+height = 0.25
+depth = 4.47978
+material = ExtResource( 3 )
+
+[node name="CSGBox6" type="CSGBox" parent="Break5"]
+transform = Transform( -4.37114e-08, 0.00862182, 0.999963, -0.5, 0.865993, -0.00746674, -0.866025, -0.499981, 0.00431087, 0.0123749, 0.722488, 3.22776 )
+use_collision = true
+width = 7.96384
+height = 0.25
+depth = 3.80877
+material = ExtResource( 3 )
+
+[node name="CSGBox7" type="CSGBox" parent="Break5"]
+transform = Transform( 1, 0, 0, 0, 0.999963, -0.00862182, 0, 0.00862182, 0.999963, 0.0123672, 2.6804, 8.8489 )
+use_collision = true
+width = 6.67641
+height = 0.25
+depth = 4.47978
+material = ExtResource( 3 )
+
+[node name="Intro Moving Circular Platforms" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 91.1579, 35.3075, -57.497 )
+
+[node name="MovingPlatformPath16" type="RigidBody" parent="Intro Moving Circular Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 4.16988, 0.397118, -4.20805 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Intro Moving Circular Platforms/MovingPlatformPath16"]
+curve = SubResource( 12 )
+
+[node name="CollectibleSmall26" parent="Intro Moving Circular Platforms/MovingPlatformPath16" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.000652313, 0.339912, 0.0655289 )
+
+[node name="lily_pad12" parent="Intro Moving Circular Platforms/MovingPlatformPath16" instance=ExtResource( 6 )]
+transform = Transform( -4.56178e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -4.56178e-08, 0, 0, 0 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Intro Moving Circular Platforms/MovingPlatformPath16"]
+transform = Transform( -7.59225e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, -7.59225e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath18" type="RigidBody" parent="Intro Moving Circular Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1.62921e-07, 0, 1, -8.74228e-08, -1, -1.4243e-14, 1, -8.74228e-08, 1.62921e-07, -0.40284, 0.12038, -0.466827 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Intro Moving Circular Platforms/MovingPlatformPath18"]
+curve = SubResource( 12 )
+
+[node name="CollectibleSmall26" parent="Intro Moving Circular Platforms/MovingPlatformPath18" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0.000652313, -0.538109, 0.0655289 )
+
+[node name="lily_pad12" parent="Intro Moving Circular Platforms/MovingPlatformPath18" instance=ExtResource( 6 )]
+transform = Transform( -4.56178e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, -4.56178e-08, 0.0142899, 0, 0.0160904 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="Intro Moving Circular Platforms/MovingPlatformPath18"]
+transform = Transform( -7.59225e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, -7.59225e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath17" type="RigidBody" parent="Intro Moving Circular Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1.94707e-07, 0, -1, 0, 1, 0, 1, 0, 1.94707e-07, -0.365143, 3.68999, 7.27037 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Intro Moving Circular Platforms/MovingPlatformPath17"]
+curve = SubResource( 12 )
+
+[node name="lily_pad13" parent="Intro Moving Circular Platforms/MovingPlatformPath17" instance=ExtResource( 6 )]
+transform = Transform( -4.56177e-08, 0, 0.279999, 0, 0.28, 0, -0.279999, 0, -4.56177e-08, 0, 0, 0 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Intro Moving Circular Platforms/MovingPlatformPath17"]
+transform = Transform( -7.59226e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, -7.59224e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath19" type="RigidBody" parent="Intro Moving Circular Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1.94707e-07, 0, -1, 8.74228e-08, -1, 1.70218e-14, -1, -8.74228e-08, -1.94707e-07, 4.27298, 3.41325, 3.4479 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Intro Moving Circular Platforms/MovingPlatformPath19"]
+curve = SubResource( 12 )
+
+[node name="lily_pad13" parent="Intro Moving Circular Platforms/MovingPlatformPath19" instance=ExtResource( 6 )]
+transform = Transform( -4.56177e-08, 0, 0.279999, 0, 0.28, 0, -0.279999, 0, -4.56177e-08, 0, 0, 0 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="Intro Moving Circular Platforms/MovingPlatformPath19"]
+transform = Transform( -7.59226e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, -7.59224e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath15" type="RigidBody" parent="Intro Moving Circular Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 2.50344e-07, 0, -0.999999, 0, 1, 0, 0.999999, 0, 2.50344e-07, -3.74886, 5.23346, 13.9516 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Intro Moving Circular Platforms/MovingPlatformPath15"]
+transform = Transform( -4.37114e-08, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -4.37114e-08, 7.12149e-15, 0, 0, -3.8147e-06 )
+curve = SubResource( 12 )
+
+[node name="lily_pad14" parent="Intro Moving Circular Platforms/MovingPlatformPath15" instance=ExtResource( 6 )]
+transform = Transform( -4.56178e-08, 0, 0.280001, 0, 0.28, 0, -0.28, 0, -4.56179e-08, 7.62939e-06, 0, 0 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Intro Moving Circular Platforms/MovingPlatformPath15"]
+transform = Transform( -7.59224e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, -7.59225e-07, 7.62939e-06, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath20" type="RigidBody" parent="Intro Moving Circular Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1.62921e-07, 0, 0.999999, 0, 1, 0, -0.999999, 0, -1.62921e-07, 7.40845, 5.23346, 13.9516 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Intro Moving Circular Platforms/MovingPlatformPath20"]
+transform = Transform( -4.37114e-08, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -4.37114e-08, 7.12149e-15, 0, 0, 0 )
+curve = SubResource( 12 )
+
+[node name="lily_pad14" parent="Intro Moving Circular Platforms/MovingPlatformPath20" instance=ExtResource( 6 )]
+transform = Transform( -4.56178e-08, 0, 0.280001, 0, 0.28, 0, -0.28, 0, -4.56179e-08, 7.62939e-06, 0, 0 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="Intro Moving Circular Platforms/MovingPlatformPath20"]
+transform = Transform( -7.59224e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, -7.59225e-07, 7.62939e-06, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="Break6" type="Spatial" parent="."]
+transform = Transform( -1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 92.2057, 41.5516, -35.2058 )
+
+[node name="CSGBox3" type="CSGBox" parent="Break6"]
+use_collision = true
+collision_layer = 2147484673
+collision_mask = 1025
+width = 8.44823
+height = 0.630545
+depth = 4.58151
+material = ExtResource( 3 )
+
+[node name="Rolling Logs" type="Spatial" parent="."]
+transform = Transform( -1, 8.9407e-08, 0, -8.9407e-08, -1, 0, 0, 0, 1, 92.1777, 38.8629, -28.7707 )
+
+[node name="Rolling log" parent="Rolling Logs" instance=ExtResource( 7 )]
+velocity = 0.3
+
+[node name="Rolling log2" parent="Rolling Logs" instance=ExtResource( 7 )]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, 0, -1.03854, 10.8183 )
+
+[node name="Rolling log3" parent="Rolling Logs" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03854, 20.8183 )
+velocity = 0.3
+
+[node name="Rolling log4" parent="Rolling Logs" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -1.03853, 20.8183 )
+
+[node name="Rolling log5" parent="Rolling Logs" instance=ExtResource( 7 )]
+transform = Transform( 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0, 1, -14, -1.03853, 30.8183 )
+velocity = 0.3
+
+[node name="Break7" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 105.617, 40.408, 11.1329 )
+
+[node name="CSGBox" type="CSGBox" parent="Break7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65983, -0.113571, 2.44712 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.2884
+depth = 12.8258
+material = ExtResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Break7"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.28884, -0.113571, 5.21444 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 3.30647
+depth = 4.72512
+material = ExtResource( 3 )
+
+[node name="Height Grapple" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 92.306, 45.6758, 15.6103 )
+
+[node name="CSGBox" type="CSGBox" parent="Height Grapple"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.48888, 0, 0.512096 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="Break11" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 86.8945, 44.8401, 15.9134 )
+
+[node name="CSGBox2" type="CSGBox" parent="Break11"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.257721, -2.13647, 0.021739 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 5.0
+height = 1.0
+depth = 5.0
+material = ExtResource( 3 )
+
+[node name="Rotating Boxes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 65.7241, 43.3397, 16.0046 )
+
+[node name="Grapples" type="Spatial" parent="Rotating Boxes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11.037, 6.07614, -0.394367 )
+
+[node name="CSGBox" type="CSGBox" parent="Rotating Boxes/Grapples"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.35249, -0.468407, 0.512096 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="Rotating Boxes/Grapples"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -36.0506, -1.09199, -0.545387 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="RigidBody" type="RigidBody" parent="Rotating Boxes" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 2.74239, 4.41107, 0 )
+collision_layer = 1025
+collision_mask = 1025
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 4 )
+angle = Vector3( 1, 0, 0 )
+velocity = 0.25
+
+[node name="MeshInstance" type="MeshInstance" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 1.99999, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99999, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, -2, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 2 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 2 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Rotating Boxes/RigidBody"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+shape = SubResource( 14 )
+
+[node name="RigidBody2" type="RigidBody" parent="Rotating Boxes" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 0.995589, 0.00540046, -0.0936671, 0.0691481, 0.632527, 0.771445, 0.0634132, -0.774519, 0.629364, -11.9844, 3.96584, -1.11386 )
+collision_layer = 1025
+collision_mask = 1025
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 4 )
+angle = Vector3( 1, 0, 0 )
+velocity = -0.25
+
+[node name="MeshInstance" type="MeshInstance" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, 1.99999, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99999, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, -2, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 2 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 2 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -2 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Rotating Boxes/RigidBody2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+shape = SubResource( 14 )
+
+[node name="CollectibleSmall36" parent="Rotating Boxes/RigidBody2" instance=ExtResource( 1 )]
+transform = Transform( 1, -4.84288e-08, -3.72529e-09, 2.23517e-08, 1, 2.98023e-08, 2.6077e-08, 3.57628e-07, 1, 3.74778, 0.194258, 2.33438 )
+
+[node name="RigidBody4" type="RigidBody" parent="Rotating Boxes" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 0.906892, -0.420077, 0.0328655, 0.419896, 0.907484, 0.0125612, -0.0351017, 0.0024085, 0.999381, -40.4885, -5.05065, -1.10799 )
+collision_layer = 1025
+collision_mask = 1025
+mode = 3
+continuous_cd = true
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource( 4 )
+angle = Vector3( 1, 0, 0 )
+velocity = -0.25
+
+[node name="MeshInstance" type="MeshInstance" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 6.51198e-09, -7.45058e-09, -7.84348e-09, 1, -7.68341e-09, 0, 6.75209e-09, 1, 0, 1.99999, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.99999, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, 1, -7.45058e-09, 0, 7.45058e-09, 1, 0, -2, 0 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape4" type="CollisionShape" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 2 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape2" type="CollisionShape" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 2 )
+shape = SubResource( 14 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+mesh = SubResource( 13 )
+material/0 = null
+
+[node name="CollisionShape3" type="CollisionShape" parent="Rotating Boxes/RigidBody4"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+shape = SubResource( 14 )
+
+[node name="CollectibleSmall38" parent="Rotating Boxes/RigidBody4" instance=ExtResource( 1 )]
+transform = Transform( 1, 6.93399e-09, -5.58794e-08, 6.97037e-09, 1, -2.32831e-09, 1.86265e-08, -1.11759e-08, 1, 3.70108, 2.34576, -0.032671 )
+
+[node name="Break8" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6889, 33.3122, 16.5405 )
+
+[node name="CSGBox" type="CSGBox" parent="Break8"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4831, -4.69308, 0 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 10.0125
+height = 0.25
+depth = 9.83353
+material = ExtResource( 3 )
+
+[node name="Up Climb" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4663, 27.3668, 5.71175 )
+
+[node name="MovingPlatformPath8" type="RigidBody" parent="Up Climb" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 1.09561, 0.868742, 7.39555 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+current_node = 5
+
+[node name="Path" type="Path" parent="Up Climb/MovingPlatformPath8"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.00863647, -0.00629997 )
+curve = SubResource( 15 )
+
+[node name="lily_pad16" parent="Up Climb/MovingPlatformPath8" instance=ExtResource( 6 )]
+transform = Transform( 0.158376, 0, -0.230904, 0, 0.28, 0, 0.230905, 0, 0.158376, 0, 0, 9.53674e-07 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="Up Climb/MovingPlatformPath8"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath9" type="RigidBody" parent="Up Climb" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 1.09561, 2.86874, 7.39555 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+current_node = 4
+
+[node name="Path" type="Path" parent="Up Climb/MovingPlatformPath9"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.00863647, -0.00629997 )
+curve = SubResource( 15 )
+
+[node name="lily_pad17" parent="Up Climb/MovingPlatformPath9" instance=ExtResource( 6 )]
+transform = Transform( 0.141128, 0, 0.241832, 0, 0.28, 0, -0.241832, 0, 0.141128, 0, 0, 0 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="Up Climb/MovingPlatformPath9"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath10" type="RigidBody" parent="Up Climb" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 1.09561, 4.86874, 7.39555 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+current_node = 3
+
+[node name="Path" type="Path" parent="Up Climb/MovingPlatformPath10"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.00863647, -0.00629997 )
+curve = SubResource( 15 )
+
+[node name="lily_pad18" parent="Up Climb/MovingPlatformPath10" instance=ExtResource( 6 )]
+transform = Transform( 0.275169, 0, -0.0517897, 0, 0.28, 0, 0.0517897, 0, 0.275168, 0, 0, 0 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="Up Climb/MovingPlatformPath10"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath11" type="RigidBody" parent="Up Climb" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 1.09561, 6.86874, 7.39555 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+current_node = 2
+
+[node name="Path" type="Path" parent="Up Climb/MovingPlatformPath11"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.00863647, -0.00629997 )
+curve = SubResource( 15 )
+
+[node name="lily_pad19" parent="Up Climb/MovingPlatformPath11" instance=ExtResource( 6 )]
+transform = Transform( -0.0745535, 0, -0.269892, 0, 0.28, 0, 0.269892, 0, -0.0745535, 0, 0, 9.53674e-07 )
+
+[node name="CollisionShape20" type="CollisionShape" parent="Up Climb/MovingPlatformPath11"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath12" type="RigidBody" parent="Up Climb" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 1.09561, 8.86874, 7.39555 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+current_node = 1
+
+[node name="Path" type="Path" parent="Up Climb/MovingPlatformPath12"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.00863647, -0.00629997 )
+curve = SubResource( 15 )
+
+[node name="lily_pad20" parent="Up Climb/MovingPlatformPath12" instance=ExtResource( 6 )]
+transform = Transform( -0.0351176, 0, 0.277789, 0, 0.28, 0, -0.277789, 0, -0.0351175, 9.53674e-07, 0, 0 )
+
+[node name="CollisionShape21" type="CollisionShape" parent="Up Climb/MovingPlatformPath12"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath13" type="RigidBody" parent="Up Climb" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 1.09561, 10.8687, 7.39555 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+speed = 1.5
+
+[node name="Path" type="Path" parent="Up Climb/MovingPlatformPath13"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, -0.00863647, -0.00629997 )
+curve = SubResource( 15 )
+
+[node name="lily_pad21" parent="Up Climb/MovingPlatformPath13" instance=ExtResource( 6 )]
+transform = Transform( -0.258036, 0, -0.108707, 0, 0.28, 0, 0.108707, 0, -0.258036, 0, 0, 0 )
+
+[node name="CollisionShape22" type="CollisionShape" parent="Up Climb/MovingPlatformPath13"]
+transform = Transform( 4.66009, 0, 0, 0, 4.66009, 0, 0, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="Break9" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.34657, 38.2524, 8.68759 )
+
+[node name="CSGBox3" type="CSGBox" parent="Break9"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000999451, 0, -0.204 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 7.15848
+height = 0.25
+depth = 5.46241
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Break9"]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 3.02295, 0, -3.32005 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 3.39789
+height = 0.25
+depth = 5.84874
+material = ExtResource( 3 )
+
+[node name="Circular Moving Platforms" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.8529, 38.1029, -10.5761 )
+
+[node name="MovingPlatformPath6" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -8.25877, -0.423279, -3.63939 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath6"]
+curve = SubResource( 12 )
+
+[node name="lily_pad22" parent="Circular Moving Platforms/MovingPlatformPath6" instance=ExtResource( 6 )]
+transform = Transform( -0.0177861, 0, 0.279434, 0, 0.28, 0, -0.279434, 0, -0.0177861, -9.53674e-07, 0, 2.38419e-07 )
+
+[node name="CollisionShape23" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath6"]
+transform = Transform( -1.31475e-06, 0, -4.66009, 0, 4.66009, 0, 4.66009, 0, -1.31475e-06, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath7" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.1921e-07, 0, 1, 0, -1.1921e-07, 0, 1, -0.48967, 1.57672, 3.22823 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath7"]
+curve = SubResource( 12 )
+
+[node name="lily_pad23" parent="Circular Moving Platforms/MovingPlatformPath7" instance=ExtResource( 6 )]
+transform = Transform( -0.0938527, 0, 0.263802, 0, 0.28, 0, -0.263802, 0, -0.0938526, 0, 0, 1.90735e-06 )
+
+[node name="CollisionShape24" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath7"]
+transform = Transform( 4.66009, 0, -1.11105e-06, 0, 4.66009, 0, 1.11105e-06, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath10" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 7.54982e-08, 0, -1, 0, 1, 0, 1, 0, 7.54982e-08, 1.45115, 2.57672, 13.6881 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath10"]
+curve = SubResource( 12 )
+
+[node name="lily_pad24" parent="Circular Moving Platforms/MovingPlatformPath10" instance=ExtResource( 6 )]
+transform = Transform( 5.45181e-08, 0, 0.28, 0, 0.28, 0, -0.28, 0, 5.4518e-08, 0, 0, 0 )
+
+[node name="CollisionShape25" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath10"]
+transform = Transform( 9.07354e-07, 0, 4.66009, 0, 4.66009, 0, -4.66009, 0, 9.07354e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath8" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.1921e-07, 0, 1, 0, -1.1921e-07, 0, 1, -8.48967, 0.576721, 8.22823 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath8"]
+transform = Transform( -4.37114e-08, -1, 1.62921e-07, 0, -1.62921e-07, -1, 1, -4.37114e-08, 7.12149e-15, 0, 0, -3.8147e-06 )
+curve = SubResource( 12 )
+
+[node name="lily_pad25" parent="Circular Moving Platforms/MovingPlatformPath8" instance=ExtResource( 6 )]
+transform = Transform( 0.195413, 0, 0.200534, 0, 0.28, 0, -0.200534, 0, 0.195413, 0, 0, 0 )
+
+[node name="CollisionShape26" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath8"]
+transform = Transform( 4.66009, 0, -1.11105e-06, 0, 4.66009, 0, 1.11105e-06, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath9" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.1921e-07, 0, 1, 0, -1.1921e-07, 0, 1, -2.48967, 1.57672, 8.22823 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath9"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0, 0, -3.8147e-06 )
+curve = SubResource( 12 )
+
+[node name="CollectibleSmall43" parent="Circular Moving Platforms/MovingPlatformPath9" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -0.0556221, 0.360561, -0.0598316 )
+
+[node name="lily_pad26" parent="Circular Moving Platforms/MovingPlatformPath9" instance=ExtResource( 6 )]
+transform = Transform( 0.167816, 0, -0.224137, 0, 0.28, 0, 0.224137, 0, 0.167816, -9.53674e-07, 0, 0 )
+
+[node name="CollisionShape27" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath9"]
+transform = Transform( 4.66009, 0, -1.11105e-06, 0, 4.66009, 0, 1.11105e-06, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath13" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -8.48967, 0.576721, 2.22823 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath13"]
+transform = Transform( -4.88763e-07, 1, -1.62921e-07, 8.74228e-08, 1.62921e-07, 1, 1, 4.88763e-07, -8.74229e-08, 0, 0, 0 )
+curve = SubResource( 12 )
+
+[node name="CollectibleSmall44" parent="Circular Moving Platforms/MovingPlatformPath13" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, -1, 0.0461826, 0.404484, -0.219041 )
+
+[node name="lily_pad27" parent="Circular Moving Platforms/MovingPlatformPath13" instance=ExtResource( 6 )]
+transform = Transform( -0.279254, 0, -0.0204189, 0, 0.28, 0, 0.0204189, 0, -0.279254, 0, 0, -9.53674e-07 )
+
+[node name="CollisionShape28" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath13"]
+transform = Transform( -1.31475e-06, 0, -4.66009, 0, 4.66009, 0, 4.66009, 0, -1.31475e-06, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath11" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.1921e-07, 0, 1, 0, -1.1921e-07, 0, 1, 5.51033, 4.57672, 8.22823 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath11"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0, 0, -3.8147e-06 )
+curve = SubResource( 12 )
+
+[node name="CollectibleSmall41" parent="Circular Moving Platforms/MovingPlatformPath11" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -0.0679569, 0.265038, -0.0498943 )
+
+[node name="lily_pad28" parent="Circular Moving Platforms/MovingPlatformPath11" instance=ExtResource( 6 )]
+transform = Transform( -0.267237, 0, 0.0835728, 0, 0.28, 0, -0.0835729, 0, -0.267237, 0, 0, -1.90735e-06 )
+
+[node name="CollisionShape29" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath11"]
+transform = Transform( 4.66009, 0, -1.11105e-06, 0, 4.66009, 0, 1.11105e-06, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="MovingPlatformPath12" type="RigidBody" parent="Circular Moving Platforms" groups=[
+"MovingPlatform",
+]]
+transform = Transform( 1, 0, 1.1921e-07, 0, 1, 0, -1.1921e-07, 0, 1, 3.51033, 0.576721, 3.22823 )
+collision_layer = 1025
+collision_mask = 1025
+script = ExtResource( 5 )
+interpolate_path = true
+cycle_path = true
+
+[node name="Path" type="Path" parent="Circular Moving Platforms/MovingPlatformPath12"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, 0, 0, -3.8147e-06 )
+curve = SubResource( 12 )
+
+[node name="lily_pad29" parent="Circular Moving Platforms/MovingPlatformPath12" instance=ExtResource( 6 )]
+transform = Transform( -0.0915472, 0, -0.264611, 0, 0.28, 0, 0.264611, 0, -0.0915471, 9.53674e-07, 0, 0 )
+
+[node name="CollisionShape30" type="CollisionShape" parent="Circular Moving Platforms/MovingPlatformPath12"]
+transform = Transform( 4.66009, 0, -1.11105e-06, 0, 4.66009, 0, 1.11105e-06, 0, 4.66009, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="Break10" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 31.9058, 41.5896, -17.8657 )
+
+[node name="CSGBox3" type="CSGBox" parent="Break10"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000911713, -0.00377274, 0.566576 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 7.15848
+height = 0.25
+depth = 3.90335
+material = ExtResource( 3 )
+
+[node name="CSGBox4" type="CSGBox" parent="Break10"]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4.98936, 0, -1.1045 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+width = 7.13091
+height = 0.25
+depth = 3.11764
+material = ExtResource( 3 )
+
+[node name="Tree" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.2522, 0, -42.2731 )
+
+[node name="Tree" type="CSGCombiner" parent="Tree"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.09469, 0, -1.72854 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.11698, 20.19, 7.39573 )
+radius = 8.60084
+height = 70.1374
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( 1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 6.45437, 27.9041, 6.75973 )
+radius = 2.02554
+height = 55.0076
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -0.43182, 1.50996e-07, 0, -6.5203e-08, -1, 0, 0, 0, 0.43182, 10.2252, 25.7749, 6.63822 )
+radius = 8.60084
+height = 60.3081
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder4" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -0.43182, 1.50996e-07, 0, -6.5203e-08, -1, 0, 0, 0, 0.43182, 9.10408, 37.2037, 8.98153 )
+radius = 3.61117
+height = 10.8526
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder6" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -0.43182, 1.50996e-07, 0, -6.5203e-08, -1, 0, 0, 0, 0.43182, 11.4575, 28.2279, 6.60252 )
+radius = 3.61117
+height = 15.989
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder5" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -0.43182, 1.50996e-07, 0, -6.5203e-08, -1, 0, 0, 0, 0.43182, 9.72027, 27.7177, 9.84173 )
+radius = 3.61117
+height = 10.8526
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder7" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -0.43182, 1.50996e-07, 0, -6.40161e-08, -0.981797, 0.0820178, 1.23843e-08, 0.189935, 0.423959, 10.6243, 43.1575, 4.17492 )
+radius = 5.29697
+height = 10.8526
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder8" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -0.43182, -3.25841e-07, 0, 1.40705e-07, -1, 0, 0, 0, 0.43182, 6.76468, 46.5543, 5.34902 )
+radius = 5.29697
+height = 10.8526
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGSphere" type="CSGSphere" parent="Tree/Tree"]
+transform = Transform( 0.63327, 0, 0, 0, 0.680158, -0.733065, 0, 0.38276, 0.355135, 5.10548, 44.6113, 6.83802 )
+radius = 2.17882
+radial_segments = 4
+rings = 4
+material = ExtResource( 3 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="Tree/Tree"]
+transform = Transform( 0.620582, 0.0800398, 0.0916871, 0.00733651, 0.791858, -0.855234, -0.125918, 0.440608, 0.402045, 5.37518, 15.065, 9.00953 )
+radius = 4.51629
+radial_segments = 4
+rings = 4
+material = ExtResource( 3 )
+
+[node name="CSGSphere3" type="CSGSphere" parent="Tree/Tree"]
+transform = Transform( -0.371713, -0.492605, 0.762637, 0.512573, -0.372069, 0.550144, 0.0113815, 0.668196, 0.131144, 12.95, 34.4106, 5.13213 )
+radius = 4.51629
+radial_segments = 4
+rings = 4
+material = ExtResource( 3 )
+
+[node name="CSGSphere4" type="CSGSphere" parent="Tree/Tree"]
+transform = Transform( 0.592164, -0.317559, 0.141299, -0.118738, -0.576714, 0.928462, -0.190457, -0.627804, -0.139514, 10.8528, 41.3533, 5.66723 )
+radius = 4.51629
+radial_segments = 4
+rings = 4
+material = ExtResource( 3 )
+
+[node name="CSGSphere5" type="CSGSphere" parent="Tree/Tree"]
+transform = Transform( 0.992726, -0.574769, 0.0165187, 0.120278, 4.70521, -0.180037, 0.005344, 0.870959, 0.983521, 7.53718, 13.8315, 2.12743 )
+operation = 2
+radius = 4.32552
+radial_segments = 5
+rings = 5
+material = ExtResource( 3 )
+
+[node name="CSGSphere6" type="CSGSphere" parent="Tree/Tree"]
+transform = Transform( 0.926062, 1.03645, 0.0165187, -0.368143, 2.50769, -0.180037, -0.0829437, 0.441634, 0.983521, 4.64918, 45.4184, 9.23893 )
+operation = 2
+radius = 4.32552
+radial_segments = 5
+rings = 5
+material = ExtResource( 3 )
+
+[node name="CSGCylinder9" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04457, 3.82374, 12.79 )
+operation = 2
+radius = 4.92225
+height = 38.6098
+cone = true
+material = ExtResource( 3 )
+
+[node name="CSGCylinder10" type="CSGCylinder" parent="Tree/Tree"]
+transform = Transform( -1, 8.9407e-08, 0, -7.45058e-08, -1, 0, 0, 0, 1, 13.431, -5.11726, 13.2368 )
+operation = 2
+radius = 4.92225
+height = 52.7034
+cone = true
+material = ExtResource( 3 )
+
+[node name="Branch 1" type="CSGCylinder" parent="Tree"]
+transform = Transform( -0.707107, -0.683013, 0.183013, 0, 0.258819, 0.965926, -0.707107, 0.683013, -0.183013, -2.67405, 33.9604, 9.29822 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+radius = 0.47512
+height = 4.70383
+material = ExtResource( 3 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Tree/Branch 1"]
+transform = Transform( -8.9407e-08, -0.999764, -0.0217451, 1, -5.96046e-08, 0, -7.45058e-09, -0.0217451, 0.999764, -1.97428, 2.25479, 0.0203972 )
+radius = 0.336993
+height = 2.82436
+material = ExtResource( 3 )
+
+[node name="CSGBox" type="CSGBox" parent="Tree/Branch 1"]
+transform = Transform( -0.999996, 8.42937e-08, -0.0029321, -0.00283206, 0.258819, 0.965921, 0.000758961, 0.965925, -0.258818, -1.66132, 3.26182, 0.167442 )
+width = 2.02898
+height = 0.25
+depth = 3.15813
+material = ExtResource( 3 )
+
+[node name="Branch 2" type="CSGCylinder" parent="Tree"]
+transform = Transform( -0.771724, 0.511601, -0.233253, -0.371684, 0.0422243, 0.624173, 0.479099, 0.856835, 0.108512, 4.00587, 32.8986, 9.05688 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+radius = 1.59608
+height = 6.26854
+material = ExtResource( 3 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Tree/Branch 2"]
+transform = Transform( 0.504215, -0.617454, -0.232664, 0.78697, 0.0732842, 0.430144, -0.544058, -0.977335, 0.906269, 1.34106, 7.60927, 3.30343 )
+radius = 0.336993
+height = 2.82436
+material = ExtResource( 3 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Tree/Branch 2"]
+transform = Transform( -0.292348, -0.661832, -0.407583, 0.626991, -0.645161, -0.0191036, -0.712079, -0.554803, 1.12145, 2.63884, 8.17686, 4.87752 )
+radius = 0.223296
+height = 1.74425
+material = ExtResource( 3 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Tree/Branch 2"]
+transform = Transform( 0.999999, 0, -1.49012e-08, -2.68221e-07, 0.960221, -0.279242, -2.08616e-07, 0.279242, 0.960219, -1.90735e-05, 5.52798, 0.993355 )
+radius = 1.02925
+height = 5.63723
+material = ExtResource( 3 )
+
+[node name="Branch 3" type="CSGCylinder" parent="Tree"]
+transform = Transform( 0.791171, 0.554186, -0.258702, -0.0148617, 0.440291, 0.897732, 0.611414, -0.706416, 0.356582, 6.27899, 35.9887, -0.364822 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+radius = 1.26721
+height = 6.26854
+material = ExtResource( 3 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Tree/Branch 3"]
+transform = Transform( 2.98023e-07, -0.833047, 0.553203, 1, 6.25849e-07, 1.49012e-08, -7.45058e-08, 0.553203, 0.833046, 1.72844, 7.53897, 0.650845 )
+radius = 0.336993
+height = 2.82436
+material = ExtResource( 3 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Tree/Branch 3"]
+transform = Transform( -0.441099, -0.718797, 0.537365, 0.528088, -0.692015, -0.492177, 0.725639, 0.066677, 0.684835, 3.31276, 8.22621, 0.0152588 )
+radius = 0.223296
+height = 1.74425
+material = ExtResource( 3 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Tree/Branch 3"]
+transform = Transform( 1, 2.98023e-07, 2.23517e-07, -3.57628e-07, 0.993765, -0.111503, -2.23517e-07, 0.111504, 0.993763, -0.0305138, 5.44839, 0.614417 )
+radius = 0.854516
+height = 5.63723
+material = ExtResource( 3 )
+
+[node name="Grapple" type="CSGBox" parent="Tree"]
+transform = Transform( 1, -2.38419e-07, -2.98023e-08, -1.49012e-08, 1, 0, 3.72529e-08, 1.78814e-07, 1, 5.89688, 44.8653, -7.04015 )
+use_collision = true
+collision_layer = 2
+collision_mask = 2
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 1 )
+
+[node name="Branch 4" type="CSGCylinder" parent="Tree"]
+transform = Transform( 0.907594, -0.223795, -0.355232, 0.251033, -0.388939, 0.886402, -0.336536, -0.893668, -0.296818, 0.14172, 43.551, -1.17485 )
+use_collision = true
+collision_layer = 1025
+collision_mask = 1025
+radius = 1.59608
+height = 6.26854
+material = ExtResource( 3 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="Tree/Branch 4"]
+transform = Transform( 3.27826e-07, -0.833047, 0.553203, 1, 5.43892e-07, -8.9407e-08, 2.98023e-08, 0.553203, 0.833046, 1.59622, 7.18786, 0.534229 )
+radius = 0.84471
+height = 2.82436
+material = ExtResource( 3 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="Tree/Branch 4"]
+transform = Transform( -0.441099, -0.718797, 0.537365, 0.528088, -0.692015, -0.492177, 0.725639, 0.066677, 0.684835, 3.18054, 7.87511, -0.101357 )
+radius = 0.223296
+height = 1.74425
+material = ExtResource( 3 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Tree/Branch 4"]
+transform = Transform( 0.999999, 0, -1.49012e-08, -2.68221e-07, 0.960221, -0.279242, -2.08616e-07, 0.279242, 0.960219, -1.90735e-05, 5.52798, 0.993355 )
+radius = 1.02925
+height = 5.63723
+material = ExtResource( 3 )

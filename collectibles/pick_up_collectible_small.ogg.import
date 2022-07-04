@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pick_up_collectible_small.ogg-a4b2229c477e708a37ceb8c6ce48779f.oggstr"
+
+[deps]
+
+source_file="res://collectibles/pick_up_collectible_small.ogg"
+dest_files=[ "res://.import/pick_up_collectible_small.ogg-a4b2229c477e708a37ceb8c6ce48779f.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,136 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://systems/dialogue/font_dialogue.tres" type="DynamicFont" id=1]
+[ext_resource path="res://systems/dialogue/dialogue.gd" type="Script" id=2]
+[ext_resource path="res://ui/textures/advance2.png" type="Texture" id=3]
+[ext_resource path="res://ui/textures/box_full3.png" type="Texture" id=4]
+[ext_resource path="res://ui/textures/advance.png" type="Texture" id=5]
+[ext_resource path="res://systems/dialogue/text.ogg" type="AudioStream" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer/Box/Advance:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer/Box/Advance2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="Dialogue" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false,
+"_edit_vertical_guides_": [ 63.62, 1116.04, 640.028 ]
+}
+text_sound = ExtResource( 6 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 455.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Box" type="TextureRect" parent="CenterContainer"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0.705882 )
+margin_left = 288.0
+margin_right = 992.0
+margin_bottom = 276.0
+texture = ExtResource( 4 )
+
+[node name="Text" type="RichTextLabel" parent="CenterContainer/Box"]
+margin_left = 89.0
+margin_top = 58.0
+margin_right = 616.0
+margin_bottom = 218.0
+custom_fonts/normal_font = ExtResource( 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 1
+bbcode_enabled = true
+meta_underlined = false
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Namebox" type="TextureRect" parent="CenterContainer/Box"]
+margin_left = 40.0
+margin_top = 9.0
+margin_right = 243.0
+margin_bottom = 69.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="CenterContainer/Box/Namebox"]
+margin_left = 27.0
+margin_top = 7.0
+margin_right = 179.0
+margin_bottom = 48.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.839216, 0.498039, 1 )
+custom_constants/shadow_offset_x = 1
+custom_constants/shadow_offset_y = 1
+custom_constants/shadow_as_outline = 2
+text = "Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Advance" type="Sprite" parent="CenterContainer/Box"]
+visible = false
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 626.304, 167.603 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, 3.62103 )
+
+[node name="Advance2" type="Sprite" parent="CenterContainer/Box"]
+visible = false
+modulate = Color( 1, 0.305882, 0.172549, 1 )
+position = Vector2( 611.741, 169.552 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 2.42139 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 0.1
+anims/Idle = SubResource( 1 )
+
+[node name="TweenAlpha" type="Tween" parent="."]
+
+[node name="TimerText" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="TimerSelectBuffer" type="Timer" parent="."]
+wait_time = 0.03
+one_shot = true
+[connection signal="tween_all_completed" from="TweenAlpha" to="." method="_on_TweenAlpha_tween_all_completed"]
+[connection signal="timeout" from="TimerText" to="." method="_on_TimerText_timeout"]
+[connection signal="timeout" from="TimerSelectBuffer" to="." method="_on_TimerSelectBuffer_timeout"]

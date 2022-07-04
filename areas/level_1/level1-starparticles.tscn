@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+flags_fixed_size = true
+params_cull_mode = 2
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=2]
+material = SubResource( 1 )
+size = Vector2( 0.002, 0.002 )
+
+[node name="CPUParticles" type="CPUParticles"]
+cast_shadow = 0
+amount = 1000
+lifetime = 1e+06
+preprocess = 1.0
+explosiveness = 1.0
+fixed_fps = 1
+fract_delta = false
+mesh = SubResource( 2 )
+emission_shape = 2
+emission_box_extents = Vector3( 200, 200, 200 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )

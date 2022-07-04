@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://materials/cel_new.shader" type="Shader" id=1]
+[ext_resource path="res://areas/new_level_1/hollow_log.glb" type="PackedScene" id=2]
+[ext_resource path="res://areas/new_level_1/sideways_log_mat_cel.tres" type="Material" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/base_color = Color( 0.0901961, 0.0745098, 0.0470588, 1 )
+shader_param/shade_color = Color( 0.0901961, 0.0745098, 0.0470588, 1 )
+shader_param/rim_tint = Color( 0.75, 0.75, 0.75, 0.75 )
+shader_param/shade_threshold = 0.0
+shader_param/shade_softness = 0.0
+shader_param/use_shadow = false
+shader_param/shadow_threshold = 0.7
+shader_param/shadow_softness = 0.1
+shader_param/emission_color = null
+shader_param/shadow_texture_scale = 1.0
+
+[node name="hollow_log" instance=ExtResource( 2 )]
+
+[node name="hollow_log" parent="." index="0"]
+material/0 = ExtResource( 3 )
+material/1 = SubResource( 1 )
